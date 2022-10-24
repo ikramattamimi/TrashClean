@@ -28,3 +28,11 @@ Route::get('/tentang', function () {
 Route::get('/kontak', function () {
     return view('kontak.index');
 });
+
+Route::get('/tutorial', function () {
+    return view('tutorial.index');
+});
+
+Route::get('/tutorial/detail', function () {
+    return view('tutorial.detail');
+});

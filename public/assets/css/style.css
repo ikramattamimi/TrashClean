@@ -190,11 +190,13 @@ ul i {
 /**
 * Desktop Navigation 
 */
-.navbar, .navbar_page {
+.navbar,
+.navbar_page {
     padding: 0;
 }
 
-.navbar ul, .navbar_page ul {
+.navbar ul,
+.navbar_page ul {
     margin: 0;
     padding: 0;
     display: flex;
@@ -202,11 +204,13 @@ ul i {
     align-items: center;
 }
 
-.navbar li, .navbar_page li {
+.navbar li,
+.navbar_page li {
     position: relative;
 }
 
-.navbar > ul > li, .navbar_page > ul> li {
+.navbar > ul > li,
+.navbar_page > ul > li {
     padding: 10px 0 10px 24px;
 }
 
@@ -242,14 +246,17 @@ ul i {
     position: relative;
 }
 
-.navbar a i, .navbar_page a i,
-.navbar a:focus i, .navbar_page a:focus i {
+.navbar a i,
+.navbar_page a i,
+.navbar a:focus i,
+.navbar_page a:focus i {
     font-size: 12px;
     line-height: 0;
     margin-left: 5px;
 }
 
-.navbar > ul > li > a:before {
+.navbar > ul > li > a:before,
+.navbar_page > ul > li > a:before {
     content: "";
     position: absolute;
     width: 100%;
@@ -262,6 +269,12 @@ ul i {
     transition: all 0.3s ease-in-out 0s;
 }
 
+.navbar a:hover:before,
+.navbar_page a:hover:before,
+.navbar li:hover > a:before,
+.navbar_page li:hover > a:before,
+.navbar .active:before,
+.navbar_page .active:before {
 .navbar_page > ul > li > a:before {
     content: "";
     position: absolute;
@@ -296,8 +309,10 @@ ul i {
     color: rgb(126, 217, 87);
 }
 
-.navbar .getstarted, .navbar_page .getstarted,
-.navbar .getstarted:focus, .navbar_page .getstarted:focus {
+.navbar .getstarted,
+.navbar_page .getstarted,
+.navbar .getstarted:focus,
+.navbar_page .getstarted:focus {
     padding: 8px 25px;
     margin-left: 30px;
     border-radius: 5px;
@@ -308,18 +323,23 @@ ul i {
     border: 2px solid rgba(255, 255, 255, 0.5);
 }
 
-.navbar .getstarted:hover, .navbar_page .getstarted:hover,
-.navbar .getstarted:focus:hover, .navbar_page .getstarted:focus:hover {
+.navbar .getstarted:hover,
+.navbar_page .getstarted:hover,
+.navbar .getstarted:focus:hover,
+.navbar_page .getstarted:focus:hover {
     color: #fff;
     border-color: #fff;
 }
 
-.navbar .getstarted:before, .navbar_page .getstarted:before,
-.navbar li:hover > .getstarted:before, .navbar_page li:hover > .getstarted:before{
+.navbar .getstarted:before,
+.navbar_page .getstarted:before,
+.navbar li:hover > .getstarted:before,
+.navbar_page li:hover > .getstarted:before {
     visibility: hidden;
 }
 
-.navbar .dropdown ul, .navbar_page .dropdown ul {
+.navbar .dropdown ul,
+.navbar_page .dropdown ul {
     display: block;
     position: absolute;
     left: 24px;
@@ -334,39 +354,48 @@ ul i {
     transition: 0.3s;
 }
 
-.navbar .dropdown ul li, .navbar_page .dropdown ul li {
+.navbar .dropdown ul li,
+.navbar_page .dropdown ul li {
     min-width: 200px;
 }
 
-.navbar .dropdown ul a, .navbar_page .dropdown ul a{
+.navbar .dropdown ul a,
+.navbar_page .dropdown ul a {
     padding: 10px 20px;
     font-size: 14px;
     color: #2c4964;
 }
 
-.navbar .dropdown ul a i, .navbar_page .dropdown ul a i {
+.navbar .dropdown ul a i,
+.navbar_page .dropdown ul a i {
     font-size: 12px;
 }
 
-.navbar .dropdown ul a:hover, .navbar_page .dropdown ul a:hover,
-.navbar .dropdown ul .active:hover, .navbar_page .dropdown ul .active:hover,
-.navbar .dropdown ul li:hover > a, .navbar_page .dropdown ul li:hover > a {
+.navbar .dropdown ul a:hover,
+.navbar_page .dropdown ul a:hover,
+.navbar .dropdown ul .active:hover,
+.navbar_page .dropdown ul .active:hover,
+.navbar .dropdown ul li:hover > a,
+.navbar_page .dropdown ul li:hover > a {
     color: rgb(126, 217, 87);
 }
 
-.navbar .dropdown:hover > ul, .navbar_page .dropdown:hover > ul {
+.navbar .dropdown:hover > ul,
+.navbar_page .dropdown:hover > ul {
     opacity: 1;
     top: 100%;
     visibility: visible;
 }
 
-.navbar .dropdown .dropdown ul, .navbar_page .dropdown .dropdown ul {
+.navbar .dropdown .dropdown ul,
+.navbar_page .dropdown .dropdown ul {
     top: 0;
     left: calc(100% - 30px);
     visibility: hidden;
 }
 
-.navbar .dropdown .dropdown:hover > ul, .navbar_page .dropdown .dropdown:hover > ul {
+.navbar .dropdown .dropdown:hover > ul,
+.navbar_page .dropdown .dropdown:hover > ul {
     opacity: 1;
     top: 0;
     left: 100%;
@@ -374,11 +403,13 @@ ul i {
 }
 
 @media (max-width: 1366px) {
-    .navbar .dropdown .dropdown ul, .navbar_page .dropdown .dropdown ul {
+    .navbar .dropdown .dropdown ul,
+    .navbar_page .dropdown .dropdown ul {
         left: -90%;
     }
 
-    .navbar .dropdown .dropdown:hover > ul, .navbar_page .dropdown .dropdown:hover > ul {
+    .navbar .dropdown .dropdown:hover > ul,
+    .navbar_page .dropdown .dropdown:hover > ul {
         left: -100%;
     }
 }
@@ -1134,10 +1165,14 @@ section {
 # Portfolio Details
 --------------------------------------------------------------*/
 .portfolio-details {
-    padding-top: 40px;
+    padding-top: 100px;
 }
 
 .portfolio-details .portfolio-details-slider img {
+    width: 100%;
+}
+
+.portfolio-details img {
     width: 100%;
 }
 
