@@ -1134,11 +1134,12 @@ section {
 # Portfolio Details
 --------------------------------------------------------------*/
 .portfolio-details {
-    padding-top: 40px;
+    padding-top: 100px;
 }
 
-.portfolio-details .portfolio-details-slider img {
+.portfolio-details img {
     width: 100%;
+    margin-top: 35px;
 }
 
 .portfolio-details .portfolio-details-slider .swiper-pagination {
