@@ -141,7 +141,7 @@ ul i {
 /*--------------------------------------------------------------
 # Header
 --------------------------------------------------------------*/
-#header {
+#header, #header_page{
     transition: all 0.5s;
     z-index: 997;
     padding: 20px 0;
@@ -150,12 +150,23 @@ ul i {
 #header.header-scrolled,
 #header.header-inner-pages {
     /* background: rgb(39, 39, 39); */
-    background: rgb(114, 161, 229);
+    background: linear-gradient(
+            90deg,
+            rgba(114, 161, 229, 0.95) 20%,
+            rgba(152, 131, 229, 0.95) 100%
+        );
     box-shadow: -1px 1px 15px black;
     padding: 12px 0;
 }
 
-#header .logo {
+#header_page.header-scrolled,
+#header_page.header-inner-pages {
+    background: white;
+    box-shadow: -1px 1px 15px black;
+    padding: 12px 0;
+}
+
+#header .logo, #header_page .logo{
     font-size: 32px;
     margin: 0;
     padding: 0;
@@ -165,11 +176,11 @@ ul i {
     text-transform: uppercase;
 }
 
-#header .logo a {
+#header .logo a, #header_page .logo a {
     color: #fff;
 }
 
-#header .logo img {
+#header .logo img, #header_page .logo img{
     max-height: 40px;
 }
 
@@ -238,7 +249,7 @@ ul i {
     margin-left: 5px;
 }
 
-.navbar > ul > li > a:before, .navbar_page > ul > li > a:before {
+.navbar > ul > li > a:before {
     content: "";
     position: absolute;
     width: 100%;
@@ -246,6 +257,19 @@ ul i {
     bottom: -5px;
     left: 0;
     background-color: #fff;
+    visibility: hidden;
+    width: 0px;
+    transition: all 0.3s ease-in-out 0s;
+}
+
+.navbar_page > ul > li > a:before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    bottom: -5px;
+    left: 0;
+    background-color: rgb(126, 217, 87);
     visibility: hidden;
     width: 0px;
     transition: all 0.3s ease-in-out 0s;
@@ -713,11 +737,10 @@ section {
 .counts {
     background: linear-gradient(
             90deg,
-            rgba(88, 70, 249, 0.5) 0%,
-            rgba(123, 39, 216, 0.5) 100%
-        ),
-        url("../img/counts-bg.png") center center no-repeat;
-    padding: 80px 0 60px 0;
+            rgba(114, 161, 229, 1) 20%,
+            rgba(152, 131, 229, 0.5) 100%
+        );
+    padding: 30px 0 30px 0;
 }
 
 .counts .counters span {

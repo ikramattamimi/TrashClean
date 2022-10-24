@@ -64,7 +64,7 @@
    * Scrolls to an element with header offset
    */
   const scrollto = (el) => {
-    let header = select('#header')
+    let header = select('#header', '#header_page')
     let offset = header.offsetHeight
 
     if (!header.classList.contains('header-scrolled')) {
@@ -88,6 +88,19 @@
         selectHeader.classList.add('header-scrolled')
       } else {
         selectHeader.classList.remove('header-scrolled')
+      }
+    }
+    window.addEventListener('load', headerScrolled)
+    onscroll(document, headerScrolled)
+  }
+
+  let selectHeaderPage = select('#header_page')
+  if (selectHeaderPage) {
+    const headerScrolled = () => {
+      if (window.scrollY > 100) {
+        selectHeaderPage.classList.add('header-scrolled')
+      } else {
+        selectHeaderPage.classList.remove('header-scrolled')
       }
     }
     window.addEventListener('load', headerScrolled)
