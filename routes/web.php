@@ -23,4 +23,7 @@ Route::get('/katalog', function () {
 
 Route::get('/tentang', function () {
     return view('tentang');
+
+Route::get('/kontak', function () {
+    return view('kontak.index');
 });
