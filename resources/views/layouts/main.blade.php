@@ -10,7 +10,7 @@
   <meta content="" name="keywords">
 
   <!-- Favicons -->
-  <link href={{ url('assets/img/favicon.png') }} rel="icon">
+  <link href={{ url('assets/img/iconTrashClean.png') }} rel="icon">
   <link href={{ url('assets/img/apple-touch-icon.png') }} rel="apple-touch-icon">
 
   <!-- Google Fonts -->
@@ -49,8 +49,7 @@
 
   @include('layouts.footer')
 
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
-      class="bi bi-arrow-up-short"></i></a>
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
   <div id="preloader"></div>
 
   <!-- Vendor JS Files -->
