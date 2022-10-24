@@ -53,6 +53,7 @@
           <li><a class="nav-link scrollto" href="#about">Tentang</a></li>
           </li>
           <li><a class="nav-link scrollto" href="#services">Katalog</a></li>
+          <li><a class="nav-link scrollto" href="#contact">Kontak</a></li>
           <li class="dropdown"><a href="#"><span>Blog Informasi</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
               <li><a href="#">Berita</a></li>
