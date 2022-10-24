@@ -23,7 +23,16 @@ Route::get('/katalog', function () {
 
 Route::get('/tentang', function () {
     return view('tentang');
+});
 
 Route::get('/kontak', function () {
     return view('kontak.index');
+});
+
+Route::get('/tutorial', function () {
+    return view('tutorial.index');
+});
+
+Route::get('/tutorial/detail', function () {
+    return view('tutorial.detail');
 });
