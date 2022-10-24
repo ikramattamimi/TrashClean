@@ -20,3 +20,7 @@ Route::get('/', function () {
 Route::get('/katalog', function () {
     return view('katalog.index');
 });
+
+Route::get('/tentang', function () {
+    return view('tentang');
+});
