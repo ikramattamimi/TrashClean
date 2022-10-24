@@ -71,9 +71,18 @@
       <div class="col-sm-6">
         <div class="col pt-3 pt-lg-0 order-2 order-lg-1 d-flex flex-column justify-content-center">
           <h1>WE HELP THE WORLD TO REDUCE THE TRASH</h1>
-          <h2>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Provident quibusdam saepe molestias assumenda
-            recusandae esse eius laborum nam. Esse eveniet suscipit ipsa quibusdam deleniti iste modi alias blanditiis
-            reprehenderit possimus?</h2>
+          <h3>Lorem ipsum dolor sit amet, consectetur
+            adipiscing elit, sed do eiusmod tempor
+            incididunt ut labore et dolore magna
+            aliqua. Ut enim ad minim veniam, quis
+            nostrud exercitation ullamco laboris
+            nisi ut aliquip ex ea commodo consequat.
+            Duis aute irure dolor in reprehenderit
+            in voluptate velit esse cillum dolore
+            eu fugiat nulla pariatur. Excepteur sint
+            occaecat cupidatat non proident, sunt in
+            culpa qui officia deserunt mollit anim
+            id est laborum</h3>
         </div>
         <!-- <div class="col order-1 order-lg-2 hero-img" data-aos="zoom-in" data-aos-delay="150">
           <img src="assets/img/hero-img.png" class="img-fluid animated" alt="">
