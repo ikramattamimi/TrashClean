@@ -400,7 +400,7 @@ ul i {
         display: block;
     }
 
-    .navbar ul {
+    .navbar ul, .navbar_page ul {
         display: none;
     }
 }
