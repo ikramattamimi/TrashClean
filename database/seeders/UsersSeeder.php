@@ -2,7 +2,6 @@
 
 namespace Database\Seeders;
 
-use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
@@ -34,7 +33,7 @@ class UsersSeeder extends Seeder
             'no_telepon'    => '081322868886',
             'alamat'        => 'Anywhere ST. 12345',
             'username'      => 'buyer',
-            'password'      => Hash::make('trashclean.id'),
+            'password'      =>  Hash::make('trashclean.id'),
         ]);
 
         DB::table('users')->insert([
@@ -44,7 +43,7 @@ class UsersSeeder extends Seeder
             'no_telepon'    => '081322868886',
             'alamat'        => 'Anywhere ST. 12345',
             'username'      => 'supplier',
-            'password'      => Hash::make('trashclean.id'),
+            'password'      =>  Hash::make('trashclean.id'),
         ]);
     }
 }
