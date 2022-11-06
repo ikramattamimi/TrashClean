@@ -34,7 +34,7 @@ Route::get('/katalog', function () {
 });
 
 Route::get('/tentang', function () {
-    return view('tentang');
+    return view('tentang.index');
 });
 
 Route::get('/kontak', function () {
