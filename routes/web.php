@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\LoginController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,9 +15,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+// LOGIN LOGOUT
+Route::prefix('login')->group(function () {
+    Route::get('/', [LoginController::class, 'index'])->name('login');
+    Route::post('/auth', [LoginController::class, 'auth']);
 });
+Route::get('/logout', [LoginController::class, 'logout'])->middleware('auth');
+
+// HOME & DASHBOARD
+Route::get('/', [HomeController::class, 'index']);
+Route::get('/dashboard', [HomeController::class, 'admin'])->middleware('auth');
+
 
 Route::get('/katalog', function () {
     return view('katalog.index');
