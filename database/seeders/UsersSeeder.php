@@ -17,7 +17,7 @@ class UsersSeeder extends Seeder
     {
         DB::table('users')->truncate();     //for cleaning earlier data to avoid duplicate entries
         DB::table('users')->insert([
-            'id'            => '02b8ca90-5d89-11ed-9b6a-0242ac120001',
+            // 'id'            => '02b8ca90-5d89-11ed-9b6a-0242ac120001',
             'nama'          => 'admin',
             'role'          => 'admin',
             'no_telepon'    => '081322868886',
@@ -27,7 +27,7 @@ class UsersSeeder extends Seeder
         ]);
 
         DB::table('users')->insert([
-            'id'            => '02b8ca90-5d89-11ed-9b6a-0242ac120002',
+            // 'id'            => '02b8ca90-5d89-11ed-9b6a-0242ac120002',
             'nama'          => 'Bang Agil',
             'role'          => 'buyer',
             'no_telepon'    => '081322868886',
@@ -37,7 +37,7 @@ class UsersSeeder extends Seeder
         ]);
 
         DB::table('users')->insert([
-            'id'            => '02b8ca90-5d89-11ed-9b6a-0242ac120003',
+            // 'id'            => '02b8ca90-5d89-11ed-9b6a-0242ac120003',
             'nama'          => 'Bang Agil',
             'role'          => 'supplier',
             'no_telepon'    => '081322868886',
