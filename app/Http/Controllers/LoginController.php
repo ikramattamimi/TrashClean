@@ -106,7 +106,15 @@ class LoginController extends Controller
             'password' => $request->input('password'),
         ];
         if (Auth::attempt($data)) {
-            return redirect('/dashboard');
+            if (Auth::user()->role == 'admin') {
+                return redirect('/admin/dashboard');
+            }
+            if (Auth::user()->role == 'supplier') {
+                return redirect('/supplier/dashboard');
+            }
+            if (Auth::user()->role == 'buyer') {
+                return redirect('/buyer/dashboard');
+            }
         } else {
             $request->session()->flash('eror', 'Username atau Password Salah!');
             return redirect('/login');
@@ -114,9 +122,11 @@ class LoginController extends Controller
     }
 
     //Logout
-    public function logout()
+    public function logout(Request $request)
     {
         Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
         return redirect('/login');
     }
 }

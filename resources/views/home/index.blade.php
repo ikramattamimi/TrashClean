@@ -62,10 +62,11 @@
                         </ul>
                     </li>
                     @if (Auth::check())
-                        <li class="dropdown"><a href="#"><span>{{ Auth::user()->username }}</span>
+                        <li class="dropdown"><a href="#"><span>{{ Auth::user()->nama }}</span>
                                 <i class="bi bi-person-circle text-white"></i> <i class="bi bi-chevron-down"></i></a>
                             <ul>
-                                <li><a class="nav-link scrollto" href="/dashboard">Dashboard</a></li>
+                                <li><a class="nav-link scrollto"
+                                        href="{{ '/' . Auth::user()->role . '/dashboard' }}">Dashboard</a></li>
                                 <li><a href="/logout">Logout</a></li>
                             </ul>
                         </li>

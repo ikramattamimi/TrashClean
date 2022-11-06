@@ -24,7 +24,9 @@ Route::get('/logout', [LoginController::class, 'logout'])->middleware('auth');
 
 // HOME & DASHBOARD
 Route::get('/', [HomeController::class, 'index']);
-Route::get('/dashboard', [HomeController::class, 'admin'])->middleware('auth');
+Route::get('/admin/dashboard', [HomeController::class, 'admin'])->middleware('auth');
+Route::get('/supplier/dashboard', [HomeController::class, 'supplier'])->middleware('auth');
+Route::get('/buyer/dashboard', [HomeController::class, 'buyer'])->middleware('auth');
 
 
 Route::get('/katalog', function () {
