@@ -15,10 +15,13 @@
                             <h5 class="my-3">{{ Auth::user()->nama }}</h5>
                             {{-- <p class="text-muted mb-1">Member Silver</p> --}}
                             <div class="d-flex justify-content-center mb-2">
-                                <button type="button" class="btn btn-primary">Edit Profil</button>
+                                <a href="/edit"><button type="button" class="btn btn-primary">Edit Profil</button></a>
                             </div>
                         </div>
                     </div>
+
+                    @yield('role-based-content-left')
+
                 </div>
 
                 <div class="col-lg-8">
@@ -55,7 +58,7 @@
                         </div>
                     </div>
 
-                    @yield('role-based-content')
+                    @yield('role-based-content-right')
 
                 </div>
             </div>
