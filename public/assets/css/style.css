@@ -1762,3 +1762,20 @@ section {
     color: #fff;
     text-decoration: none;
 }
+
+.point_left {
+    margin-bottom: -2.8vh;
+}
+
+.trash_coin {
+    width: 6vh;
+    margin-bottom: 2.5vh;
+}
+
+.point_text {
+    font-size: 4vh;
+}
+
+.trash_coin_text  {
+    font-size: 2vh;
+}

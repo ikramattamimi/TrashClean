@@ -1,5 +1,34 @@
 @extends('home.identitas')
-@section('role-based-content')
+
+@section('role-based-content-left')
+    <div class="card mb-4">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-sm-12">
+                    <h4><span class="text-primary font-italic">Point</span>
+                        Anda
+                    </h4>
+                </div>
+            </div>
+            <hr>
+            <div class="row point_left align-items-center">
+                <div class="col">
+                    <img src="{{ url('assets/img/trash_coin.png') }}" class="trash_coin">
+                </div>
+                <div class="col-5">
+                    <b>
+                        <p class="point_text">{{ Auth::user()->point }}</p>
+                    </b>
+                </div>
+                <div class="col trash_coin_text">
+                    <p>Trash Coin</p>
+                </div>
+            </div>
+        </div>
+    </div>
+@endsection
+
+@section('role-based-content-right')
     {{-- JUMLAH SAMPAH --}}
     <div class="row">
         <div class="col-md">

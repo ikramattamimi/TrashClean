@@ -28,7 +28,6 @@ Route::get('/admin/dashboard', [HomeController::class, 'admin'])->middleware('au
 Route::get('/supplier/dashboard', [HomeController::class, 'supplier'])->middleware('auth');
 Route::get('/buyer/dashboard', [HomeController::class, 'buyer'])->middleware('auth');
 
-
 Route::get('/katalog', function () {
     return view('katalog.index');
 });
