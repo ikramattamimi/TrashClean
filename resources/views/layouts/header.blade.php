@@ -26,7 +26,12 @@
                     </ul>
                 </li>
                 @if (Auth::check())
-                    <li class="dropdown"><a href="#"><span>{{ Auth::user()->nama }}</span>
+                    @php
+                        $role = Auth::user()->role . '*';
+                        $name = explode(' ', trim(Auth::user()->nama));
+                    @endphp
+                    <li class="dropdown"><a href="#"
+                            class="nav-link scrollto {{ request()->is($role) ? 'active' : '' }}"><span>{{ $name[0] }}</span>
                             <i class="bi bi-person-circle text-white"></i> <i class="bi bi-chevron-down"></i></a>
                         <ul>
                             <li><a class="nav-link scrollto"

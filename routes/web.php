@@ -3,6 +3,7 @@
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,8 +25,21 @@ Route::get('/logout', [LoginController::class, 'logout'])->middleware('auth');
 
 // HOME & DASHBOARD
 Route::get('/', [HomeController::class, 'index']);
-Route::get('/admin/dashboard', [HomeController::class, 'admin'])->middleware('auth');
-Route::get('/supplier/dashboard', [HomeController::class, 'supplier'])->middleware('auth');
+
+// ADMIN
+Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
+    Route::get('/dashboard', [HomeController::class, 'admin']);
+    Route::get('/edit-profil', [UserController::class, 'edit']);
+    Route::post('/update-profil', [UserController::class, 'update']);
+});
+
+// SUPPLIER
+Route::group(['prefix' => 'supplier', 'middleware' => ['auth']], function () {
+    Route::get('/dashboard', [HomeController::class, 'supplier']);
+    Route::get('/edit-profil', [UserController::class, 'edit']);
+    Route::post('/update-profil', [UserController::class, 'update']);
+});
+// Route::get('/supplier/dashboard', [HomeController::class, 'supplier'])->middleware('auth');
 Route::get('/buyer/dashboard', [HomeController::class, 'buyer'])->middleware('auth');
 
 Route::get('/katalog', function () {
