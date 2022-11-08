@@ -18,6 +18,7 @@ class CreateProductsTable extends Migration
             $table->string('nama_barang');
             $table->integer('jumlah_barang');
             $table->string('status_barang');
+            $table->foreignUuid('user_id')->references('id')->on('users');
             $table->timestamps();
         });
     }

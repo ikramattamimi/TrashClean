@@ -18,31 +18,49 @@ class UsersSeeder extends Seeder
         DB::table('users')->truncate();     //for cleaning earlier data to avoid duplicate entries
         DB::table('users')->insert([
             'id'            => '02b8ca90-5d89-11ed-9b6a-0242ac120001',
-            'nama'          => 'admin',
+            'nama'          => 'Dindin Suradin',
             'role'          => 'admin',
-            'no_telepon'    => '081322868886',
-            'alamat'        => 'Anywhere ST. 12345',
+            'no_telepon'    => '08234743409',
+            'alamat'        => 'Kec. Jejeruk',
+            'jenis_kelamin' => 'L',
+            'foto'          => 'man.jpg',
             'username'      => 'admin',
             'password'      => Hash::make('admin'),
         ]);
 
         DB::table('users')->insert([
             'id'            => '02b8ca90-5d89-11ed-9b6a-0242ac120002',
-            'nama'          => 'Bang Agil',
+            'nama'          => 'Hillah Agil M W',
             'role'          => 'buyer',
-            'no_telepon'    => '081322868886',
-            'alamat'        => 'Anywhere ST. 12345',
+            'no_telepon'    => '08234123474',
+            'alamat'        => 'Kec. Cimaung',
+            'jenis_kelamin' => 'L',
+            'foto'          => 'man.jpg',
             'username'      => 'buyer',
             'password'      =>  Hash::make('trashclean.id'),
         ]);
 
         DB::table('users')->insert([
             'id'            => '02b8ca90-5d89-11ed-9b6a-0242ac120003',
-            'nama'          => 'Bang Agil',
+            'nama'          => 'Anton Supriyanto',
             'role'          => 'supplier',
-            'no_telepon'    => '081322868886',
-            'alamat'        => 'Anywhere ST. 12345',
+            'no_telepon'    => '082347123497',
+            'alamat'        => 'Kec. Jejeruk',
+            'jenis_kelamin' => 'L',
+            'foto'          => 'man.jpg',
             'username'      => 'supplier',
+            'password'      =>  Hash::make('trashclean.id'),
+        ]);
+
+        DB::table('users')->insert([
+            'id'            => '02b8ca90-5d89-11ed-9b6a-0242ac120004',
+            'nama'          => 'Nita Nuryanti',
+            'role'          => 'supplier',
+            'no_telepon'    => '08234693456',
+            'alamat'        => 'Kec. Jejeruk',
+            'jenis_kelamin' => 'P',
+            'foto'          => 'woman.jpg',
+            'username'      => 'supplier2',
             'password'      =>  Hash::make('trashclean.id'),
         ]);
     }

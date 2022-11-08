@@ -1,5 +1,5 @@
 @extends('home.identitas')
-@section('role-based-content')
+@section('role-based-content-right')
     {{-- JUMLAH SAMPAH --}}
     <div class="row">
         <div class="col-md">

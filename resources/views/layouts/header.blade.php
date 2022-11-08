@@ -3,10 +3,10 @@
     <div class="container d-flex align-items-center justify-content-center">
         <!-- <h1 class="logo"><a href="/">TrashClean</a></h1> -->
         <!-- Uncomment below if you prefer to use an image logo -->
-        <a href="index.html" class="logo rounded"><img src={{ url('assets/img/logo_clean.png') }} alt=""
+        <a href="/" class="logo rounded"><img src={{ url('assets/img/logo3.png') }} alt=""
                 class="img-fluid"></a>
 
-        <nav id="navbar_page" class="navbar_page">
+        <nav id="navbar" class="navbar_page">
             <ul>
                 <li><a class="nav-link scrollto" href="/">Beranda</a></li>
                 <li><a class="nav-link scrollto {{ request()->is('tentang') ? 'active' : '' }}"
@@ -34,9 +34,9 @@
                             class="nav-link scrollto {{ request()->is($role) ? 'active' : '' }}"><span>{{ $name[0] }}</span>
                             <i class="bi bi-person-circle text-white"></i> <i class="bi bi-chevron-down"></i></a>
                         <ul>
-                            <li><a class="nav-link scrollto"
+                            <li class="dropdown-menu-custom"><a class="nav-link scrollto"
                                     href="{{ '/' . Auth::user()->role . '/dashboard' }}">Dashboard</a></li>
-                            <li><a href="/logout">Logout</a></li>
+                            <li class="dropdown-menu-custom"><a href="/logout">Logout</a></li>
                         </ul>
                     </li>
                 @else
