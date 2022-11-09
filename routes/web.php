@@ -4,6 +4,7 @@ use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\ProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,6 +39,7 @@ Route::group(['prefix' => 'supplier', 'middleware' => ['auth']], function () {
     Route::get('/dashboard', [HomeController::class, 'supplier']);
     Route::get('/edit-profil', [UserController::class, 'edit']);
     Route::post('/update-profil', [UserController::class, 'update']);
+    Route::post('/products/store', [ProductController::class, 'store']);
 });
 // Route::get('/supplier/dashboard', [HomeController::class, 'supplier'])->middleware('auth');
 Route::get('/buyer/dashboard', [HomeController::class, 'buyer'])->middleware('auth');

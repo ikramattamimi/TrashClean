@@ -13,23 +13,24 @@
     transition: 0.3s;
 }
 
-.supplier .dropdown ul li {
+.supplier .dropdown ul li button {
     min-width: 200px;
+    left: 0;
 }
 
-.supplier .dropdown ul a{
+.supplier .dropdown ul button{
     padding: 10px 20px;
     font-size: 14px;
     color: #2c4964;
 }
 
-.supplier .dropdown ul a i{
+.supplier .dropdown ul button i{
     font-size: 12px;
 }
 
-.supplier .dropdown ul a:hover,
+.supplier .dropdown ul button:hover,
 .supplier .dropdown ul .active:hover,
-.supplier .dropdown ul li:hover>a {
+.supplier .dropdown ul li:hover>button {
     color: rgb(126, 217, 87);
 }
 
@@ -65,4 +66,8 @@
 
 .pr-1 {
     padding-right: 10px;
+}
+
+.border-none {
+    border: 0;
 }

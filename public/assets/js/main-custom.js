@@ -10,6 +10,7 @@ $('.btn-number').click(function(e){
 
             if(currentVal > input.attr('min')) {
                 input.val(currentVal - 1).change();
+                document.getElementById('span-jumlah-' + fieldName).setAttribute('value',currentVal - 1 + " keranjang");
             }
             if(parseInt(input.val()) == input.attr('min')) {
                 $(this).attr('disabled', true);
@@ -19,6 +20,8 @@ $('.btn-number').click(function(e){
 
             if(currentVal < input.attr('max')) {
                 input.val(currentVal + 1).change();
+                console.log(fieldName)
+                document.getElementById('span-jumlah-' + fieldName).setAttribute('value',currentVal + 1 + " keranjang");
             }
             if(parseInt(input.val()) == input.attr('max')) {
                 $(this).attr('disabled', true);
@@ -69,3 +72,5 @@ $(".input-number").keydown(function (e) {
             e.preventDefault();
         }
     });
+
+

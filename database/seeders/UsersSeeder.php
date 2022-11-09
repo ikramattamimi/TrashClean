@@ -49,6 +49,7 @@ class UsersSeeder extends Seeder
             'jenis_kelamin' => 'L',
             'foto'          => 'man.jpg',
             'username'      => 'supplier',
+            'point'          => '13000',
             'password'      =>  Hash::make('trashclean.id'),
         ]);
 
