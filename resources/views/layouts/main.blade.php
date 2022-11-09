@@ -21,7 +21,7 @@
     <link
         href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
         rel="stylesheet">
-
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" rel="stylesheet">
     <!-- Vendor CSS Files -->
     <link href={{ url('assets/vendor/aos/aos.css') }} rel="stylesheet">
     <link href={{ url('assets/vendor/bootstrap/css/bootstrap.min.css') }} rel="stylesheet">
@@ -33,6 +33,7 @@
     <!-- Template Main CSS File -->
     <link href={{ url('assets/css/style.css') }} rel="stylesheet">
     <link href={{ url('assets/css/style-custom.css') }} rel="stylesheet">
+
 
     <!-- =======================================================
   * Template Name: Techie - v4.9.1
@@ -68,6 +69,7 @@
     <script src={{ url('assets/vendor/php-email-form/validate.js') }}></script>
 
     <!-- Template Main JS File -->
+    <script src={{ url('assets/scss/style.scss') }}></script>
     <script src={{ url('assets/js/jquery-3.6.1.js') }}></script>
     <script src={{ url('assets/js/main.js') }}></script>
     <script src={{ url('assets/js/main-custom.js') }}></script>

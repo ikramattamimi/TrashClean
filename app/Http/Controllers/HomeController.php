@@ -76,4 +76,15 @@ class HomeController extends Controller
 
         return $data;
     }
+
+    public function notification(){
+        if (Auth::check()) {
+            if (Auth::user()->role != 'admin') {
+                return redirect('/' . Auth::user()->role . '/dashboard');
+            }
+            return view('notifikasi.index');
+        } else {
+            return redirect('/login');
+        }
+    }
 }

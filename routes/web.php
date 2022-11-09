@@ -29,6 +29,7 @@ Route::get('/', [HomeController::class, 'index']);
 // ADMIN
 Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
     Route::get('/dashboard', [HomeController::class, 'admin']);
+    Route::get('/notification', [HomeController::class, 'notification']);
     Route::get('/edit-profil', [UserController::class, 'edit']);
     Route::post('/update-profil', [UserController::class, 'update']);
 });
