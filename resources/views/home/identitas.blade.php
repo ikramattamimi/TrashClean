@@ -10,8 +10,8 @@
                 <div class="col-lg-4">
                     <div class="card mb-4">
                         <div class="card-body text-center">
-                            <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp"
-                                alt="avatar" class="rounded-circle img-fluid" style="width: 150px;">
+                            <img src="{{ url('assets/img/' . Auth::user()->foto) }}" alt="avatar" class="rounded-circle img-fluid"
+                                style="width: 150px;">
                             <h5 class="my-3">{{ Auth::user()->nama }}</h5>
                             {{-- <p class="text-muted mb-1">Member Silver</p> --}}
                             <div class="d-flex justify-content-center mb-2">

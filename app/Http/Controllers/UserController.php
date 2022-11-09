@@ -73,7 +73,7 @@ class UserController extends Controller
          * fetching the user model
          */
         $user = Auth::user();
-        // dd($user);
+        dd($request);
 
         /**
          * Validate request/input

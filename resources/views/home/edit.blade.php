@@ -13,6 +13,10 @@
                             <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp"
                                 alt="avatar" class="rounded-circle img-fluid" style="width: 150px;">
                             <h5 class="my-3">{{ Auth::user()->nama }}</h5>
+                            <div class="px-5 mb-3">
+                                {{-- <label for="formFile" class="form-label">Default file input example</label> --}}
+                                <input class="form-control" name="foto" type="file" id="formFile" label>
+                            </div>
                             {{-- <p class="text-muted mb-1">Member Silver</p> --}}
                             <div class="d-flex justify-content-center mb-2">
                                 <button type="submit" class="btn btn-primary">Simpan</button>
