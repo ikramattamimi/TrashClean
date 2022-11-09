@@ -24,7 +24,8 @@ class CreateUsersTable extends Migration
             $table->string('username');
             $table->string('password');
             $table->integer('point')->default(0);
-            $table->timestamps();
+            $table->timestamp('updated_at')->useCurrent()->useCurrentonUpdate();
+            $table->timestamp('created_at')->useCurrent();
         });
         Schema::enableForeignKeyConstraints();
     }

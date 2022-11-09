@@ -4,6 +4,7 @@ use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\NotificationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,7 +30,7 @@ Route::get('/', [HomeController::class, 'index']);
 // ADMIN
 Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
     Route::get('/dashboard', [HomeController::class, 'admin']);
-    Route::get('/notification', [HomeController::class, 'notification']);
+    Route::get('/notification', [NotificationController::class, 'index']);
     Route::get('/edit-profil', [UserController::class, 'edit']);
     Route::post('/update-profil', [UserController::class, 'update']);
 });
