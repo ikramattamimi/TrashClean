@@ -1,6 +1,33 @@
 @extends('home.identitas')
+
+@section('role-based-content-left')
+    <div class="card mb-4">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-sm-10">
+                    <a href="{{ '/' . Auth::user()->role . '/notification' }}">
+                        <p class="mb-0">Notifikasi Pengiriman Sampah</p>
+                    </a>
+                </div>
+                <div class="col-sm-2">
+                    <a href="{{ '/' . Auth::user()->role . '/notification' }}"><i class="bi bi-bell-fill"></i></a>
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-sm-10">
+                    <p class="mb-0">Daftar Pengirim Sampah</p>
+                </div>
+                <div class="col-sm-2">
+                    <a href="index"><i class="bi bi-people-fill"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+@endsection
 @section('role-based-content-right')
     {{-- JUMLAH SAMPAH --}}
+
     <div class="row">
         <div class="col-md">
             <div class="card mb-4 mb-md-0">
@@ -32,5 +59,5 @@
             </div>
         </div>
     </div>
-</section>
+    </section>
 @endsection
