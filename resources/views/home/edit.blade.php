@@ -4,7 +4,7 @@
     <section style="background-color: #eee;">
         <div class="container py-5">
 
-            <form class="row" action="{{ '/' . Auth::user()->role . '/update-profil' }}" method="post">
+            <form class="row" action="{{ '/' . Auth::user()->role . '/update-profil' }}" method="post" enctype="multipart/form-data">
                 @csrf
                 {{-- PROFIL --}}
                 <div class="col-lg-4">

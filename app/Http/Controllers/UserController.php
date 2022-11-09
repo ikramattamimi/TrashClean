@@ -73,22 +73,33 @@ class UserController extends Controller
          * fetching the user model
          */
         $user = Auth::user();
-        dd($request);
+        // dd($request);
 
         /**
          * Validate request/input
          **/
-        $this->validate($request, [
+        $validated = $this->validate($request, [
             'nama' => 'required|max:255',
             'no_telepon' => 'required|max:255',
             'alamat' => 'required|max:255',
+            'foto' => 'sometimes',
         ]);
+
+        if (isset($validated['foto'])) {
+            $name = $validated['foto']->getClientOriginalName();
+            $validated['foto']->storeAs('uploads/profil', $name, 'public');
+            $validated['foto'] = $name;
+            $input = $validated;
+        }
+        else {
+            $input = $request->only('nama', 'no_telepon', 'alamat');
+            # code...
+    }
 
         /**
          * storing the input fields name & email in variable $input
          * type array
          **/
-        $input = $request->only('nama', 'no_telepon', 'alamat');
         // dd($input);
 
 
