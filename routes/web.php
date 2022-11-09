@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\NotificationController;
+use App\Http\Controllers\ProductsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,6 +34,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
     Route::get('/notification', [NotificationController::class, 'index']);
     Route::get('/edit-profil', [UserController::class, 'edit']);
     Route::post('/update-profil', [UserController::class, 'update']);
+    Route::post('/products/update', [ProductsController::class, 'update']);
 });
 
 // SUPPLIER
