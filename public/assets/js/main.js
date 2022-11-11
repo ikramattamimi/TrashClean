@@ -57,6 +57,7 @@
       }
     })
   }
+
   window.addEventListener('load', navbarlinksActive)
   onscroll(document, navbarlinksActive)
 
@@ -131,7 +132,6 @@
     this.classList.toggle('bi-list')
     this.classList.toggle('bi-x')
   })
-
     /**
      * Mobile nav dropdowns activate
      */
@@ -141,7 +141,12 @@
             this.nextElementSibling.classList.toggle('dropdown-active')
         }
     }, true)
-
+    on('click', '.navbar_page .dropdown > a', function (e) {
+        if (select('#navbar').classList.contains('navbar-mobile')) {
+            e.preventDefault()
+            this.nextElementSibling.classList.toggle('dropdown-active')
+        }
+    }, true)
   /**
    * Scrool with ofset on links with a class name .scrollto
    */

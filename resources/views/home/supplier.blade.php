@@ -5,7 +5,7 @@
         <div class="card-body">
             <div class="row">
                 <div class="col-sm-12">
-                    <h4><span class="text-primary font-italic">Point</span>
+                    <h4><span class="text-primary font-italic">Koin</span>
                         Anda
                     </h4>
                 </div>
@@ -17,7 +17,7 @@
                 </div>
                 <div class="col-5">
                     <b>
-                        <p class="point_text">{{ Auth::user()->point }}</p>
+                        <p class="point_text">{{ $koin }}</p>
                     </b>
                 </div>
                 <div class="col trash_coin_text">
@@ -46,56 +46,59 @@
 
                         @csrf
                         <div class="row d-flex align-items-end">
-                            <div class="col-10">
+                            <div class="col-lg-10 col-8 ">
                                 <h5 class="mt-4 mb-1" style="font-size: .99rem;">Organik</h5>
                                 <div class="progress rounded" style="height: 30px;">
-                                    <div class="progress-bar" role="progressbar" style="width: {{ $organik }}0%"
-                                        aria-valuenow="{{ $organik }}" aria-valuemin="0" aria-valuemax="10">
-                                        {{ $organik }} Keranjang</div>
-                                    <div class="progress-bar bg-secondary" role="progressbar" style="width: {{ $organik_pending }}0%"
-                                        aria-valuenow="{{ $organik_pending }}" aria-valuemin="0" aria-valuemax="10">
-                                        {{ $organik_pending }} Keranjang</div>
+                                    <div class="progress-bar" role="progressbar" style="width: {{ $organik*2 }}0%"
+                                        aria-valuenow="{{ $organik }}" aria-valuemin="0" aria-valuemax="5">
+                                        {{ $organik }} kg</div>
+                                    <div class="progress-bar bg-secondary" role="progressbar"
+                                        style="width: {{ $organik_pending }}0%" aria-valuenow="{{ $organik_pending }}"
+                                        aria-valuemin="0" aria-valuemax="5">
+                                        {{ $organik_pending }} tsp</div>
                                 </div>
                             </div>
-                            <div class="col-2">
+                            <div class="col-lg-2 col-4 ">
                                 @include('home.input-plus-minus', ['number' => '1'])
 
                             </div>
                         </div>
 
                         <div class="row d-flex align-items-end">
-                            <div class="col-10">
+                            <div class="col-lg-10 col-8">
                                 <h5 class="mt-4 mb-1" style="font-size: .99rem;">Anorganik</h5>
                                 <div class="progress rounded" style="height: 30px;">
-                                    <div class="progress-bar" role="progressbar" style="width: {{ $anorganik }}0%"
+                                    <div class="progress-bar" role="progressbar" style="width: {{ $anorganik*10 }}0%"
                                         aria-valuenow="{{ $anorganik }}" aria-valuemin="0" aria-valuemax="10">
-                                        {{ $anorganik }} Keranjang</div>
-                                    <div class="progress-bar bg-secondary" role="progressbar" style="width: {{ $anorganik_pending }}0%"
-                                        aria-valuenow="{{ $anorganik_pending }}" aria-valuemin="0" aria-valuemax="10">
-                                        {{ $anorganik_pending }} Keranjang</div>
+                                        {{ $anorganik }} kg</div>
+                                    <div class="progress-bar bg-secondary" role="progressbar"
+                                        style="width: {{ $anorganik_pending }}0%" aria-valuenow="{{ $anorganik_pending }}"
+                                        aria-valuemin="0" aria-valuemax="10">
+                                        {{ $anorganik_pending }} tsp</div>
                                 </div>
                             </div>
-                            <div class="col-2">
+                            <div class="col-lg-2 col-4">
                                 @include('home.input-plus-minus', ['number' => '2'])
                             </div>
                         </div>
 
                         <div class="row d-flex align-items-end">
-                            <div class="col-10">
+                            <div class="col-lg-10 col-8">
                                 <h5 class="mt-4 mb-1" style="font-size: .99rem;">B3</h5>
                                 <div class="progress rounded" style="height: 30px;">
-                                    <div class="progress-bar" role="progressbar" style="width: {{ $b3 }}0%"
+                                    <div class="progress-bar" role="progressbar" style="width: {{ $b3*10 }}0%"
                                         aria-valuenow="{{ $b3 }}" aria-valuemin="0" aria-valuemax="10">
-                                        {{ $b3 }} Keranjang</div>
+                                        {{ $b3 }} kg</div>
 
 
-                                    <div class="progress-bar bg-secondary" role="progressbar" style="width: {{ $b3_pending }}0%"
-                                        aria-valuenow="{{ $b3_pending }}" aria-valuemin="0" aria-valuemax="10">
-                                        {{ $b3_pending }} Keranjang</div>
+                                    <div class="progress-bar bg-secondary" role="progressbar"
+                                        style="width: {{ $b3_pending }}0%" aria-valuenow="{{ $b3_pending }}"
+                                        aria-valuemin="0" aria-valuemax="10">
+                                        {{ $b3_pending }} tsp</div>
 
                                 </div>
                             </div>
-                            <div class="col-2">
+                            <div class="col-lg-2 col-4">
                                 @include('home.input-plus-minus', ['number' => '3'])
                             </div>
                         </div>

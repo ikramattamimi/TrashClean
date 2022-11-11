@@ -44,8 +44,7 @@
         <div class="container d-flex align-items-center justify-content-center">
             <!-- <h1 class="logo"><a href="/">TrashClean</a></h1> -->
             <!-- Uncomment below if you prefer to use an image logo -->
-            <a href="/" class="logo rounded"><img src="assets/img/logo3.png" alt=""
-                    class="img-fluid"></a>
+            <a href="/" class="logo rounded"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>
 
             <nav id="navbar" class="navbar">
                 <ul>
@@ -76,7 +75,13 @@
                             </ul>
                         </li>
                     @else
-                        <li><a class="nav-link scrollto" href="/login">Login</a></li>
+                        <li class="dropdown"><a href="#"><span>Masuk</span>
+                                <i class="bi bi-chevron-down"></i></a>
+                            <ul>
+                                <li><a class="nav-link scrollto" href="/login">Login</a></li>
+                                <li><a class="nav-link scrollto" href="/register">Register</a></li>
+                            </ul>
+                        </li>
                     @endif
                 </ul>
                 <i class="bi bi-list mobile-nav-toggle"></i>
@@ -91,19 +96,10 @@
         <div class="container" data-aos="fade-up">
             <div class="col-sm-6">
                 <div class="col pt-3 pt-lg-0 order-2 order-lg-1 d-flex flex-column justify-content-center">
-                    <h1>WE HELP THE WORLD TO REDUCE THE TRASH</h1>
-                    <h3>Lorem ipsum dolor sit amet, consectetur
-                        adipiscing elit, sed do eiusmod tempor
-                        incididunt ut labore et dolore magna
-                        aliqua. Ut enim ad minim veniam, quis
-                        nostrud exercitation ullamco laboris
-                        nisi ut aliquip ex ea commodo consequat.
-                        Duis aute irure dolor in reprehenderit
-                        in voluptate velit esse cillum dolore
-                        eu fugiat nulla pariatur. Excepteur sint
-                        occaecat cupidatat non proident, sunt in
-                        culpa qui officia deserunt mollit anim
-                        id est laborum</h3>
+                    <h1 style="text-transform: capitalize;">Sampah seseorang bisa jadi harta bagi orang lain</h1>
+                    <h3>Sampah adalah sisa suatu kegiatan manusia yang dianggap sudah tidak berguna lagi dan dibuang ke
+                        lingkungan, tetapi masih dapat diolah kembali menjadi barang bernilai. <a href="#services">Cek
+                            di sini</a></h3>
                 </div>
                 <!-- <div class="col order-1 order-lg-2 hero-img" data-aos="zoom-in" data-aos-delay="150">
           <img src="assets/img/hero-img.png" class="img-fluid animated" alt="">
@@ -120,7 +116,7 @@
 
             <div class="row counters">
 
-                <div class="col-lg-3 col-6 text-left text-white">
+                <div class="col-lg-3 col-10 text-left text-white">
                     <h1>PENCAPAIAN KAMI</h1>
                 </div>
 
@@ -152,20 +148,12 @@
                         <img src="assets/img/about.jpg" class="img-fluid" alt="">
                     </div>
                     <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 content" data-aos="fade-right">
-                        <h3>PLASTIC TRASH FLOWING INTO THE SEAS WILL NEARLY TRIPLE BY 2040 WITHOUT DRASTIC ACTION</h3>
+                        <h3>Sampah seseorang bisa jadi harta bagi orang lain!</h3>
                         <p class="">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                            labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                            laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
-                            voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-                            cupidatat
-                            non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                        </p>
-                        <ul>
-                            irure dolor in reprehenderit in voluptate trideta storacalaperda mastiro dolore eu fugiat
-                            nulla
-                            pariatur.</li>
-                        </ul>
+                            Sampah adalah sisa suatu kegiatan manusia yang dianggap sudah tidak berguna lagi dan dibuang
+                            ke
+                            lingkungan, tetapi masih dapat diolah kembali menjadi barang bernilai. Cek di sini</p>
+
                         <a href="/tentang" class="read-more">Selengkapnya tentang Kami <i
                                 class="bi bi-long-arrow-right"></i></a>
                     </div>

@@ -74,6 +74,8 @@
     <script src={{ url('assets/js/main.js') }}></script>
     <script src={{ url('assets/js/main-custom.js') }}></script>
 
+    @yield('custom-js')
+
 </body>
 
 </html>

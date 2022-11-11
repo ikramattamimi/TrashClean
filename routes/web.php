@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\NotificationController;
-use App\Http\Controllers\ProductsController;
+use App\Http\Controllers\ProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,11 +19,14 @@ use App\Http\Controllers\ProductsController;
 */
 
 // LOGIN LOGOUT
-Route::prefix('login')->group(function () {
-    Route::get('/', [LoginController::class, 'index'])->name('login');
-    Route::post('/auth', [LoginController::class, 'auth']);
-});
+Route::get('/login', [LoginController::class, 'index'])->name('login');
+Route::post('/login/auth', [LoginController::class, 'auth']);
 Route::get('/logout', [LoginController::class, 'logout'])->middleware('auth');
+
+// REGISTER
+Route::get('/register', [LoginController::class, 'register'])->name('register');
+Route::post('/register/store', [UserController::class, 'store']);
+
 
 // HOME & DASHBOARD
 Route::get('/', [HomeController::class, 'index']);
@@ -34,7 +37,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
     Route::get('/notification', [NotificationController::class, 'index']);
     Route::get('/edit-profil', [UserController::class, 'edit']);
     Route::post('/update-profil', [UserController::class, 'update']);
-    Route::post('/products/update', [ProductsController::class, 'update']);
+    Route::post('/products/update', [ProductController::class, 'update']);
 });
 
 // SUPPLIER

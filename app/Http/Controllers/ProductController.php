@@ -98,9 +98,10 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        DB::select("update products set status_barang = 'valid' where user_id = '$request->user_id' and status_barang = 'pending' ");
+        return redirect('/admin/dashboard');
     }
 
     /**

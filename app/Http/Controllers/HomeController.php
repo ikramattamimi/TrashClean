@@ -93,10 +93,13 @@ class HomeController extends Controller
             $data['b3_pending'] += $value->jumlah_barang;
         }
 
+        $data['koin'] = ($data['organik'] + $data['anorganik'] + $data['b3']) * 1000;
+
         return $data;
     }
 
-    public function notification(){
+    public function notification()
+    {
         if (Auth::check()) {
             if (Auth::user()->role != 'admin') {
                 return redirect('/' . Auth::user()->role . '/dashboard');

@@ -19,7 +19,6 @@ class CreateUsersTable extends Migration
             $table->string('nama', 255);
             $table->string('no_telepon', 13);
             $table->string('alamat', 255);
-            $table->char('jenis_kelamin');
             $table->string('foto')->nullable();
             $table->string('username');
             $table->string('password');

@@ -16,7 +16,7 @@ class CreateProductsTable extends Migration
         Schema::create('products', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->string('nama_barang');
-            $table->integer('jumlah_barang');
+            $table->float('jumlah_barang');
             $table->string('status_barang');
             $table->foreignUuid('user_id')->references('id')->on('users');
             $table->timestamps();

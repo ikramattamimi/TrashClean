@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Auth\Events\Validated;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 
 class UserController extends Controller
 {
@@ -35,7 +37,19 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // dd($request);
+        $validation = Validator::make($request->all(), [
+            'nama' => 'required|min:3|max:50',
+            'no_telepon' => 'required|max:13',
+            'alamat' => 'max:100',
+            'username' => 'required|min:8|max:100',
+            'password' => 'min:6|required_with:password_confirmation|same:password_confirmation',
+            'password_confirmation' => 'min:6'
+        ]);
+
+        $validated = $validation->validated();
+
+        dd($validated);
     }
 
     /**
@@ -90,11 +104,10 @@ class UserController extends Controller
             $validated['foto']->storeAs('uploads/profil', $name, 'public');
             $validated['foto'] = $name;
             $input = $validated;
-        }
-        else {
+        } else {
             $input = $request->only('nama', 'no_telepon', 'alamat');
             # code...
-    }
+        }
 
         /**
          * storing the input fields name & email in variable $input

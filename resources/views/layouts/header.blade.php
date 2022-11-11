@@ -3,7 +3,7 @@
     <div class="container d-flex align-items-center justify-content-center">
         <!-- <h1 class="logo"><a href="/">TrashClean</a></h1> -->
         <!-- Uncomment below if you prefer to use an image logo -->
-        <a href="/" class="logo rounded"><img src={{ url('assets/img/logo3.png') }} alt=""
+        <a href="/" class="logo rounded"><img src={{ url('assets/img/logo.png') }} alt=""
                 class="img-fluid"></a>
 
         <nav id="navbar" class="navbar_page">
@@ -40,10 +40,18 @@
                         </ul>
                     </li>
                 @else
-                    <li><a class="nav-link scrollto" href="/login">Login</a></li>
+                    <li class="dropdown"><a href="#"
+                        class="nav-link scrollto {{ request()->is('login') ? 'active' : '' }} {{ request()->is('register') ? 'active' : '' }}">
+                        <span>Masuk</span>
+                            <i class="bi bi-chevron-down"></i></a>
+                        <ul>
+                            <li><a class="nav-link scrollto" href="/login">Login</a></li>
+                            <li><a class="nav-link scrollto" href="/register">Register</a></li>
+                        </ul>
+                    </li>
                 @endif
             </ul>
-            <i class="bi bi-list mobile-nav-toggle"></i>
+            <i style="color: grey" class="bi bi-list mobile-nav-toggle"></i>
         </nav><!-- .navbar -->
 
     </div>
