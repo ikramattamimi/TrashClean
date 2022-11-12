@@ -17,7 +17,7 @@ class UsersSeeder extends Seeder
     {
         DB::table('users')->truncate();     //for cleaning earlier data to avoid duplicate entries
         DB::table('users')->insert([
-            'id'            => '02b8ca90-5d89-11ed-9b6a-0242ac120001',
+            'id'            => '02b8ca90-5d89-11ed-9b6a-0242ac120000',
             'nama'          => 'Dindin Suradin',
             'role'          => 'admin',
             'no_telepon'    => '08234743409',
@@ -25,6 +25,17 @@ class UsersSeeder extends Seeder
             'foto'          => 'man.jpg',
             'username'      => 'admin',
             'password'      => Hash::make('admin'),
+        ]);
+
+        DB::table('users')->insert([
+            'id'            => '02b8ca90-5d89-11ed-9b6a-0242ac120001',
+            'nama'          => 'Super ADMIN',
+            'role'          => 'super_admin',
+            'no_telepon'    => '08234743409',
+            'alamat'        => 'Telkom University',
+            'foto'          => 'man.jpg',
+            'username'      => 'super_admin',
+            'password'      => Hash::make('super_admin'),
         ]);
 
         DB::table('users')->insert([

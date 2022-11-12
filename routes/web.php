@@ -31,6 +31,14 @@ Route::post('/register/store', [UserController::class, 'store']);
 // HOME & DASHBOARD
 Route::get('/', [HomeController::class, 'index']);
 
+// SUPER ADMIN
+Route::group(['prefix' => 'super_admin', 'middleware' => ['auth']], function () {
+    Route::get('/dashboard', [HomeController::class, 'super_admin']);
+    // Route::get('/notification', [NotificationController::class, 'index']);
+    // Route::get('/edit-profil', [UserController::class, 'edit']);
+    Route::post('/update-konten', [UserController::class, 'update_konten']);
+    // Route::post('/products/update', [ProductController::class, 'update']);
+});
 // ADMIN
 Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
     Route::get('/dashboard', [HomeController::class, 'admin']);

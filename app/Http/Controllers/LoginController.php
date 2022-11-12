@@ -40,6 +40,9 @@ class LoginController extends Controller
             'password' => $request->input('password'),
         ];
         if (Auth::attempt($data)) {
+            if (Auth::user()->role == 'super_admin') {
+                return redirect('/super_admin/dashboard');
+            }
             if (Auth::user()->role == 'admin') {
                 return redirect('/admin/dashboard');
             }
@@ -65,7 +68,8 @@ class LoginController extends Controller
     }
 
     //Register
-    public function register(){
+    public function register()
+    {
         return view('login.register');
     }
 }
