@@ -2,10 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Auth\Events\Validated;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Ramsey\Uuid\Uuid;
 
 class UserController extends Controller
 {
@@ -42,14 +46,31 @@ class UserController extends Controller
             'nama' => 'required|min:3|max:50',
             'no_telepon' => 'required|max:13',
             'alamat' => 'max:100',
-            'username' => 'required|min:8|max:100',
+            'username' => ['required','min:8','max:100','unique:users,username'],
             'password' => 'min:6|required_with:password_confirmation|same:password_confirmation',
-            'password_confirmation' => 'min:6'
+            // 'password_confirmation' => 'min:6'
         ]);
 
         $validated = $validation->validated();
 
-        dd($validated);
+        // dd($validated);
+
+        $query = DB::table('users')->insert([
+            'id'            => Uuid::uuid4(),
+            'nama'          => $validated['nama'],
+            'role'          => 'supplier',
+            'no_telepon'    => $validated['no_telepon'],
+            'alamat'        => $validated['alamat'],
+            'foto'          => 'man.jpg',
+            'username'      => $validated['username'],
+            'point'          => '0',
+            'password'      =>  Hash::make($validated['password']),
+        ]);
+
+        if ($query) {
+            $request->session()->flash('success', 'Registrasi Berhasil! Silahkan Login');
+            return redirect('/login');
+        }
     }
 
     /**

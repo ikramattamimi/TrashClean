@@ -17,6 +17,11 @@
             <label class="form-label">Username</label>
         </div>
     </div>
+
+    {{--  --}}
+@endsection
+
+@section('content-right')
     <div class="d-flex flex-row align-items-center mb-4">
         <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
         <div class="form-floating flex-fill mb-0">
@@ -24,15 +29,4 @@
             <label class="form-label">Password</label>
         </div>
     </div>
-    <div class="d-flex justify-content-between my-5 mb-lg-4">
-        <a href="{{ $left_button_href }}"
-            class="btn btn-outline-secondary btn-lg">{{ $left_button }}</a>
-        <button type="submit"
-            class="btn btn-primary btn-lg">{{ $right_button }}</button>
-    </div>
-@endsection
-
-@section('content-right')
-    <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-registration/draw1.webp" class="img-fluid mt-4"
-        alt="Sample image">
 @endsection

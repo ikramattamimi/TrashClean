@@ -20,7 +20,7 @@ class CreateUsersTable extends Migration
             $table->string('no_telepon', 13);
             $table->string('alamat', 255);
             $table->string('foto')->nullable();
-            $table->string('username');
+            $table->string('username')->unique();
             $table->string('password');
             $table->integer('point')->default(0);
             $table->timestamp('updated_at')->useCurrent()->useCurrentonUpdate();
