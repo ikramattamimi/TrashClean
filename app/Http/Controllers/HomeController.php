@@ -12,7 +12,9 @@ class HomeController extends Controller
 {
     public function index()
     {
-        return view('home.index');
+        $post = SuperAdmin::first();
+
+        return view('home.index', compact('post'));
     }
 
     public function super_admin()
