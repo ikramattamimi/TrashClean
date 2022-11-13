@@ -96,10 +96,8 @@
         <div class="container" data-aos="fade-up">
             <div class="col-sm-6">
                 <div class="col pt-3 pt-lg-0 order-2 order-lg-1 d-flex flex-column justify-content-center">
-                    <h1 style="text-transform: capitalize;">Sampah seseorang bisa jadi harta bagi orang lain</h1>
-                    <h3>Sampah adalah sisa suatu kegiatan manusia yang dianggap sudah tidak berguna lagi dan dibuang ke
-                        lingkungan, tetapi masih dapat diolah kembali menjadi barang bernilai. <a href="#services">Cek
-                            di sini</a></h3>
+                    <h1 style="text-transform: capitalize;">{{ $post->judul_halaman_awal }}</h1>
+                    <h3>{{ $post->konten_halaman_awal }} <a href="#services">Cek di sini</a></a></h3>
                 </div>
                 <!-- <div class="col order-1 order-lg-2 hero-img" data-aos="zoom-in" data-aos-delay="150">
           <img src="assets/img/hero-img.png" class="img-fluid animated" alt="">
@@ -148,11 +146,8 @@
                         <img src="assets/img/about.jpg" class="img-fluid" alt="">
                     </div>
                     <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 content" data-aos="fade-right">
-                        <h3>Sampah seseorang bisa jadi harta bagi orang lain!</h3>
-                        <p class="">
-                            Sampah adalah sisa suatu kegiatan manusia yang dianggap sudah tidak berguna lagi dan dibuang
-                            ke
-                            lingkungan, tetapi masih dapat diolah kembali menjadi barang bernilai. Cek di sini</p>
+                        <h3>{{ $post->judul_tentang }}</h3>
+                        <p class="">{{ $post->konten_tentang }}</p>
 
                         <a href="/tentang" class="read-more">Selengkapnya tentang Kami <i
                                 class="bi bi-long-arrow-right"></i></a>
@@ -171,8 +166,8 @@
                     <p>Produk yang telah kami kumpulkan yang bisa didaur ulang</p>
                 </div>
 
-                <div class="row gy-4">
-                    <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in"
+                <div class="row gy-4 d-flex align-items-center">
+                    <div class="col-lg-4 col-md-6 text-center" data-aos="zoom-in"
                         data-aos-delay="100">
                         <div class="icon-box iconbox-blue">
                             <div class="icon">
@@ -185,21 +180,13 @@
                                 <i class="bx bxl-dribbble"></i>
                             </div>
                             <h4 class=""><a href="">Bahan Organik</a></h4>
-                            {{-- <div class="d-flex align-items-start justify-content-center">
-                <h5>Rp </h5>
-                <h1>900.000</h1>
-              </div> --}}
                             <div>
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi obcaecati, sequi
-                                    ducimus recusandae
-                                    eveniet asperiores totam facilis ratione sunt quod ullam aspernatur. Quae mollitia
-                                    reiciendis veniam
-                                    aliquam nesciunt necessitatibus ipsa.</p>
+                                <p>{{ $post->katalog_bahan_organik }}</p>
                             </div>
                         </div>
                     </div>
 
-                    <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in"
+                    <div class="col-lg-4 col-md-6 text-center" data-aos="zoom-in"
                         data-aos-delay="200">
                         <div class="icon-box iconbox-orange">
                             <div class="icon">
@@ -211,20 +198,12 @@
                                 </svg>
                                 <i class="bx bx-file"></i>
                             </div>
-                            <h4 class=""><a href="">Bahan Plastik</a></h4>
-                            {{-- <div class=" d-flex align-items-start justify-content-center">
-                <h5>Rp </h5>
-                <h1>1.600.000</h1>
-              </div> --}}
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate autem et distinctio
-                                consequatur sit
-                                eum fugit quisquam. Quasi, voluptatum autem. Nostrum officiis natus obcaecati
-                                doloremque, adipisci aut
-                                porro fugiat ad!</p>
+                            <h4 class=""><a href="">Bahan Anorganik</a></h4>
+                            <p>{{ $post->katalog_bahan_anorganik }}</p>
                         </div>
                     </div>
 
-                    <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in"
+                    <div class="col-lg-4 col-md-6 text-center" data-aos="zoom-in"
                         data-aos-delay="300">
                         <div class="icon-box iconbox-pink">
                             <div class="icon">
@@ -237,15 +216,7 @@
                                 <i class="bx bx-tachometer"></i>
                             </div>
                             <h4 class=""><a href="">Bahan Lainnya</a></h4>
-                            {{-- <div class=" d-flex align-items-start justify-content-center">
-                <h5>Rp </h5>
-                <h1>2.200.000</h1>
-              </div> --}}
-                            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Unde at quod optio dolores ipsa
-                                maiores,
-                                commodi officiis id distinctio velit aut voluptates quam minima sed iure consectetur
-                                facilis! Vitae,
-                                sunt!</p>
+                            <p>{{ $post->katalog_bahan_b3 }}</p>
                         </div>
                     </div>
                     <div class="text-center">
@@ -266,67 +237,39 @@
                 </div>
 
                 <div class="row">
+
                     <div class="col-lg-6">
-                        <div class="info-box mb-4">
-                            <i class="bx bx-map"></i>
-                            <h3>Alamat Kami</h3>
-                            <p>Jejerukkrajan, Jejeruk, Kec. Blora, Kabupaten Blora, Jawa Tengah 58219</p>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="info-box mb-4">
+                                    <i class="bx bx-map"></i>
+                                    <h3>Alamat Kami</h3>
+                                    <p>Jejerukkrajan, Jejeruk, Kec. Blora, Kabupaten Blora, Jawa Tengah 58219</p>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6 col-md-6">
+                                <div class="info-box  mb-4">
+                                    <i class="bx bx-envelope"></i>
+                                    <h3>Email Kami</h3>
+                                    <p>trashclean.id@gmail.com</p>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6 col-md-6">
+                                <div class="info-box  mb-4">
+                                    <i class="bx bx-phone-call"></i>
+                                    <h3>Telepon Kami</h3>
+                                    <p>0823-2951-9310</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
-
-                    <div class="col-lg-3 col-md-6">
-                        <div class="info-box  mb-4">
-                            <i class="bx bx-envelope"></i>
-                            <h3>Email Kami</h3>
-                            <p>trashclean.id@gmail.com</p>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-3 col-md-6">
-                        <div class="info-box  mb-4">
-                            <i class="bx bx-phone-call"></i>
-                            <h3>Telepon Kami</h3>
-                            <p>0823-2951-9310</p>
-                        </div>
-                    </div>
-
-                </div>
-
-                <div class="row">
 
                     <div class="col-lg-6 ">
                         <iframe class="mb-4 mb-lg-0"
                             src="https://maps.google.com/maps?q=2CFX+RHF,%20Unnamed%20Road,%20Jejerukkrajan,%20Jejeruk,%20Kec.%20Blora,%20Kabupaten%20Blora,%20Jawa%20Tengah%2058219&t=&z=13&ie=UTF8&iwloc=&output=embed"
                             frameborder="0" style="border:0; width: 100%; height: 384px;" allowfullscreen></iframe>
-                    </div>
-                    {{-- <div class="mapouter"><div class="gmap_canvas"><iframe width="600" height="500" id="gmap_canvas" src="https://maps.google.com/maps?q=telkom%20university&t=&z=17&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><a href="https://fmovies-online.net"></a><br><style>.mapouter{position:relative;text-align:right;height:500px;width:600px;}</style><a href="https://www.embedgooglemap.net">google map for web site</a><style>.gmap_canvas {overflow:hidden;background:none!important;height:500px;width:600px;}</style></div></div> --}}
-
-                    <div class="col-lg-6">
-                        <form action="forms/contact.php" method="post" role="form" class="php-email-form">
-                            <div class="row">
-                                <div class="col-md-6 form-group">
-                                    <input type="text" name="name" class="form-control" id="name"
-                                        placeholder="Your Name" required>
-                                </div>
-                                <div class="col-md-6 form-group mt-3 mt-md-0">
-                                    <input type="email" class="form-control" name="email" id="email"
-                                        placeholder="Your Email" required>
-                                </div>
-                            </div>
-                            <div class="form-group mt-3">
-                                <input type="text" class="form-control" name="subject" id="subject"
-                                    placeholder="Subject" required>
-                            </div>
-                            <div class="form-group mt-3">
-                                <textarea class="form-control" name="message" rows="5" placeholder="Message" required></textarea>
-                            </div>
-                            <div class="my-3">
-                                <div class="loading">Loading</div>
-                                <div class="error-message"></div>
-                                <div class="sent-message">Your message has been sent. Thank you!</div>
-                            </div>
-                            <div class="text-center"><button type="submit">Send Message</button></div>
-                        </form>
                     </div>
 
                 </div>
