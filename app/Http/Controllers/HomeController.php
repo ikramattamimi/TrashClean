@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Products;
 use App\Models\SuperAdmin;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Ramsey\Uuid\Uuid;
@@ -20,13 +21,16 @@ class HomeController extends Controller
     public function super_admin()
     {
         if (Auth::check()) {
-            // $data = $this->update_konten($data);
+            
             $post = SuperAdmin::first();
-            // dd($post);
+            $admin = User::where('role', 'admin')->get();
+
+            // dd($admin);
+            
             if (Auth::user()->role != 'super_admin') {
                 return redirect('/' . Auth::user()->role . '/dashboard');
             }
-            return view('home.super_admin', compact('post'));
+            return view('home.super-admin.index', compact('post', 'admin'));
         } else {
             return redirect('/login');
         }
@@ -126,16 +130,5 @@ class HomeController extends Controller
         } else {
             return redirect('/login');
         }
-    }
-
-    public function update_konten($data)
-    {
-        $judul_halaman_awal = Products::where('user_id', Auth::user()->id)->where('nama_barang', 'Sampah Organik')->where('status_barang', 'valid')->get();
-        $konten_halaman_awal = Products::where('user_id', Auth::user()->id)->where('nama_barang', 'Sampah Anorganik')->where('status_barang', 'valid')->get();
-        $judul_tentang = Products::where('user_id', Auth::user()->id)->where('nama_barang', 'Sampah B3')->where('status_barang', 'valid')->get();
-        $konten_tentang = Products::where('user_id', Auth::user()->id)->where('nama_barang', 'Sampah Organik')->where('status_barang', 'pending')->get();
-        $katalog_bahan_organik = Products::where('user_id', Auth::user()->id)->where('nama_barang', 'Sampah Anorganik')->where('status_barang', 'pending')->get();
-        $katalog_bahan_anorganik = Products::where('user_id', Auth::user()->id)->where('nama_barang', 'Sampah B3')->where('status_barang', 'pending')->get();
-        $katalog_bahan_b3 = Products::where('user_id', Auth::user()->id)->where('nama_barang', 'Sampah B3')->where('status_barang', 'pending')->get();
     }
 }

@@ -7,6 +7,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\SuperAdminController;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,7 +38,11 @@ Route::group(['prefix' => 'super_admin', 'middleware' => ['auth']], function () 
     Route::get('/dashboard', [HomeController::class, 'super_admin']);
     // Route::get('/notification', [NotificationController::class, 'index']);
     // Route::get('/edit-profil', [UserController::class, 'edit']);
-    Route::post('/update-konten', [UserController::class, 'update_konten']);
+    Route::post('/update-konten', [SuperAdminController::class, 'update_konten']);
+    Route::get('/tambah-admin', [SuperAdminController::class, 'tambah_admin']);
+    Route::get('/edit-profil', [UserController::class, 'edit']);
+    Route::post('/update-profil', [UserController::class, 'update']);
+
     // Route::post('/products/update', [ProductController::class, 'update']);
 });
 // ADMIN
