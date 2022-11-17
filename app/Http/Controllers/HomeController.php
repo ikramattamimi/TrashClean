@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Products;
 use App\Models\SuperAdmin;
+use App\Models\Tutorial;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -24,13 +25,14 @@ class HomeController extends Controller
             
             $post = SuperAdmin::first();
             $admin = User::where('role', 'admin')->get();
+            $tutorial = Tutorial::all();
 
-            // dd($admin);
+            // dd($tutorial);
             
             if (Auth::user()->role != 'super_admin') {
                 return redirect('/' . Auth::user()->role . '/dashboard');
             }
-            return view('home.super-admin.index', compact('post', 'admin'));
+            return view('home.super-admin.index', compact('post', 'admin', 'tutorial'));
         } else {
             return redirect('/login');
         }

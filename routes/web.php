@@ -36,13 +36,16 @@ Route::get('/', [HomeController::class, 'index']);
 // SUPER ADMIN
 Route::group(['prefix' => 'super_admin', 'middleware' => ['auth']], function () {
     Route::get('/dashboard', [HomeController::class, 'super_admin']);
-    // Route::get('/notification', [NotificationController::class, 'index']);
-    // Route::get('/edit-profil', [UserController::class, 'edit']);
-    Route::post('/update-konten', [SuperAdminController::class, 'update_konten']);
-    Route::get('/tambah-admin', [SuperAdminController::class, 'tambah_admin']);
+
     Route::get('/edit-profil', [UserController::class, 'edit']);
     Route::post('/update-profil', [UserController::class, 'update']);
 
+    Route::post('/update-konten', [SuperAdminController::class, 'update_konten']);
+    Route::post('/store-admin', [SuperAdminController::class, 'store_admin']);
+    Route::post('/store-tutorial', [SuperAdminController::class, 'store_tutorial']);
+    Route::post('/update-tutorial', [SuperAdminController::class, 'update_tutorial']);
+    Route::get('/edit-tutorial/{tutorial}', [SuperAdminController::class, 'edit_tutorial']);
+    
     // Route::post('/products/update', [ProductController::class, 'update']);
 });
 // ADMIN
@@ -67,6 +70,7 @@ Route::get('/buyer/dashboard', [HomeController::class, 'buyer'])->middleware('au
 Route::get('/katalog', [GuestController::class, 'katalog']);
 Route::get('/tentang', [GuestController::class, 'tentang']);
 Route::get('/tutorial', [GuestController::class, 'tutorial']);
+Route::get('/tutorial/detail/{tutorial}', [GuestController::class, 'tutorial_detail']);
 Route::get('/kontak', [GuestController::class, 'kontak']);
 // Route::get('/katalog', GuestController::class, 'katalog');
 

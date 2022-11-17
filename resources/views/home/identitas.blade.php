@@ -7,8 +7,8 @@
             <div class="row">
 
                 {{-- PROFIL --}}
-                <div class="col-lg-4">
-                    <div class="card mb-4">
+                <div class="col-sm-4 col-lg-4">
+                    <div class="card mb-4" style="min-height: 300px">
                         <div class="card-body text-center">
                             <img class="rounded-circle img-fluid"
                                 src="{{ asset('storage/uploads/profil/' . Auth::user()->foto) }}" alt="avatar"
@@ -22,15 +22,14 @@
                         </div>
                     </div>
 
-                    @yield('role-based-content-left')
 
                 </div>
 
-                <div class="col-lg-8">
+                <div class="col-sm-8 col-lg-8">
 
                     {{-- IDENTITAS --}}
-                    <div class="card mb-4">
-                        <div class="card-body">
+                    <div class="card mb-4" style="min-height: 300px">
+                        <div class="card-body align-items-center">
                             <div class="row">
                                 <div class="col-sm-3">
                                     <p class="mb-0">Full Name</p>
@@ -60,8 +59,13 @@
                         </div>
                     </div>
 
+                </div>
+                    
+                <div class="col-sm-4 col-lg-4 mb-3">
+                    @yield('role-based-content-left')
+                </div>
+                <div class="col-sm-8 col-lg-8 mb-3">
                     @yield('role-based-content-right')
-
                 </div>
             </div>
         </div>

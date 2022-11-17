@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\SuperAdmin;
+use App\Models\Tutorial;
 use Illuminate\Http\Request;
 
 class GuestController extends Controller
@@ -23,8 +24,15 @@ class GuestController extends Controller
         return view('kontak.index', compact('post'));
     }
     public function tutorial(){
-        $post = SuperAdmin::first();
+        $tutorial = Tutorial::get();
 
-        return view('tutorial.index', compact('post'));
+        return view('tutorial.index', compact('tutorial'));
+    }
+    public function tutorial_detail($id){
+        $tutorial = Tutorial::where('id', '=', $id)->first();
+
+        // dd($tutorial);
+
+        return view('tutorial.detail', compact('tutorial'));
     }
 }
