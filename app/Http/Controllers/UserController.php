@@ -163,7 +163,7 @@ class UserController extends Controller
     public function update_konten(Request $request, SuperAdmin $post)
     {
         $post = SuperAdmin::first();
-        dd($post);
+        // dd($post);
         $this->validate($request, [
             'judul_halaman_awal'        => 'required',
             'konten_halaman_awal'       => 'required',
@@ -189,6 +189,7 @@ class UserController extends Controller
             'foto_berita'   => $request->foto_berita,
             'keterangan_berita'   => $request->keterangan_berita,
         ]);
-        dd($post);
+        // dd($post);
+        return redirect()->back();
     }
 }

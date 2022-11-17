@@ -3,60 +3,28 @@
 @section('role-based-content-right')
     <div class="card mb-4">
         <div class="card-body">
-            <div class="row">
-                <form class="row" action="{{ '/' . Auth::user()->role . '/update-konten' }}" method="post">
-                    @csrf
-                    <div class="form-group mb-4">
-                        <label for="exampleFormControlInput1">
-                            <h5>Judul Home Screen</h5>
-                        </label>
-                        <input name="judul_halaman_awal" type="text" class="form-control" id="exampleFormControlInput1"
-                            placeholder="judul content" value="{{ $post->judul_halaman_awal }}">
-                    </div>
-                    <div class="form-group mb-4">
-                        <label for="exampleFormControlTextarea1">
-                            <h5>Text Home Screen</h5>
-                        </label>
-                        <textarea name="konten_halaman_awal" class="form-control" id="exampleFormControlTextarea1" rows="5">{{ $post->konten_halaman_awal }}</textarea>
-                    </div>
-                    <hr>
-                    <div class="form-group mb-4">
-                        <label for="exampleFormControlInput1">
-                            <h5>Judul About Us</h5>
-                        </label>
-                        <input name="judul_tentang" type="text" class="form-control" id="exampleFormControlInput1"
-                            placeholder="judul content" value="{{ $post->judul_tentang }}">
-                    </div>
-                    <div class="form-group mb-4">
-                        <label for="exampleFormControlTextarea1">
-                            <h5>Text About Us</h5>
-                        </label>
-                        <textarea name="konten_tentang" class="form-control" id="exampleFormControlTextarea1" rows="5">{{ $post->konten_tentang }}</textarea>
-                    </div>
-                    <hr>
-                    <div class="form-group mb-4">
-                        <label for="exampleFormControlInput1">
-                            <h5>Katalog bahan organik</h5>
-                        </label>
-                        <textarea name="katalog_bahan_organik" class="form-control" id="exampleFormControlInput1" rows="4">{{ $post->katalog_bahan_organik }}</textarea>
-                    </div>
-                    <div class="form-group mb-4">
-                        <label for="exampleFormControlTextarea1">
-                            <h5>Katalog bahan anorganik</h5>
-                        </label>
-                        <textarea name="katalog_bahan_anorganik" class="form-control" id="exampleFormControlTextarea1" rows="4">{{ $post->katalog_bahan_anorganik }}</textarea>
-                    </div>
-                    <div class="form-group mb-4">
-                        <label for="exampleFormControlTextarea1">
-                            <h5>Katalog bahan b3</h5>
-                        </label>
-                        <textarea name="katalog_bahan_b3" class="form-control" id="exampleFormControlTextarea1" rows="4">{{ $post->katalog_bahan_b3 }}</textarea>
-                    </div>
-                    <div class="d-flex justify-content-center mt-3">
-                        <button type="submit" class="btn btn-primary">Simpan</button>
-                    </div>
-                </form>
+            <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home"
+                        type="button" role="tab" aria-controls="pills-home" aria-selected="true">Home</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile"
+                        type="button" role="tab" aria-controls="pills-profile" aria-selected="false">Profile</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#pills-contact"
+                        type="button" role="tab" aria-controls="pills-contact" aria-selected="false">Contact</button>
+                </li>
+            </ul>
+            <div class="tab-content" id="pills-tabContent">
+                <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+                    @include('home.lpcontent')
+                </div>
+                <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">...</div>
+                <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">...</div>
             </div>
+            
         </div>
     </div>
 @endsection

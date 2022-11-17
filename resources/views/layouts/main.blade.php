@@ -35,6 +35,10 @@
     <link href={{ url('assets/css/style-custom.css') }} rel="stylesheet">
 
 
+    {{-- cdn --}}
+    <script src="https://cdn.ckeditor.com/4.20.0/standard/ckeditor.js"></script>
+
+
     <!-- =======================================================
   * Template Name: Techie - v4.9.1
   * Template URL: https://bootstrapmade.com/techie-free-skin-bootstrap-3/
@@ -59,6 +63,8 @@
             class="bi bi-arrow-up-short"></i></a>
     <div id="preloader"></div>
 
+
+
     <!-- Vendor JS Files -->
     <script src={{ url('assets/vendor/purecounter/purecounter_vanilla.js') }}></script>
     <script src={{ url('assets/vendor/aos/aos.js') }}></script>
@@ -73,6 +79,7 @@
     <script src={{ url('assets/js/jquery-3.6.1.js') }}></script>
     <script src={{ url('assets/js/main.js') }}></script>
     <script src={{ url('assets/js/main-custom.js') }}></script>
+
 
     @yield('custom-js')
 

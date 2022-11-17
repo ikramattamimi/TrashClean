@@ -10,12 +10,13 @@
                 <div class="col-lg-4">
                     <div class="card mb-4">
                         <div class="card-body text-center">
-                            <img src="{{ asset('storage/uploads/profil/' . Auth::user()->foto) }}" alt="avatar" class="rounded-circle img-fluid"
+                            <img class="rounded-circle img-fluid"
+                                src="{{ asset('storage/uploads/profil/' . Auth::user()->foto) }}" alt="avatar"
                                 style="width: 150px;">
                             <h5 class="my-3">{{ Auth::user()->nama }}</h5>
                             {{-- <p class="text-muted mb-1">Member Silver</p> --}}
                             <div class="d-flex justify-content-center mb-2">
-                                <a href="{{ '/' . Auth::user()->role . '/edit-profil' }}" class="btn btn-primary">Edit
+                                <a class="btn btn-primary" href="{{ '/' . Auth::user()->role . '/edit-profil' }}">Edit
                                     Profil</a>
                             </div>
                         </div>
@@ -65,4 +66,9 @@
             </div>
         </div>
     </section>
+@endsection
+@section('custom-js')
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+    </script>
 @endsection

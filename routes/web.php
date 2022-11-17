@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\GuestController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
@@ -58,22 +59,9 @@ Route::group(['prefix' => 'supplier', 'middleware' => ['auth']], function () {
 // Route::get('/supplier/dashboard', [HomeController::class, 'supplier'])->middleware('auth');
 Route::get('/buyer/dashboard', [HomeController::class, 'buyer'])->middleware('auth');
 
-Route::get('/katalog', function () {
-    return view('katalog.index');
-});
+Route::get('/katalog', [GuestController::class, 'katalog']);
+Route::get('/tentang', [GuestController::class, 'tentang']);
+Route::get('/tutorial', [GuestController::class, 'tutorial']);
+Route::get('/kontak', [GuestController::class, 'kontak']);
+// Route::get('/katalog', GuestController::class, 'katalog');
 
-Route::get('/tentang', function () {
-    return view('tentang.index');
-});
-
-Route::get('/kontak', function () {
-    return view('kontak.index');
-});
-
-Route::get('/tutorial', function () {
-    return view('tutorial.index');
-});
-
-Route::get('/tutorial/detail', function () {
-    return view('tutorial.detail');
-});

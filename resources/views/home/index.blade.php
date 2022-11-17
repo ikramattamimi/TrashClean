@@ -3,11 +3,11 @@
 
 <head>
     <meta charset="utf-8">
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>TrashClean</title>
-    <meta content="" name="description">
-    <meta content="" name="keywords">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
 
     <!-- Favicons -->
     <link href="assets/img/iconTrashClean.png" rel="icon">
@@ -28,6 +28,7 @@
 
     <!-- Template Main CSS File -->
     <link href="assets/css/style.css" rel="stylesheet">
+    <link href="assets/css/style-lp-custom.css" rel="stylesheet">
 
     <!-- =======================================================
   * Template Name: Techie - v4.9.1
@@ -40,13 +41,13 @@
 <body>
 
     <!-- ======= Header ======= -->
-    <header id="header" class="fixed-top ">
+    <header class="fixed-top " id="header">
         <div class="container d-flex align-items-center justify-content-center">
             <!-- <h1 class="logo"><a href="/">TrashClean</a></h1> -->
             <!-- Uncomment below if you prefer to use an image logo -->
-            <a href="/" class="logo rounded"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>
+            <a class="logo rounded" href="/"><img class="img-fluid" src="assets/img/logo.png" alt=""></a>
 
-            <nav id="navbar" class="navbar">
+            <nav class="navbar" id="navbar">
                 <ul>
                     <li><a class="nav-link scrollto active" href="#hero">Beranda</a></li>
                     <li><a class="nav-link scrollto" href="#about">Tentang</a></li>
@@ -65,8 +66,8 @@
                             $role = Auth::user()->role . '*';
                             $name = explode(' ', trim(Auth::user()->nama));
                         @endphp
-                        <li class="dropdown"><a href="#"
-                                class="nav-link scrollto {{ request()->is($role) ? 'active' : '' }}"><span>{{ $name[0] }}</span>
+                        <li class="dropdown"><a class="nav-link scrollto {{ request()->is($role) ? 'active' : '' }}"
+                                href="#"><span>{{ $name[0] }}</span>
                                 <i class="bi bi-person-circle text-white"></i> <i class="bi bi-chevron-down"></i></a>
                             <ul>
                                 <li><a class="nav-link scrollto"
@@ -91,7 +92,7 @@
     </header><!-- End Header -->
 
     <!-- ======= Hero Section ======= -->
-    <section id="hero" class="d-flex align-items-center">
+    <section class="d-flex align-items-center" id="hero">
 
         <div class="container" data-aos="fade-up">
             <div class="col-sm-6">
@@ -100,7 +101,7 @@
                     <h3>{{ $post->konten_halaman_awal }} <a href="#services">Cek di sini</a></a></h3>
                 </div>
                 <!-- <div class="col order-1 order-lg-2 hero-img" data-aos="zoom-in" data-aos-delay="150">
-          <img src="assets/img/hero-img.png" class="img-fluid animated" alt="">
+          <img class="img-fluid animated" src="assets/img/hero-img.png" alt="">
         </div> -->
             </div>
         </div>
@@ -109,7 +110,7 @@
 
 
     <!-- ======= Counts Section ======= -->
-    <section id="counts" class="counts">
+    <section class="counts" id="counts">
         <div class="container">
 
             <div class="row counters">
@@ -119,8 +120,8 @@
                 </div>
 
                 <div class="col-lg-4 col-6 text-center">
-                    <span data-purecounter-start="0" data-purecounter-end="100" data-purecounter-duration="1"
-                        class="purecounter"></span>
+                    <span class="purecounter" data-purecounter-start="0" data-purecounter-end="100"
+                        data-purecounter-duration="1"></span>
                     <p>WARGA DESA BERKONTRIBUSI</p>
                 </div>
 
@@ -138,18 +139,20 @@
     <main id="main">
 
         <!-- ======= About Section ======= -->
-        <section id="about" class="about">
+        <section class="about" id="about">
             <div class="container">
 
                 <div class="row">
                     <div class="col-lg-6 order-1 order-lg-2" data-aos="zoom-in" data-aos-delay="150">
-                        <img src="assets/img/about.jpg" class="img-fluid" alt="">
+                        <img class="img-fluid" src="assets/img/about.jpg" alt="">
                     </div>
                     <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 content" data-aos="fade-right">
                         <h3>{{ $post->judul_tentang }}</h3>
-                        <p class="">{{ $post->konten_tentang }}</p>
+                        <div class="text-about-landing-page mb-2">
+                            {{ Illuminate\Mail\Markdown::parse($post->konten_tentang) }}
+                        </div>
 
-                        <a href="/tentang" class="read-more">Selengkapnya tentang Kami <i
+                        <a class="read-more" href="/tentang">Selengkapnya tentang Kami <i
                                 class="bi bi-long-arrow-right"></i></a>
                     </div>
                 </div>
@@ -158,7 +161,7 @@
         </section><!-- End About Section -->
 
         <!-- ======= Katalog Section ======= -->
-        <section id="services" class="services section-bg">
+        <section class="services section-bg" id="services">
             <div class="container" data-aos="fade-up">
 
                 <div class="section-title">
@@ -167,8 +170,7 @@
                 </div>
 
                 <div class="row gy-4 d-flex align-items-center">
-                    <div class="col-lg-4 col-md-6 text-center" data-aos="zoom-in"
-                        data-aos-delay="100">
+                    <div class="col-lg-4 col-md-6 text-center" data-aos="zoom-in" data-aos-delay="100">
                         <div class="icon-box iconbox-blue">
                             <div class="icon">
                                 <svg width="100" height="100" viewBox="0 0 600 600"
@@ -186,8 +188,7 @@
                         </div>
                     </div>
 
-                    <div class="col-lg-4 col-md-6 text-center" data-aos="zoom-in"
-                        data-aos-delay="200">
+                    <div class="col-lg-4 col-md-6 text-center" data-aos="zoom-in" data-aos-delay="200">
                         <div class="icon-box iconbox-orange">
                             <div class="icon">
                                 <svg width="100" height="100" viewBox="0 0 600 600"
@@ -203,8 +204,7 @@
                         </div>
                     </div>
 
-                    <div class="col-lg-4 col-md-6 text-center" data-aos="zoom-in"
-                        data-aos-delay="300">
+                    <div class="col-lg-4 col-md-6 text-center" data-aos="zoom-in" data-aos-delay="300">
                         <div class="icon-box iconbox-pink">
                             <div class="icon">
                                 <svg width="100" height="100" viewBox="0 0 600 600"
@@ -220,7 +220,7 @@
                         </div>
                     </div>
                     <div class="text-center">
-                        <a href="/katalog" class="read-more">Selengkapnya</a>
+                        <a class="read-more" href="/katalog">Selengkapnya</a>
                     </div>
                 </div>
 
@@ -228,7 +228,7 @@
         </section><!-- End Services Section -->
 
         <!-- ======= Contact Section ======= -->
-        <section id="contact" class="contact section-bg">
+        <section class="contact section-bg" id="contact">
             <div class="container" data-aos="fade-up">
 
                 <div class="section-title">
@@ -269,7 +269,7 @@
                     <div class="col-lg-6 ">
                         <iframe class="mb-4 mb-lg-0"
                             src="https://maps.google.com/maps?q=2CFX+RHF,%20Unnamed%20Road,%20Jejerukkrajan,%20Jejeruk,%20Kec.%20Blora,%20Kabupaten%20Blora,%20Jawa%20Tengah%2058219&t=&z=13&ie=UTF8&iwloc=&output=embed"
-                            frameborder="0" style="border:0; width: 100%; height: 384px;" allowfullscreen></iframe>
+                            style="border:0; width: 100%; height: 384px;" frameborder="0" allowfullscreen></iframe>
                     </div>
 
                 </div>
@@ -298,18 +298,18 @@
                     </div>
                 </div>
                 <div class="social-links text-center text-md-right pt-3 pt-md-0">
-                    <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
-                    <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
-                    <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
-                    <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
-                    <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+                    <a class="twitter" href="#"><i class="bx bxl-twitter"></i></a>
+                    <a class="facebook" href="#"><i class="bx bxl-facebook"></i></a>
+                    <a class="instagram" href="#"><i class="bx bxl-instagram"></i></a>
+                    <a class="google-plus" href="#"><i class="bx bxl-skype"></i></a>
+                    <a class="linkedin" href="#"><i class="bx bxl-linkedin"></i></a>
                 </div>
             </div>
 
         </div>
     </footer><!-- End Footer -->
 
-    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
+    <a class="back-to-top d-flex align-items-center justify-content-center" href="#"><i
             class="bi bi-arrow-up-short"></i></a>
     <div id="preloader"></div>
 
