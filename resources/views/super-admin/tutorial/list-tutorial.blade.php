@@ -16,7 +16,7 @@
                         {{-- <input type="text" value="{{ $tutorial->id }}" hidden> --}}
                     </div>
                     <div class="col-4 form-group">
-                        <a href="{{ '/super_admin/edit-tutorial/' . $tutorial->id }}" class="btn btn-primary w-100"
+                        <a href="{{ '/super_admin/tutorial/' . $tutorial->id }}" class="btn btn-primary w-100"
                             >Edit</a>
                     </div>
                 </div>

@@ -53,7 +53,7 @@ class SuperAdminController extends Controller
             'nama' => 'required|min:3|max:50',
             'no_telepon' => 'required|max:13',
             'alamat' => 'max:100',
-            'username' => ['required','min:8','max:100','unique:users,username'],
+            'username' => ['required', 'min:8', 'max:100', 'unique:users,username'],
             'password' => 'min:6|required_with:password_confirmation|same:password_confirmation',
             // 'password_confirmation' => 'min:6'
         ]);
@@ -87,6 +87,7 @@ class SuperAdminController extends Controller
         $validation = Validator::make($request->all(), [
             'judul' => 'required|min:3|max:100',
             'konten' => 'required',
+            'kategori' => 'required',
             'gambar' => 'sometimes',
         ]);
 
@@ -104,6 +105,7 @@ class SuperAdminController extends Controller
         $query = DB::table('tutorial')->insert([
             'judul'     => $validated['judul'],
             'konten'    => $validated['konten'],
+            'kategori'    => $validated['kategori'],
             'gambar'    => $validated['gambar'],
         ]);
 
@@ -112,22 +114,105 @@ class SuperAdminController extends Controller
             return redirect()->back();
         }
     }
-    
+
+    public function data_landing_page()
+    {
+        if (Auth::check()) {
+
+            $post = SuperAdmin::first();
+
+            if (Auth::user()->role != 'super_admin') {
+                return redirect('/' . Auth::user()->role . '/dashboard');
+            }
+            return view('super-admin.landing-page.edit', compact('post'));
+        } else {
+            return redirect('/login');
+        }
+    }
+
+    public function data_admin()
+    {
+        if (Auth::check()) {
+
+            $admin = User::where('role', 'admin')->get();
+
+            if (Auth::user()->role != 'super_admin') {
+                return redirect('/' . Auth::user()->role . '/dashboard');
+            }
+            return view('super-admin.admin.index', compact('admin'));
+        } else {
+            return redirect('/login');
+        }
+    }
+
+    public function edit_admin($id)
+    {
+        // dd($id);
+        if (Auth::check()) {
+
+            $admin = User::where('id', $id)->first();
+            // dd($admin[0]->judul);
+
+            if (Auth::user()->role != 'super_admin') {
+                return redirect('/' . Auth::user()->role . '/dashboard');
+            }
+            return view('super-admin.admin.edit', compact('admin'));
+        } else {
+            return redirect('/login');
+        }
+    }
+
+    public function update_admin(Request $request)
+    {
+        $user = User::find($request->id);
+        
+        // dd($request);
+
+        $validated = $this->validate($request, [
+            'nama' => 'required|min:3|max:50',
+            'no_telepon' => 'required|max:13',
+            'alamat' => 'max:100',
+            'username' => ['required','min:4','max:100'],
+            'password' => 'min:4|required_with:password_confirmation|same:password_confirmation',
+        ]);
+
+
+        $user->update($validated);
+
+        $request->session()->flash('success', 'Update Admin Berhasil!');
+
+        return redirect()->back();
+    }
+
+    public function data_tutorial()
+    {
+        if (Auth::check()) {
+
+            $tutorial = Tutorial::all();
+
+            if (Auth::user()->role != 'super_admin') {
+                return redirect('/' . Auth::user()->role . '/dashboard');
+            }
+            return view('super-admin.tutorial.index', compact('tutorial'));
+        } else {
+            return redirect('/login');
+        }
+    }
+
+
     public function edit_tutorial($id)
     {
         // dd($id);
         if (Auth::check()) {
-            
-            $post = SuperAdmin::first();
-            $admin = User::where('role', 'admin')->get();
-            $tutorial = Tutorial::where('id', $id)->get();
+
+            $tutorial = Tutorial::where('id', $id)->first();
 
             // dd($tutorial[0]->judul);
-            
+
             if (Auth::user()->role != 'super_admin') {
                 return redirect('/' . Auth::user()->role . '/dashboard');
             }
-            return view('home.super-admin.index', compact('post', 'admin', 'tutorial'));
+            return view('super-admin.tutorial.edit', compact('tutorial'));
         } else {
             return redirect('/login');
         }
@@ -135,14 +220,15 @@ class SuperAdminController extends Controller
 
     public function update_tutorial(Request $request)
     {
-        // dd($request);
-        $validation = Validator::make($request->all(), [
+        $tutorial = Tutorial::find($request->id);
+
+        $validated = $this->validate($request, [
             'judul' => 'required|min:3|max:100',
             'konten' => 'required',
+            'kategori' => 'required',
             'gambar' => 'sometimes',
         ]);
 
-        $validated = $validation->validated();
 
         if (isset($validated['gambar'])) {
             $name = $validated['gambar']->getClientOriginalName();
@@ -150,26 +236,19 @@ class SuperAdminController extends Controller
             $validated['gambar'] = $name;
             $input = $validated;
 
-            $query = DB::table('tutorial')->where('id', '=', $request->id)->update([
-                'judul'     => $validated['judul'],
-                'konten'    => $validated['konten'],
-                'gambar'    => $validated['gambar'],
-            ]);
-        }
-        else {
-            $query = DB::table('tutorial')->where('id', '=', $request->id)->update([
-                'judul'     => $validated['judul'],
-                'konten'    => $validated['konten'],
-            ]);
         }
 
         // dd($validated);
+        $query = $tutorial->update($validated);
 
-        
-
+        // dd($query);
         if ($query) {
-            $request->session()->flash('success', 'Tutorial berhasil ditambahkan!');
-            return redirect('/super_admin/dashboard');
+            $request->session()->flash('success', 'Tutorial berhasil diedit!');
         }
+        else{
+            $request->session()->flash('error', 'Terdapat kesalahan pada query!');
+
+        }
+        return redirect()->back();
     }
 }

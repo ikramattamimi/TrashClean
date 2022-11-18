@@ -105,15 +105,8 @@ class UserController extends Controller
      */
     public function update(Request $request)
     {
-        /**
-         * fetching the user model
-         */
         $user = Auth::user();
-        // dd($request);
 
-        /**
-         * Validate request/input
-         **/
         $validated = $this->validate($request, [
             'nama' => 'required|max:255',
             'no_telepon' => 'required|max:255',
@@ -128,24 +121,10 @@ class UserController extends Controller
             $input = $validated;
         } else {
             $input = $request->only('nama', 'no_telepon', 'alamat');
-            # code...
         }
 
-        /**
-         * storing the input fields name & email in variable $input
-         * type array
-         **/
-        // dd($input);
-
-
-        /**
-         * Accessing the update method and passing in $input array of data
-         **/
         $user->update($input);
 
-        /**
-         * after everything is done return them pack to /profile/ uri
-         **/
         return redirect('/supplier/dashboard');
     }
 

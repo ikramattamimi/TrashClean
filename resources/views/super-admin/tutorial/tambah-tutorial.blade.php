@@ -42,6 +42,17 @@
                 </div>
                 <div class="d-flex flex-row align-items-center mb-4">
                     <div class="form-floating flex-fill mb-0">
+                        <select name="kategori" id="" class="form-select">
+                            <option value="">Pilih Kategori</option>
+                            <option>Organik</option>
+                            <option>Anorganik</option>
+                            <option>Lainnya</option>
+                        </select>
+                        <label>Kategori</label>
+                    </div>
+                </div>
+                <div class="d-flex flex-row align-items-center mb-4">
+                    <div class="form-floating flex-fill mb-0">
                         <textarea type="text" id="konten-tutorial" class="form-control" name="konten" placeholder="Konten" required></textarea>
                         <script>
                             CKEDITOR.replace('konten-tutorial');

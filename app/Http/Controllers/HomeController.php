@@ -22,17 +22,17 @@ class HomeController extends Controller
     public function super_admin()
     {
         if (Auth::check()) {
-            
+
             $post = SuperAdmin::first();
             $admin = User::where('role', 'admin')->get();
             $tutorial = Tutorial::all();
 
             // dd($tutorial);
-            
+
             if (Auth::user()->role != 'super_admin') {
                 return redirect('/' . Auth::user()->role . '/dashboard');
             }
-            return view('home.super-admin.index', compact('post', 'admin', 'tutorial'));
+            return view('home.super-admin', compact('post', 'admin', 'tutorial'));
         } else {
             return redirect('/login');
         }

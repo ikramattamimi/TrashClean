@@ -2,13 +2,17 @@
 
 @section('main-content')
     <section style="background-color: #eee;">
-        <div class="container py-5">
+        <div class="container pb-5" data-aos="fade-up">
+
+            <div class="section-title">
+                <h2>Dashboard</h2>
+            </div>
 
             <div class="row">
 
                 {{-- PROFIL --}}
                 <div class="col-sm-4 col-lg-4">
-                    <div class="card mb-4" style="min-height: 300px">
+                    <div class="card mb-4">
                         <div class="card-body text-center">
                             <img class="rounded-circle img-fluid"
                                 src="{{ asset('storage/uploads/profil/' . Auth::user()->foto) }}" alt="avatar"
@@ -28,7 +32,7 @@
                 <div class="col-sm-8 col-lg-8">
 
                     {{-- IDENTITAS --}}
-                    <div class="card mb-4" style="min-height: 300px">
+                    <div class="card mb-4">
                         <div class="card-body align-items-center">
                             <div class="row">
                                 <div class="col-sm-3">

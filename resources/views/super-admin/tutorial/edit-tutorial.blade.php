@@ -1,7 +1,7 @@
 @php
     $title = 'Edit Tutorial';
-    $form_action = '/super_admin/update-tutorial/';
-    $right_button = 'Tambah';
+    $form_action = '/super_admin/update-tutorial';
+    $right_button = 'Edit';
 @endphp
 
 <div class="row d-flex justify-content-center">
@@ -27,18 +27,31 @@
                 </div>
             @endif
 
+            <input type="text" class="form-control" name="id" placeholder="Judul Tutorial" required value="{{ $tutorial->id }}" hidden/>
+
             <div class="col-10 col-xl-10">
                 <div class="d-flex flex-row align-items-center mb-4">
                     <div class="form-floating flex-fill mb-0">
-                        <input type="text" class="form-control" name="judul" placeholder="Judul Tutorial" value="{{ $tutorial->judul }}" required />
+                        <input type="text" class="form-control" name="judul" placeholder="Judul Tutorial" required value="{{ $tutorial->judul }}"/>
                         <label>Judul</label>
                     </div>
                 </div>
                 <div class="d-flex flex-row align-items-center mb-4">
                     <div class="form-floating flex-fill mb-0">
                         <input type="file" class="form-control" name="gambar"/>
-                        <input type="text" class="form-control" name="id" value="{{ $tutorial->id }}"/>
                         <label>Gambar</label>
+                    </div>
+                </div>
+                <div class="d-flex flex-row align-items-center mb-4">
+                    <div class="form-floating flex-fill mb-0">
+                        <select name="kategori" id="" class="form-select">
+                            <option>{{ $tutorial->kategori }}</option>
+                            <option value="">Pilih Kategori</option>
+                            <option>Organik</option>
+                            <option>Anorganik</option>
+                            <option>Lainnya</option>
+                        </select>
+                        <label>Kategori</label>
                     </div>
                 </div>
                 <div class="d-flex flex-row align-items-center mb-4">

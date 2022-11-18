@@ -14,9 +14,9 @@
                 <div class="col-lg-12 d-flex justify-content-center">
                     <ul id="portfolio-flters">
                         <li data-filter="*" class="filter-active">All</li>
-                        <li data-filter=".filter-organik">Organik</li>
-                        <li data-filter=".filter-anorganik">Anorganik</li>
-                        <li data-filter=".filter-lainnya">Lainnya</li>
+                        <li data-filter=".filter-Organik">Organik</li>
+                        <li data-filter=".filter-Anorganik">Anorganik</li>
+                        <li data-filter=".filter-Lainnya">Lainnya</li>
                     </ul>
                 </div>
             </div>
@@ -24,7 +24,7 @@
             <div class="row portfolio-container">
 
                 @foreach ($tutorial as $item)
-                    <div class="col-lg-4 col-md-6 portfolio-item filter-organik">
+                    <div class="col-lg-4 col-md-6 portfolio-item filter-{{ $item->kategori }}">
                         <div class="portfolio-wrap">
                             <img src="{{ asset('storage/uploads/tutorial/' . $item->gambar) }}" class="img-fluid" alt="">
                             <a href="{{ '/tutorial/detail/' . $item->id }}">

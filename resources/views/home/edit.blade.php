@@ -4,22 +4,24 @@
     <section style="background-color: #eee;">
         <div class="container py-5">
 
-            <form class="row" action="{{ '/' . Auth::user()->role . '/update-profil' }}" method="post" enctype="multipart/form-data">
+            <form class="row" style="min-height: 270px" action="{{ '/' . Auth::user()->role . '/update-profil' }}"
+                method="post" enctype="multipart/form-data">
                 @csrf
                 {{-- PROFIL --}}
                 <div class="col-lg-4">
                     <div class="card mb-4">
                         <div class="card-body text-center">
-                            <img src="{{ asset('storage/uploads/profil/' . Auth::user()->foto) }}"
-                                alt="avatar" class="rounded-circle img-fluid" style="width: 150px;">
+                            <img class="rounded-circle img-fluid"
+                                src="{{ asset('storage/uploads/profil/' . Auth::user()->foto) }}" alt="avatar"
+                                style="width: 150px;">
                             <h5 class="my-3">{{ Auth::user()->nama }}</h5>
                             <div class="px-5 mb-3">
                                 {{-- <label for="formFile" class="form-label">Default file input example</label> --}}
-                                <input class="form-control" name="foto" type="file" id="formFile" label>
+                                <input class="form-control" id="formFile" name="foto" type="file" label>
                             </div>
                             {{-- <p class="text-muted mb-1">Member Silver</p> --}}
                             <div class="d-flex justify-content-center mb-2">
-                                <button type="submit" class="btn btn-primary">Simpan</button>
+                                <button class="btn btn-primary" type="submit">Simpan</button>
                             </div>
                         </div>
                     </div>
@@ -35,7 +37,7 @@
                                     <p class="mb-0">Full Name</p>
                                 </div>
                                 <div class="col-sm-9">
-                                    <input type="text" class="mb-0 form-control" name="nama"
+                                    <input class="mb-0 form-control" name="nama" type="text"
                                         value="{{ Auth::user()->nama }}" />
                                 </div>
                             </div>
@@ -45,7 +47,7 @@
                                     <p class="mb-0">Phone</p>
                                 </div>
                                 <div class="col-sm-9">
-                                    <input class="mb-0 form-control" type="text" name="no_telepon"
+                                    <input class="mb-0 form-control" name="no_telepon" type="text"
                                         value="{{ Auth::user()->no_telepon }}" />
                                 </div>
                             </div>
@@ -55,7 +57,7 @@
                                     <p class="mb-0">Address</p>
                                 </div>
                                 <div class="col-sm-9">
-                                    <input class="mb-0 form-control" type="text" name="alamat"
+                                    <input class="mb-0 form-control" name="alamat" type="text"
                                         value="{{ Auth::user()->alamat }}" />
                                 </div>
                             </div>

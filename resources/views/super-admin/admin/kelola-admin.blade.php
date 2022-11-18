@@ -23,12 +23,12 @@
                     </div>
                 </div>
                 @foreach ($admin as $key => $user)
-                    @include('home.super-admin.list-admin')
+                    @include('super-admin.admin.list-admin')
                 @endforeach
             </div>
         </div>
         <div class="tab-pane fade" id="pills-tambah-admin" role="tabpanel" aria-labelledby="pills-tambah-admin-tab">
-            @include('home.super-admin.tambah-admin')
+            @include('super-admin.admin.tambah-admin')
         </div>
     </div>
 </div>

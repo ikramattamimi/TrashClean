@@ -18,6 +18,7 @@ class CreateTutorialTable extends Migration
             $table->text('judul');
             $table->text('konten');
             $table->string('gambar');
+            $table->string('kategori');
             $table->timestamp('updated_at')->useCurrent()->useCurrentonUpdate();
             $table->timestamp('created_at')->useCurrent();
         });

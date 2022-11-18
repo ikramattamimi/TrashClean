@@ -36,15 +36,22 @@ Route::get('/', [HomeController::class, 'index']);
 // SUPER ADMIN
 Route::group(['prefix' => 'super_admin', 'middleware' => ['auth']], function () {
     Route::get('/dashboard', [HomeController::class, 'super_admin']);
-
     Route::get('/edit-profil', [UserController::class, 'edit']);
     Route::post('/update-profil', [UserController::class, 'update']);
 
+    Route::get('/landing-page', [SuperAdminController::class, 'data_landing_page']);
     Route::post('/update-konten', [SuperAdminController::class, 'update_konten']);
+
+    Route::get('/admin', [SuperAdminController::class, 'data_admin']);
+    Route::get('/admin/{admin}', [SuperAdminController::class, 'edit_admin']);
     Route::post('/store-admin', [SuperAdminController::class, 'store_admin']);
+    Route::post('/update-admin', [SuperAdminController::class, 'update_admin']);
+    
+    Route::get('/tutorial', [SuperAdminController::class, 'data_tutorial']);
+    Route::get('/tutorial/{tutorial}', [SuperAdminController::class, 'edit_tutorial']);
     Route::post('/store-tutorial', [SuperAdminController::class, 'store_tutorial']);
     Route::post('/update-tutorial', [SuperAdminController::class, 'update_tutorial']);
-    Route::get('/edit-tutorial/{tutorial}', [SuperAdminController::class, 'edit_tutorial']);
+
     
     // Route::post('/products/update', [ProductController::class, 'update']);
 });

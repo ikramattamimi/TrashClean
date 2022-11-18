@@ -15,7 +15,8 @@
                             <p class="mb-1">{{ $user->nama }}</p>
                         </div>
                         <div class="col-4 form-group">
-                            <button class="btn btn-primary w-100" type="submit">Edit</button>
+                            <a href="{{ '/super_admin/admin/' . $user->id }}" class="btn btn-primary w-100"
+                                >Edit</a>
                         </div>
                     </div>
                 </form>

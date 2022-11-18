@@ -1,12 +1,12 @@
 <!-- ======= Header ======= -->
-<header id="header_page" class="fixed-top ">
+<header class="fixed-top " id="header_page">
     <div class="container d-flex align-items-center justify-content-center">
         <!-- <h1 class="logo"><a href="/">TrashClean</a></h1> -->
         <!-- Uncomment below if you prefer to use an image logo -->
-        <a href="/" class="logo rounded"><img src={{ url('assets/img/logo.png') }} alt=""
-                class="img-fluid"></a>
+        <a class="logo rounded" href="/"><img class="img-fluid" src={{ url('assets/img/logo.png') }}
+                alt=""></a>
 
-        <nav id="navbar" class="navbar_page">
+        <nav class="navbar_page" id="navbar">
             <ul>
                 <li><a class="nav-link scrollto" href="/">Beranda</a></li>
                 <li><a class="nav-link scrollto {{ request()->is('tentang') ? 'active' : '' }}"
@@ -17,8 +17,8 @@
                 </li>
                 <li><a class="nav-link scrollto {{ request()->is('kontak') ? 'active' : '' }}" href="/kontak">Kontak</a>
                 </li>
-                <li class="dropdown"><a href="#"
-                        class="{{ request()->is('tutorial*') ? 'active' : '' }}"><span>Blog Informasi</span>
+                <li class="dropdown"><a class="{{ request()->is('tutorial*') ? 'active' : '' }}"
+                        href="#"><span>Blog Informasi</span>
                         <i class="bi bi-chevron-down"></i></a>
                     <ul>
                         <li><a href="#">Berita</a></li>
@@ -30,19 +30,23 @@
                         $role = Auth::user()->role . '*';
                         $name = explode(' ', trim(Auth::user()->nama));
                     @endphp
-                    <li class="dropdown"><a href="#"
-                            class="nav-link scrollto {{ request()->is($role) ? 'active' : '' }}"><span>{{ $name[0] }}</span>
+                    <li class="dropdown"><a class="nav-link scrollto {{ request()->is($role) ? 'active' : '' }}"
+                            href="#"><span>{{ $name[0] }}</span>
                             <i class="bi bi-person-circle text-white"></i> <i class="bi bi-chevron-down"></i></a>
                         <ul>
                             <li class="dropdown-menu-custom"><a class="nav-link scrollto"
                                     href="{{ '/' . Auth::user()->role . '/dashboard' }}">Dashboard</a></li>
+                            @if (Auth::user()->role == 'super_admin')
+                                <li class="dropdown-menu-custom"><a href="/super_admin/landing-page">Menu Super Admin</a></li>
+                            @endif
                             <li class="dropdown-menu-custom"><a href="/logout">Logout</a></li>
                         </ul>
                     </li>
                 @else
-                    <li class="dropdown"><a href="#"
-                        class="nav-link scrollto {{ request()->is('login') ? 'active' : '' }} {{ request()->is('register') ? 'active' : '' }}">
-                        <span>Masuk</span>
+                    <li class="dropdown"><a
+                            class="nav-link scrollto {{ request()->is('login') ? 'active' : '' }} {{ request()->is('register') ? 'active' : '' }}"
+                            href="#">
+                            <span>Masuk</span>
                             <i class="bi bi-chevron-down"></i></a>
                         <ul>
                             <li><a class="nav-link scrollto" href="/login">Login</a></li>
@@ -51,7 +55,7 @@
                     </li>
                 @endif
             </ul>
-            <i style="color: grey" class="bi bi-list mobile-nav-toggle"></i>
+            <i class="bi bi-list mobile-nav-toggle" style="color: grey"></i>
         </nav><!-- .navbar -->
 
     </div>

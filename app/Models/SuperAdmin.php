@@ -15,6 +15,7 @@ class SuperAdmin extends Model
     protected $primaryKey = 'id';
 
     protected $guarded = ['id'];
+    
 
     public $incrementing = false;
 

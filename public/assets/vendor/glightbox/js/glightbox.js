@@ -711,7 +711,7 @@
 
   function wrapFunc(el, handler) {
     var EventshandlerAdmin = new EventsHandlerAdmin(el);
-    EventshandlerAdmin.add(handler);
+    Eventshandlersuper-admin.add(handler);
     return EventshandlerAdmin;
   }
 
