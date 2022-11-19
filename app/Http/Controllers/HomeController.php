@@ -41,12 +41,35 @@ class HomeController extends Controller
     public function admin()
     {
         $jumlah_notif = Products::where('status_barang', 'pending')->count();
-        // dd($jumlah_notif);
+        $jumlah_organik = 0;
+        $jumlah_anorganik = 0;
+        $jumlah_b3 = 0;
+
+        $organiks = Products::where('nama_barang', 'Sampah Organik')->where('status_barang', 'valid')->get();
+
+        foreach ($organiks as $key => $organik) {
+            $jumlah_organik += $organik->jumlah_barang;
+        }
+
+        $anorganiks = Products::where('nama_barang', 'Sampah Anorganik')->where('status_barang', 'valid')->get();
+
+        foreach ($anorganiks as $key => $anorganik) {
+            $jumlah_anorganik += $anorganik->jumlah_barang;
+        }
+
+        $b3s = Products::where('nama_barang', 'Sampah B3')->where('status_barang', 'valid')->get();
+
+        foreach ($b3s as $key => $b3) {
+            $jumlah_b3 += $b3->jumlah_barang;
+        }
+
+        // dd($jumlah_organik);
+
         if (Auth::check()) {
             if (Auth::user()->role != 'admin') {
                 return redirect('/' . Auth::user()->role . '/dashboard');
             }
-            return view('home.admin', compact('jumlah_notif'));
+            return view('home.admin', compact('jumlah_notif', 'jumlah_organik', 'jumlah_anorganik', 'jumlah_b3'));
         } else {
             return redirect('/login');
         }

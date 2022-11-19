@@ -8,6 +8,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SuperAdminController;
+use App\Http\Controllers\SupplierController;
 
 /*
 |--------------------------------------------------------------------------
@@ -73,6 +74,10 @@ Route::group(['prefix' => 'supplier', 'middleware' => ['auth']], function () {
     Route::get('/edit-profil', [UserController::class, 'edit']);
     Route::post('/update-profil', [UserController::class, 'update']);
     Route::post('/products/store', [ProductController::class, 'store']);
+    
+    Route::get('/reward', [UserController::class, 'reward']);
+    Route::get('/reward/{reward}', [UserController::class, 'pilih_reward']);
+    Route::post('/reward/tukar/{tukar}', [UserController::class, 'tukar_reward']);
 });
 // Route::get('/supplier/dashboard', [HomeController::class, 'supplier'])->middleware('auth');
 Route::get('/buyer/dashboard', [HomeController::class, 'buyer'])->middleware('auth');

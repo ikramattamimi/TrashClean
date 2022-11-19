@@ -19,6 +19,7 @@ class DatabaseSeeder extends Seeder
             UsersSeeder::class,
             ProductsSeeder::class,
             SuperAdminSeeder::class,
+            RewardSeeder::class,
         ]);
         DB::statement("SET foreign_key_checks = 1");
     }

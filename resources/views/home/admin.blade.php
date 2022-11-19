@@ -43,17 +43,17 @@
                         <h5 class="mb-1" style="font-size: .99rem;">Organik</h5>
                         <div class="progress rounded" style="height: 20px;">
                             <div class="progress-bar" role="progressbar" aria-valuenow="80" aria-valuemin="0"
-                                aria-valuemax="100" style="width: 80%">800 KG</div>
+                                aria-valuemax="100" style="width: {{ $jumlah_organik }}%">{{ $jumlah_organik }} KG</div>
                         </div>
                         <h5 class="mt-4 mb-1" style="font-size: .99rem;">Anorganik</h5>
                         <div class="progress rounded" style="height: 20px;">
                             <div class="progress-bar" role="progressbar" aria-valuenow="72" aria-valuemin="0"
-                                aria-valuemax="100" style="width: 72%">720 KG</div>
+                                aria-valuemax="100" style="width: {{ $jumlah_anorganik *  10 }}%">{{ $jumlah_anorganik }} KG</div>
                         </div>
                         <h5 class="mt-4 mb-1" style="font-size: .99rem;">B3</h5>
                         <div class="progress rounded" style="height: 20px;">
                             <div class="progress-bar" role="progressbar" aria-valuenow="89" aria-valuemin="0"
-                                aria-valuemax="100" style="width: 89%">890 KG</div>
+                                aria-valuemax="100" style="width: {{ $jumlah_b3 * 10 }}%">{{ $jumlah_b3 }} KG</div>
                         </div>
                     </div>
                 </div>

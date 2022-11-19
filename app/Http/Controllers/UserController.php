@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Reward;
 use App\Models\User;
 use App\Models\SuperAdmin;
 use Illuminate\Auth\Events\Validated;
@@ -47,7 +48,7 @@ class UserController extends Controller
             'nama' => 'required|min:3|max:50',
             'no_telepon' => 'required|max:13',
             'alamat' => 'max:100',
-            'username' => ['required','min:8','max:100','unique:users,username'],
+            'username' => ['required', 'min:8', 'max:100', 'unique:users,username'],
             'password' => 'min:6|required_with:password_confirmation|same:password_confirmation',
             // 'password_confirmation' => 'min:6'
         ]);
@@ -139,4 +140,25 @@ class UserController extends Controller
         //
     }
 
+    public function reward()
+    {
+        $rewards = Reward::all();
+        $koin = Auth::user()->point;
+        return view('supplier.reward', compact('koin', 'rewards'));
+    }
+
+    public function pilih_reward($id)
+    {
+        $reward = Reward::find($id);
+        $koin = Auth::user()->point;
+        return view('supplier.pilih-reward', compact('koin', 'reward'));
+    }
+
+    public function tukar_reward(Request $request, $id)
+    {
+        dd($request);
+        $reward = Reward::find($id);
+        $koin = Auth::user()->point;
+        // return view('supplier.pilih-reward', compact('koin', 'reward'));
+    }
 }

@@ -3,11 +3,14 @@
 @section('role-based-content-left')
     <div class="card mb-4">
         <div class="card-body">
-            <div class="row">
-                <div class="col-sm-12">
+            <div class="row d-flex align-items-center">
+                <div class="col-8">
                     <h4><span class="text-primary font-italic">Koin</span>
                         Anda
                     </h4>
+                </div>
+                <div class="col-4">
+                    <a href="/supplier/reward" class="btn btn-primary">Tukar</a>
                 </div>
             </div>
             <hr>
@@ -46,7 +49,7 @@
                         <div class="col-lg-12 col-12 ">
                             <h5 class="mt-4 mb-1" style="font-size: .99rem;">Organik</h5>
                             <div class="progress rounded" style="height: 30px;">
-                                <div class="progress-bar" role="progressbar" aria-valuenow="{{ $organik }}"
+                                <div class="progress-bar bg-custom" role="progressbar" aria-valuenow="{{ $organik }}"
                                     aria-valuemin="0" aria-valuemax="5" style="width: {{ $organik * 2 }}0%">
                                     {{ $organik }} kg</div>
                                 <div class="progress-bar bg-secondary" role="progressbar"
@@ -61,7 +64,7 @@
                         <div class="col-lg-12 col-12">
                             <h5 class="mt-4 mb-1" style="font-size: .99rem;">Anorganik</h5>
                             <div class="progress rounded" style="height: 30px;">
-                                <div class="progress-bar" role="progressbar" aria-valuenow="{{ $anorganik }}"
+                                <div class="progress-bar bg-custom" role="progressbar" aria-valuenow="{{ $anorganik }}"
                                     aria-valuemin="0" aria-valuemax="10" style="width: {{ $anorganik * 10 }}0%">
                                     {{ $anorganik }} kg</div>
                                 <div class="progress-bar bg-secondary" role="progressbar"
@@ -77,7 +80,7 @@
                         <div class="col-lg-12 col-12">
                             <h5 class="mt-4 mb-1" style="font-size: .99rem;">B3</h5>
                             <div class="progress rounded" style="height: 30px;">
-                                <div class="progress-bar" role="progressbar" aria-valuenow="{{ $b3 }}"
+                                <div class="progress-bar bg-custom" role="progressbar" aria-valuenow="{{ $b3 }}"
                                     aria-valuemin="0" aria-valuemax="10" style="width: {{ $b3 * 10 }}0%">
                                     {{ $b3 }} kg</div>
 
