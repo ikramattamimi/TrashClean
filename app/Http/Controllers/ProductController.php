@@ -38,29 +38,30 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        if ($request->quant[1] != 0) {
+        // dd($request);
+        if ($request->organik != 0) {
             DB::table('products')->insert([
                 'id' => Uuid::uuid4(),
                 'nama_barang' => 'Sampah Organik',
-                'jumlah_barang' => $request->quant[1],
+                'jumlah_barang' => $request->organik,
                 'status_barang' => 'pending',
                 'user_id' => Auth::user()->id,
             ]);
         }
-        if ($request->quant[2] != 0) {
+        if ($request->anorganik != 0) {
             DB::table('products')->insert([
                 'id' => Uuid::uuid4(),
                 'nama_barang' => 'Sampah Anorganik',
-                'jumlah_barang' => $request->quant[2],
+                'jumlah_barang' => $request->anorganik,
                 'status_barang' => 'pending',
                 'user_id' => Auth::user()->id,
             ]);
         }
-        if ($request->quant[3] != 0) {
+        if ($request->B3 != 0) {
             DB::table('products')->insert([
                 'id' => Uuid::uuid4(),
                 'nama_barang' => 'Sampah B3',
-                'jumlah_barang' => $request->quant[3],
+                'jumlah_barang' => $request->B3,
                 'status_barang' => 'pending',
                 'user_id' => Auth::user()->id,
             ]);

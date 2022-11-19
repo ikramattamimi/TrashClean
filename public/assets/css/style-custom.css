@@ -80,3 +80,22 @@ input::-webkit-inner-spin-button {
 input[type=number] {
     -moz-appearance: textfield;
 }
+
+.btn:hover {
+    background: #fff;
+    color: #5846f9;
+}
+
+.btn {
+    background: linear-gradient(42deg, #3799DB 0%, #9883E5 100%);
+    display: inline-block;
+    padding: 10px 15px;
+    border-radius: 4px;
+    color: #fff;
+    transition: none;
+    font-size: 15px;
+    font-weight: 400;
+    font-family: "Roboto", sans-serif;
+    font-weight: 600;
+    transition: 0.3s;
+}

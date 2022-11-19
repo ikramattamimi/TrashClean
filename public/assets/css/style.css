@@ -1792,8 +1792,8 @@ section {
 }
 
 .trash_coin {
-    width: 6vh;
-    margin-bottom: 2.5vh;
+    width: 4vh;
+    /* margin-bottom: 2.5vh; */
 }
 
 .point_text {

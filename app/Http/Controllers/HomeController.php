@@ -40,11 +40,13 @@ class HomeController extends Controller
 
     public function admin()
     {
+        $jumlah_notif = Products::where('status_barang', 'pending')->count();
+        // dd($jumlah_notif);
         if (Auth::check()) {
             if (Auth::user()->role != 'admin') {
                 return redirect('/' . Auth::user()->role . '/dashboard');
             }
-            return view('home.admin');
+            return view('home.admin', compact('jumlah_notif'));
         } else {
             return redirect('/login');
         }
@@ -59,6 +61,7 @@ class HomeController extends Controller
             'organik_pending' => 0,
             'anorganik_pending' => 0,
             'b3_pending' => 0,
+            'koin' => Auth::user()->point,
         ];
 
         if (Auth::check()) {
@@ -117,7 +120,7 @@ class HomeController extends Controller
             $data['b3_pending'] += $value->jumlah_barang;
         }
 
-        $data['koin'] = ($data['organik'] + $data['anorganik'] + $data['b3']) * 1000;
+        // $data['koin'] = ($data['organik'] + $data['anorganik'] + $data['b3']) * 1000;
 
         return $data;
     }

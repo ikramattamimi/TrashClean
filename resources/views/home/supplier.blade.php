@@ -13,7 +13,7 @@
             <hr>
             <div class="row point_left align-items-center">
                 <div class="col">
-                    <img src="{{ url('assets/img/trashcoin.png') }}" class="trash_coin">
+                    <img class="trash_coin" src="{{ url('assets/img/trashcoin.png') }}">
                 </div>
                 <div class="col-5">
                     <b>
@@ -34,76 +34,64 @@
         <div class="col-lg">
             <div class="card mb-4 mb-md-0">
                 <div class="card-body pr-1">
-                    <form action="/supplier/products/store" method="POST">
 
-                        <div class="d-flex justify-content-between  align-items-center mb-3">
-                            <h4><span class="text-primary font-italic">Jumlah Sampah</span>
-                                Tervalidasi
-                            </h4>
-                            @include('home.modal-tambah')
-                        </div>
+                    <div class="d-flex justify-content-between  align-items-center mb-3">
+                        <h4><span class="text-primary font-italic">Jumlah Sampah</span>
+                            Tervalidasi
+                        </h4>
+                        @include('home.modal-tambah')
+                    </div>
 
-
-                        @csrf
-                        <div class="row d-flex align-items-end">
-                            <div class="col-lg-10 col-8 ">
-                                <h5 class="mt-4 mb-1" style="font-size: .99rem;">Organik</h5>
-                                <div class="progress rounded" style="height: 30px;">
-                                    <div class="progress-bar" role="progressbar" style="width: {{ $organik*2 }}0%"
-                                        aria-valuenow="{{ $organik }}" aria-valuemin="0" aria-valuemax="5">
-                                        {{ $organik }} kg</div>
-                                    <div class="progress-bar bg-secondary" role="progressbar"
-                                        style="width: {{ $organik_pending }}0%" aria-valuenow="{{ $organik_pending }}"
-                                        aria-valuemin="0" aria-valuemax="5">
-                                        {{ $organik_pending }} tsp</div>
-                                </div>
-                            </div>
-                            <div class="col-lg-2 col-4 ">
-                                @include('home.input-plus-minus', ['number' => '1'])
-
+                    <div class="row d-flex align-items-end">
+                        <div class="col-lg-12 col-12 ">
+                            <h5 class="mt-4 mb-1" style="font-size: .99rem;">Organik</h5>
+                            <div class="progress rounded" style="height: 30px;">
+                                <div class="progress-bar" role="progressbar" aria-valuenow="{{ $organik }}"
+                                    aria-valuemin="0" aria-valuemax="5" style="width: {{ $organik * 2 }}0%">
+                                    {{ $organik }} kg</div>
+                                <div class="progress-bar bg-secondary" role="progressbar"
+                                    aria-valuenow="{{ $organik_pending }}" aria-valuemin="0" aria-valuemax="5"
+                                    style="width: {{ $organik_pending }}0%">
+                                    {{ $organik_pending }} tsp</div>
                             </div>
                         </div>
+                    </div>
 
-                        <div class="row d-flex align-items-end">
-                            <div class="col-lg-10 col-8">
-                                <h5 class="mt-4 mb-1" style="font-size: .99rem;">Anorganik</h5>
-                                <div class="progress rounded" style="height: 30px;">
-                                    <div class="progress-bar" role="progressbar" style="width: {{ $anorganik*10 }}0%"
-                                        aria-valuenow="{{ $anorganik }}" aria-valuemin="0" aria-valuemax="10">
-                                        {{ $anorganik }} kg</div>
-                                    <div class="progress-bar bg-secondary" role="progressbar"
-                                        style="width: {{ $anorganik_pending }}0%" aria-valuenow="{{ $anorganik_pending }}"
-                                        aria-valuemin="0" aria-valuemax="10">
-                                        {{ $anorganik_pending }} tsp</div>
-                                </div>
-                            </div>
-                            <div class="col-lg-2 col-4">
-                                @include('home.input-plus-minus', ['number' => '2'])
+                    <div class="row d-flex align-items-end">
+                        <div class="col-lg-12 col-12">
+                            <h5 class="mt-4 mb-1" style="font-size: .99rem;">Anorganik</h5>
+                            <div class="progress rounded" style="height: 30px;">
+                                <div class="progress-bar" role="progressbar" aria-valuenow="{{ $anorganik }}"
+                                    aria-valuemin="0" aria-valuemax="10" style="width: {{ $anorganik * 10 }}0%">
+                                    {{ $anorganik }} kg</div>
+                                <div class="progress-bar bg-secondary" role="progressbar"
+                                    aria-valuenow="{{ $anorganik_pending }}" aria-valuemin="0" aria-valuemax="10"
+                                    style="width: {{ $anorganik_pending }}0%">
+                                    {{ $anorganik_pending }} tsp</div>
                             </div>
                         </div>
 
-                        <div class="row d-flex align-items-end">
-                            <div class="col-lg-10 col-8">
-                                <h5 class="mt-4 mb-1" style="font-size: .99rem;">B3</h5>
-                                <div class="progress rounded" style="height: 30px;">
-                                    <div class="progress-bar" role="progressbar" style="width: {{ $b3*10 }}0%"
-                                        aria-valuenow="{{ $b3 }}" aria-valuemin="0" aria-valuemax="10">
-                                        {{ $b3 }} kg</div>
+                    </div>
+
+                    <div class="row d-flex align-items-end">
+                        <div class="col-lg-12 col-12">
+                            <h5 class="mt-4 mb-1" style="font-size: .99rem;">B3</h5>
+                            <div class="progress rounded" style="height: 30px;">
+                                <div class="progress-bar" role="progressbar" aria-valuenow="{{ $b3 }}"
+                                    aria-valuemin="0" aria-valuemax="10" style="width: {{ $b3 * 10 }}0%">
+                                    {{ $b3 }} kg</div>
 
 
-                                    <div class="progress-bar bg-secondary" role="progressbar"
-                                        style="width: {{ $b3_pending }}0%" aria-valuenow="{{ $b3_pending }}"
-                                        aria-valuemin="0" aria-valuemax="10">
-                                        {{ $b3_pending }} tsp</div>
+                                <div class="progress-bar bg-secondary" role="progressbar"
+                                    aria-valuenow="{{ $b3_pending }}" aria-valuemin="0" aria-valuemax="10"
+                                    style="width: {{ $b3_pending }}0%">
+                                    {{ $b3_pending }} tsp</div>
 
-                                </div>
-                            </div>
-                            <div class="col-lg-2 col-4">
-                                @include('home.input-plus-minus', ['number' => '3'])
                             </div>
                         </div>
 
-                    </form>
+                    </div>
+
                 </div>
             </div>
         </div>

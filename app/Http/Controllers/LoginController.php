@@ -53,7 +53,7 @@ class LoginController extends Controller
                 return redirect('/buyer/dashboard');
             }
         } else {
-            $request->session()->flash('eror', 'Username atau Password Salah!');
+            $request->session()->flash('error', 'Username atau Password Salah!');
             return redirect('/login');
         }
     }

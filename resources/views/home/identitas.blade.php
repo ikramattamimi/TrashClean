@@ -2,7 +2,7 @@
 
 @section('main-content')
     <section style="background-color: #eee;">
-        <div class="container pb-5" data-aos="fade-up">
+        <div class="container pb-5">
 
             <div class="section-title">
                 <h2>Dashboard</h2>

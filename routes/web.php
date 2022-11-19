@@ -55,10 +55,13 @@ Route::group(['prefix' => 'super_admin', 'middleware' => ['auth']], function () 
     
     // Route::post('/products/update', [ProductController::class, 'update']);
 });
+
 // ADMIN
 Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
     Route::get('/dashboard', [HomeController::class, 'admin']);
     Route::get('/notification', [NotificationController::class, 'index']);
+    Route::get('/notification/{notification}', [NotificationController::class, 'show']);
+    Route::post('/notification/store', [NotificationController::class, 'store']);
     Route::get('/edit-profil', [UserController::class, 'edit']);
     Route::post('/update-profil', [UserController::class, 'update']);
     Route::post('/products/update', [ProductController::class, 'update']);
