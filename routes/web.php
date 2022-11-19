@@ -5,7 +5,7 @@ use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\NotificationController;
+use App\Http\Controllers\RewardHistoryController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SuperAdminController;
 use App\Http\Controllers\SupplierController;
@@ -59,26 +59,39 @@ Route::group(['prefix' => 'super_admin', 'middleware' => ['auth']], function () 
 
 // ADMIN
 Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
+    
+    // dashboard
     Route::get('/dashboard', [HomeController::class, 'admin']);
-    Route::get('/notification', [NotificationController::class, 'index']);
-    Route::get('/notification/{notification}', [NotificationController::class, 'show']);
-    Route::post('/notification/store', [NotificationController::class, 'store']);
+
+    // products
+    Route::get('/notification', [ProductController::class, 'index']);
+    Route::get('/notification/{notification}', [ProductController::class, 'edit']);
+    Route::post('/notification/update', [ProductController::class, 'update']);
+
+    // user profile
     Route::get('/edit-profil', [UserController::class, 'edit']);
     Route::post('/update-profil', [UserController::class, 'update']);
-    Route::post('/products/update', [ProductController::class, 'update']);
+
+    // rewards
+    Route::get('/reward', [RewardHistoryController::class, 'admin']);
+    Route::get('/reward/{reward}', [RewardHistoryController::class, 'admin_edit']);
+    Route::get('/reward/history/{reward}', [RewardHistoryController::class, 'admin_show']);
+    Route::post('/reward/update/{reward}', [RewardHistoryController::class, 'admin_update']);
 });
 
 // SUPPLIER
 Route::group(['prefix' => 'supplier', 'middleware' => ['auth']], function () {
     Route::get('/dashboard', [HomeController::class, 'supplier']);
+
     Route::get('/edit-profil', [UserController::class, 'edit']);
     Route::post('/update-profil', [UserController::class, 'update']);
+    
     Route::post('/products/store', [ProductController::class, 'store']);
     
-    Route::get('/reward', [UserController::class, 'reward']);
-    Route::get('/reward/{reward}', [UserController::class, 'pilih_reward']);
-    Route::get('/reward/history/{history}', [UserController::class, 'pilih_reward_history']);
-    Route::post('/reward/tukar/{tukar}', [UserController::class, 'tukar_reward']);
+    Route::get('/reward', [SupplierController::class, 'reward']);
+    Route::get('/reward/{reward}', [SupplierController::class, 'pilih_reward']);
+    Route::get('/reward/history/{history}', [SupplierController::class, 'pilih_reward_history']);
+    Route::post('/reward/tukar/{tukar}', [SupplierController::class, 'tukar_reward']);
 });
 // Route::get('/supplier/dashboard', [HomeController::class, 'supplier'])->middleware('auth');
 Route::get('/buyer/dashboard', [HomeController::class, 'buyer'])->middleware('auth');

@@ -38,7 +38,7 @@
                                     </div>
                                     <div class="d-flex justify-content-end col-10 my-3">
                                         <a href="{{ $left_button_href }}"
-                                            class="btn btn-outline-secondary btn-lg me-5">{{ $left_button }}</a>
+                                            class="btn btn-secondary btn-lg me-5">{{ $left_button }}</a>
                                         <button type="submit" class="btn btn-primary btn-lg ">{{ $right_button }}</button>
                                     </div>
                                 </div>

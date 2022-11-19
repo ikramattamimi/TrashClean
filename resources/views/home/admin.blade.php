@@ -17,7 +17,7 @@
             <hr>
             <div class="row">
                 <div class="col-10">
-                    <p class="mb-0">Daftar Pengirim Sampah</p>
+                    <a href="/admin/reward" class="mb-0">Request Reward</a>
                 </div>
                 <div class="col-2">
                     <a href="index"><i class="bi bi-people-fill"></i></a>
@@ -42,18 +42,18 @@
                     <div>
                         <h5 class="mb-1" style="font-size: .99rem;">Organik</h5>
                         <div class="progress rounded" style="height: 20px;">
-                            <div class="progress-bar" role="progressbar" aria-valuenow="80" aria-valuemin="0"
-                                aria-valuemax="100" style="width: {{ $jumlah_organik }}%">{{ $jumlah_organik }} KG</div>
+                            <div class="progress-bar bg-custom" role="progressbar" aria-valuemin="0"
+                                aria-valuemax="100" style="width: {{ $jumlah_organik }}0%">{{ $jumlah_organik }} KG</div>
                         </div>
                         <h5 class="mt-4 mb-1" style="font-size: .99rem;">Anorganik</h5>
                         <div class="progress rounded" style="height: 20px;">
-                            <div class="progress-bar" role="progressbar" aria-valuenow="72" aria-valuemin="0"
-                                aria-valuemax="100" style="width: {{ $jumlah_anorganik *  10 }}%">{{ $jumlah_anorganik }} KG</div>
+                            <div class="progress-bar bg-custom" role="progressbar" aria-valuemin="0"
+                                aria-valuemax="100" style="width: {{ $jumlah_anorganik *  50 }}%">{{ $jumlah_anorganik }} KG</div>
                         </div>
                         <h5 class="mt-4 mb-1" style="font-size: .99rem;">B3</h5>
                         <div class="progress rounded" style="height: 20px;">
-                            <div class="progress-bar" role="progressbar" aria-valuenow="89" aria-valuemin="0"
-                                aria-valuemax="100" style="width: {{ $jumlah_b3 * 10 }}%">{{ $jumlah_b3 }} KG</div>
+                            <div class="progress-bar bg-custom" role="progressbar" aria-valuemin="0"
+                                aria-valuemax="100" style="width: {{ $jumlah_b3 * 50 }}%">{{ $jumlah_b3 }} KG</div>
                         </div>
                     </div>
                 </div>

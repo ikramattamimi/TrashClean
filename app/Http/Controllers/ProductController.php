@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Products;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -17,7 +18,22 @@ class ProductController extends Controller
      */
     public function index()
     {
-        //
+        if (Auth::check()) {
+
+            $user = DB::select('select * from users');
+
+            foreach ($user as $key => $value) {
+                $notification[$key] =
+                    DB::select("select * from products where user_id = '$value->id' and status_barang = 'pending'");
+            }
+
+            if (Auth::user()->role != 'admin') {
+                return redirect('/' . Auth::user()->role . '/dashboard');
+            }
+            return view('notifikasi.index', compact('notification', 'user'));
+        } else {
+            return redirect('/login');
+        }
     }
 
     /**
@@ -78,7 +94,7 @@ class ProductController extends Controller
      */
     public function show($id)
     {
-        //
+
     }
 
     /**
@@ -89,20 +105,90 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-        //
+        if (Auth::check()) {
+
+            $user = User::find($id);
+            $products = DB::select("select * from products where user_id = '$user->id' and status_barang = 'pending'");
+            
+            if (Auth::user()->role != 'admin') {
+                return redirect('/' . Auth::user()->role . '/dashboard');
+            }
+
+            return view('notifikasi.show', compact('products', 'user'));
+        } else {
+            return redirect('/login');
+        }
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request)
     {
-        DB::select("update products set status_barang = 'valid' where user_id = '$request->user_id' and status_barang = 'pending' ");
-        return redirect('/admin/dashboard');
+        $validated = $this->validate($request, [
+            'Sampah_Organik' => 'required_with:organik|nullable',
+            'organik' => 'required_with:Sampah_Organik|nullable',
+            'Sampah_Anorganik' => 'required_with:anorganik|nullable',
+            'anorganik' => 'required_with:Sampah_Anorganik|nullable',
+            'Sampah_B3' => 'required_with:B3|nullable',
+            'B3' => 'required_with:Sampah_B3|nullable',
+            'trashcoin' => 'required',
+            'user_id' => 'required',
+        ]);
+
+        $products = Products::where('user_id', $validated['user_id'])->where('status_barang', 'pending')->get();
+        $user = User::find($validated['user_id']);
+
+        $user->update(['point' => $user->point + $validated['trashcoin']]);
+
+        foreach ($products as $key => $product) {
+            if ($product->nama_barang == 'Sampah Organik') {
+                if (isset($validated['Sampah_Organik'])) {
+                    $product->update([
+                        'jumlah_barang' => $validated['organik'],
+                        'status_barang' => $validated['Sampah_Organik']
+                    ]);
+                }
+                else {   
+                    $product->update([
+                        'status_barang' => 'not valid',
+                    ]);   
+                }
+                // dd($product);
+            } 
+            else if ($product->nama_barang == 'Sampah Anorganik') {
+                if (isset($validated['Sampah_Anorganik'])) {
+                    $product->update([
+                        'jumlah_barang' => $validated['anorganik'],
+                        'status_barang' => $validated['Sampah_Anorganik']
+                    ]);
+                }
+                else {   
+                    $product->update([
+                        'status_barang' => 'not valid',
+                    ]);   
+                }
+                // dd($product);
+                
+            } 
+            else if ($product->nama_barang == 'Sampah B3') {
+                if (isset($validated['Sampah_B3'])) {
+                    $product->update([
+                        'jumlah_barang' => $validated['B3'],
+                        'status_barang' => $validated['Sampah_B3']
+                    ]);
+                }
+                else {   
+                    $product->update([
+                        'status_barang' => $validated['not valid']
+                    ]);   
+                }
+                // dd($product);
+                
+            } 
+        }
+
+
+        $request->session()->flash('success', 'Request berhasil diupdate!');
+        return redirect('/admin/notification/');
+        // dd($products);
     }
 
     /**
