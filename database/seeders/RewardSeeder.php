@@ -40,7 +40,7 @@ class RewardSeeder extends Seeder
             'jumlah' => '20',
             'koin' => '2000',
             'gambar' => 'sunlight.png',
-            'kategori' => 'ewallet',
+            'kategori' => 'barang',
         ]);
     }
 }

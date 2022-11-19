@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Reward;
+use App\Models\RewardHistory;
 use App\Models\User;
 use App\Models\SuperAdmin;
 use Illuminate\Auth\Events\Validated;
@@ -144,7 +145,10 @@ class UserController extends Controller
     {
         $rewards = Reward::all();
         $koin = Auth::user()->point;
-        return view('supplier.reward', compact('koin', 'rewards'));
+        $history_rewards = RewardHistory::where('user_id', Auth::user()->id)->get();
+
+        // dd($history_rewards);
+        return view('supplier.reward', compact('koin', 'rewards', 'history_rewards'));
     }
 
     public function pilih_reward($id)
@@ -154,11 +158,64 @@ class UserController extends Controller
         return view('supplier.pilih-reward', compact('koin', 'reward'));
     }
 
+    public function pilih_reward_history($id)
+    {
+        $reward = RewardHistory::find($id);
+        $koin = Auth::user()->point;
+        return view('supplier.pilih-reward-history', compact('koin', 'reward'));
+    }
+
     public function tukar_reward(Request $request, $id)
     {
-        dd($request);
-        $reward = Reward::find($id);
-        $koin = Auth::user()->point;
-        // return view('supplier.pilih-reward', compact('koin', 'reward'));
+        // dd($request);
+        $reward = Reward::find($request->reward_id);
+
+        if ($reward->kategori == 'ewallet') {
+            $validation = $this->validate($request, [
+                'jumlah' => 'numeric|min:1000'
+            ]);
+        } else {
+            $validation = $this->validate($request, [
+                'jumlah' => 'numeric|min:1'
+            ]);
+        }
+
+
+        if ($reward->kategori != 'ewallet') {
+            $reward->update([
+                'jumlah' => $reward->jumlah - $request->jumlah,
+            ]);
+        }
+
+        Auth::user()->update([
+            'point' => Auth::user()->point - $request->jumlah_tc,
+        ]);
+
+        if ($reward->kategori != 'ewallet') {
+            $query = RewardHistory::create([
+                'jumlah' => $request->jumlah,
+                'status' => 'pending',
+                'reward_id' => $request->reward_id,
+                'user_id' => Auth::user()->id,
+            ]);
+        } else {
+            $query = RewardHistory::create([
+                'jumlah' => $request->jumlah,
+                'status' => 'pending',
+                'no_ewallet' => $request->no_telepon,
+                'reward_id' => $request->reward_id,
+                'user_id' => Auth::user()->id,
+            ]);
+
+        }
+
+        // dd($request);
+
+
+        if ($query) {
+            return redirect('/supplier/reward');
+        } else {
+            return redirect()->back();
+        }
     }
 }

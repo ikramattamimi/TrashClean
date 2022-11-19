@@ -11,4 +11,9 @@ class Reward extends Model
 
     protected $guarded = ['id'];
     protected $table = 'reward';
+
+    public function reward_history(){
+        return $this->hasMany(RewardHistory::class);
+    }
+
 }

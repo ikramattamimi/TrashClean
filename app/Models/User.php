@@ -48,4 +48,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Products::class);
     }
+
+    public function reward_history()
+    {
+        return $this->hasMany(RewardHistory::class);
+    }
 }

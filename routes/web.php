@@ -77,6 +77,7 @@ Route::group(['prefix' => 'supplier', 'middleware' => ['auth']], function () {
     
     Route::get('/reward', [UserController::class, 'reward']);
     Route::get('/reward/{reward}', [UserController::class, 'pilih_reward']);
+    Route::get('/reward/history/{history}', [UserController::class, 'pilih_reward_history']);
     Route::post('/reward/tukar/{tukar}', [UserController::class, 'tukar_reward']);
 });
 // Route::get('/supplier/dashboard', [HomeController::class, 'supplier'])->middleware('auth');

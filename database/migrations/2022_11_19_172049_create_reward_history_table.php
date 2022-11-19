@@ -15,7 +15,13 @@ class CreateRewardHistoryTable extends Migration
     {
         Schema::create('reward_history', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->integer('jumlah');
+            $table->string('status');
+            $table->string('no_ewallet')->nullable();
+            $table->foreignId('reward_id');
+            $table->foreignUuid('user_id')->references('id')->on('users');
+            $table->timestamp('updated_at')->useCurrent()->useCurrentonUpdate();
+            $table->timestamp('created_at')->useCurrent();
         });
     }
 

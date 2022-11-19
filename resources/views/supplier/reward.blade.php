@@ -15,13 +15,19 @@
                     </div>
                     <div class="card-body pr-1">
 
-                        <div class="row d-flex justify-content-center mb-3 ">
+                        <div class="row d-flex justify-content-center mt-3 ">
                             @foreach ($rewards as $reward)
                                 @include('supplier.list-reward')
                             @endforeach
                         </div>
                     </div>
                 </div>
+            </div>
+
+            @include('supplier.history-reward')
+
+            <div class="row justify-content-center">
+                <a class="btn btn-secondary my-3 col-4 col-md-2" href="/supplier/dashboard">Kembali</a>
             </div>
         </div>
     </section>
