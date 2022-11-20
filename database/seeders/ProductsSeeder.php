@@ -20,22 +20,18 @@ class ProductsSeeder extends Seeder
             'nama_barang' => 'Sampah Organik',
             'jumlah_barang' => '3',
             'status_barang' => 'valid',
+            'trashcoin_didapat' => '0',
+            'trashcoin_sekarang' => '7000',
             'user_id' => '02b8ca90-5d89-11ed-9b6a-0242ac120003',
         ]);
-
-        // DB::table('products')->insert([
-        //     'id' => '02b8ca90-5d89-11ed-9b6a-0242ac120jlq',
-        //     'nama_barang' => 'Sampah Organik',
-        //     'jumlah_barang' => '2',
-        //     'status_barang' => 'valid',
-        //     'user_id' => '02b8ca90-5d89-11ed-9b6a-0242ac120003',
-        // ]);
 
         DB::table('products')->insert([
             'id' => '02b8ca90-5d89-11ed-9b6a-0242ac120jlw',
             'nama_barang' => 'Sampah Anorganik',
             'jumlah_barang' => '0.5',
             'status_barang' => 'valid',
+            'trashcoin_didapat' => '0',
+            'trashcoin_sekarang' => '7000',
             'user_id' => '02b8ca90-5d89-11ed-9b6a-0242ac120003',
         ]);
 
@@ -44,16 +40,10 @@ class ProductsSeeder extends Seeder
             'nama_barang' => 'Sampah B3',
             'jumlah_barang' => '0.1',
             'status_barang' => 'valid',
+            'trashcoin_didapat' => '0',
+            'trashcoin_sekarang' => '7000',
             'user_id' => '02b8ca90-5d89-11ed-9b6a-0242ac120003',
         ]);
-
-        // DB::table('products')->insert([
-        //     'id' => '02b8ca90-5d89-11ed-9b6a-0242ac120jlr',
-        //     'nama_barang' => 'Sampah B3',
-        //     'jumlah_barang' => '2',
-        //     'status_barang' => 'valid',
-        //     'user_id' => '02b8ca90-5d89-11ed-9b6a-0242ac120003',
-        // ]);
 
     }
 }

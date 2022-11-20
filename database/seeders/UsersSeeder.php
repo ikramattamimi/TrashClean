@@ -57,7 +57,7 @@ class UsersSeeder extends Seeder
             'alamat'        => 'Kec. Jejeruk',
             'foto'          => 'man.jpg',
             'username'      => 'supplier',
-            'point'          => '13000',
+            'point'          => '7000',
             'password'      =>  Hash::make('trashclean.id'),
         ]);
 

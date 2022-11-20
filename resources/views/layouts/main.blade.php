@@ -22,6 +22,7 @@
         href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
         rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.datatables.net/1.13.1/css/dataTables.bootstrap5.min.css" rel="stylesheet">
     <!-- Vendor CSS Files -->
     <link href={{ url('assets/vendor/aos/aos.css') }} rel="stylesheet">
     <link href={{ url('assets/vendor/bootstrap/css/bootstrap.min.css') }} rel="stylesheet">
@@ -51,7 +52,7 @@
 
     @include('layouts.header')
 
-    <main id="main">
+    <main id="main" style="min-height:90vh; background-color: #eee;">
 
         @yield('main-content')
 

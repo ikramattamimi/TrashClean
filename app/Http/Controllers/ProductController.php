@@ -24,7 +24,7 @@ class ProductController extends Controller
 
             foreach ($user as $key => $value) {
                 $notification[$key] =
-                    DB::select("select * from products where user_id = '$value->id' and status_barang = 'pending'");
+                    DB::select("select * from products where user_id = '$value->id' and (status_barang = 'menunggu diantarkan' or status_barang = 'menunggu dijemput')");
             }
 
             foreach ($user as $key => $value) {
@@ -65,7 +65,9 @@ class ProductController extends Controller
                 'id' => Uuid::uuid4(),
                 'nama_barang' => 'Sampah Organik',
                 'jumlah_barang' => $request->organik,
-                'status_barang' => 'pending',
+                'status_barang' => $request->status,
+                'trashcoin_didapat' => '0',
+                'trashcoin_sekarang' => Auth::user()->point,
                 'user_id' => Auth::user()->id,
             ]);
         }
@@ -74,7 +76,9 @@ class ProductController extends Controller
                 'id' => Uuid::uuid4(),
                 'nama_barang' => 'Sampah Anorganik',
                 'jumlah_barang' => $request->anorganik,
-                'status_barang' => 'pending',
+                'status_barang' => $request->status,
+                'trashcoin_didapat' => '0',
+                'trashcoin_sekarang' => Auth::user()->point,
                 'user_id' => Auth::user()->id,
             ]);
         }
@@ -83,7 +87,9 @@ class ProductController extends Controller
                 'id' => Uuid::uuid4(),
                 'nama_barang' => 'Sampah B3',
                 'jumlah_barang' => $request->B3,
-                'status_barang' => 'pending',
+                'status_barang' => $request->status,
+                'trashcoin_didapat' => '0',
+                'trashcoin_sekarang' => Auth::user()->point,
                 'user_id' => Auth::user()->id,
             ]);
         }
@@ -102,8 +108,8 @@ class ProductController extends Controller
         if (Auth::check()) {
 
             $user = User::find($id);
-            $products_history = DB::select("select * from products where user_id = '$user->id' and status_barang = 'valid'");
-            
+            $products_history = DB::select("select * from products where user_id = '$user->id' and status_barang = 'valid' order by created_at");
+
             if (Auth::user()->role != 'admin') {
                 return redirect('/' . Auth::user()->role . '/dashboard');
             }
@@ -125,8 +131,8 @@ class ProductController extends Controller
         if (Auth::check()) {
 
             $user = User::find($id);
-            $products = DB::select("select * from products where user_id = '$user->id' and status_barang = 'pending'");
-            
+            $products = DB::select("select * from products where user_id = '$user->id' and (status_barang = 'menunggu diantar' or status_barang = 'menunggu dijemput')");
+
             if (Auth::user()->role != 'admin') {
                 return redirect('/' . Auth::user()->role . '/dashboard');
             }
@@ -150,7 +156,7 @@ class ProductController extends Controller
             'user_id' => 'required',
         ]);
 
-        $products = Products::where('user_id', $validated['user_id'])->where('status_barang', 'pending')->get();
+        $products = Products::where('user_id', $validated['user_id'])->whereIn('status_barang', ['menunggu diantar','menunggu dijemput'])->get();
         $user = User::find($validated['user_id']);
 
         $user->update(['point' => $user->point + $validated['trashcoin']]);
@@ -160,46 +166,47 @@ class ProductController extends Controller
                 if (isset($validated['Sampah_Organik'])) {
                     $product->update([
                         'jumlah_barang' => $validated['organik'],
-                        'status_barang' => $validated['Sampah_Organik']
+                        'status_barang' => $validated['Sampah_Organik'],
+                        'trashcoin_didapat' => $validated['trashcoin'],
+                        'trashcoin_sekarang' => $user->point,
                     ]);
-                }
-                else {   
+                } else {
                     $product->update([
                         'status_barang' => 'not valid',
-                    ]);   
+                    ]);
                 }
                 // dd($product);
-            } 
-            else if ($product->nama_barang == 'Sampah Anorganik') {
+            } else if ($product->nama_barang == 'Sampah Anorganik') {
                 if (isset($validated['Sampah_Anorganik'])) {
                     $product->update([
                         'jumlah_barang' => $validated['anorganik'],
-                        'status_barang' => $validated['Sampah_Anorganik']
+                        'status_barang' => $validated['Sampah_Anorganik'],
+                        'trashcoin_didapat' => $validated['trashcoin'],
+                        'trashcoin_sekarang' => $user->point,
                     ]);
-                }
-                else {   
+                } else {
                     $product->update([
                         'status_barang' => 'not valid',
-                    ]);   
+                    ]);
                 }
                 // dd($product);
-                
-            } 
-            else if ($product->nama_barang == 'Sampah B3') {
+
+            } else if ($product->nama_barang == 'Sampah B3') {
                 if (isset($validated['Sampah_B3'])) {
                     $product->update([
                         'jumlah_barang' => $validated['B3'],
-                        'status_barang' => $validated['Sampah_B3']
+                        'status_barang' => $validated['Sampah_B3'],
+                        'trashcoin_didapat' => $validated['trashcoin'],
+                        'trashcoin_sekarang' => $user->point,
                     ]);
-                }
-                else {   
+                } else {
                     $product->update([
                         'status_barang' => $validated['not valid']
-                    ]);   
+                    ]);
                 }
                 // dd($product);
-                
-            } 
+
+            }
         }
 
 

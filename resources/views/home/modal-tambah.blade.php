@@ -68,6 +68,7 @@
                     </div>
 
                     <div class="modal-footer">
+                        <input type="text" value="menunggu diantarkan" name="status" hidden>
                         <button class="btn btn-secondary" data-bs-dismiss="modal" type="button">Batal</button>
                         <button class="btn btn-primary" type="submit">Konfirmasi</button>
                     </div>
@@ -121,6 +122,7 @@
                     </div>
     
                     <div class="modal-footer">
+                        <input type="text" value="menunggu dijemput" name="status" hidden>
                         <button class="btn btn-secondary" data-bs-dismiss="modal" type="button">Batal</button>
                         <button class="btn btn-primary" type="submit">Konfirmasi</button>
                     </div>

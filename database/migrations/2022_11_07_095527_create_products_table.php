@@ -18,8 +18,11 @@ class CreateProductsTable extends Migration
             $table->string('nama_barang');
             $table->float('jumlah_barang');
             $table->string('status_barang');
+            $table->string('trashcoin_didapat');
+            $table->string('trashcoin_sekarang');
             $table->foreignUuid('user_id')->references('id')->on('users');
-            $table->timestamps();
+            $table->timestamp('updated_at')->useCurrent()->useCurrentonUpdate();
+            $table->timestamp('created_at')->useCurrent();
         });
     }
 
