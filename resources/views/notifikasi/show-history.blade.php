@@ -5,7 +5,7 @@
         <div class="container pb-5">
 
             <div class="section-title">
-                <h2>Request User</h2>
+                <h2>History User</h2>
             </div>
 
             <div class="row justify-content-center">
@@ -57,19 +57,13 @@
                         <div class="col-12">
                             <div class="card mb-4">
                                 <div class="card-header">
-                                    <h5>Validasi Request</h5>
+                                    <h5>Products</h5>
                                 </div>
                                 <div class="card-body">
                                     <div class="row flex-column-reverse">
-                                        @foreach ($products as $product)
+                                        @foreach ($products_history as $product)
                                             <div class="col-sm-9">
-                                                <div class="form-check">
-                                                    <input class="form-check-input" id="{{ $product->nama_barang }}"
-                                                        name="{{ $product->nama_barang }}" type="checkbox" value="valid">
-                                                    <label class="form-check-label" for="{{ $product->nama_barang }}">
-                                                        {{ $product->nama_barang }}
-                                                    </label>
-                                                </div>
+                                                {{ $product->nama_barang }}
                                             </div>
                                         @endforeach
                                     </div>

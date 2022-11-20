@@ -66,6 +66,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
     // products
     Route::get('/notification', [ProductController::class, 'index']);
     Route::get('/notification/{notification}', [ProductController::class, 'edit']);
+    Route::get('/notification/history/{notification}', [ProductController::class, 'show']);
     Route::post('/notification/update', [ProductController::class, 'update']);
 
     // user profile

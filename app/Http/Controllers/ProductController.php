@@ -27,10 +27,15 @@ class ProductController extends Controller
                     DB::select("select * from products where user_id = '$value->id' and status_barang = 'pending'");
             }
 
+            foreach ($user as $key => $value) {
+                $notification_history[$key] =
+                    DB::select("select * from products where user_id = '$value->id' and status_barang = 'valid'");
+            }
+
             if (Auth::user()->role != 'admin') {
                 return redirect('/' . Auth::user()->role . '/dashboard');
             }
-            return view('notifikasi.index', compact('notification', 'user'));
+            return view('notifikasi.index', compact('notification', 'notification_history', 'user'));
         } else {
             return redirect('/login');
         }
@@ -94,7 +99,19 @@ class ProductController extends Controller
      */
     public function show($id)
     {
+        if (Auth::check()) {
 
+            $user = User::find($id);
+            $products_history = DB::select("select * from products where user_id = '$user->id' and status_barang = 'valid'");
+            
+            if (Auth::user()->role != 'admin') {
+                return redirect('/' . Auth::user()->role . '/dashboard');
+            }
+
+            return view('notifikasi.show-history', compact('products_history', 'user'));
+        } else {
+            return redirect('/login');
+        }
     }
 
     /**

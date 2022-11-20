@@ -29,7 +29,7 @@
                 <label class="mb-2 ms-1">TrashCoin</label>
                 <div class="input-group mb-3">
                     <img class="imput-group-text trash_coin me-2" src="{{ url('assets/img/trashcoin.png') }}">
-                    <input class="form-control" name="trashcoin" type="text" placeholder="2000" required/>
+                    <input class="form-control" name="trashcoin" type="text" placeholder="2000" required />
                     <span class="input-group-text">TC</span>
                 </div>
             </div>
@@ -37,7 +37,9 @@
     </div>
 </div>
 <div class="d-flex justify-content-end my-3">
-    <button class="btn" data-bs-toggle="modal" data-bs-target="#modal-konfirmasi" type="button">
+    <a class="btn btn-secondary me-4" href="/admin/notification">
+        Kembali</a>
+    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modal-konfirmasi" type="button">
         Simpan</button>
 </div>
 
