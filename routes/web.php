@@ -9,6 +9,7 @@ use App\Http\Controllers\RewardHistoryController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SuperAdminController;
 use App\Http\Controllers\SupplierController;
+use App\Http\Controllers\CkeditorController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,6 +21,8 @@ use App\Http\Controllers\SupplierController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+Route::post('ckeditor/image_upload', [CkeditorController::class, 'upload'])->name('upload-ckeditor');
 
 // LOGIN LOGOUT
 Route::get('/login', [LoginController::class, 'index'])->name('login');
@@ -52,7 +55,11 @@ Route::group(['prefix' => 'super_admin', 'middleware' => ['auth']], function () 
     Route::get('/tutorial/{tutorial}', [SuperAdminController::class, 'edit_tutorial']);
     Route::post('/store-tutorial', [SuperAdminController::class, 'store_tutorial']);
     Route::post('/update-tutorial', [SuperAdminController::class, 'update_tutorial']);
-
+    
+    Route::get('/reward', [SuperAdminController::class, 'data_reward']);
+    Route::get('/reward/{reward}', [SuperAdminController::class, 'edit_reward']);
+    Route::post('/store-reward', [SuperAdminController::class, 'store_reward']);
+    Route::post('/update-reward', [SuperAdminController::class, 'update_reward']);
     
     // Route::post('/products/update', [ProductController::class, 'update']);
 });

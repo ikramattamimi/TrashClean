@@ -1,7 +1,7 @@
 @php
-    $title = 'Tambah Tutorial';
-    $form_action = '/super_admin/store-tutorial';
-    $right_button = 'Tambah';
+    $title = 'Edit Reward';
+    $form_action = '/super_admin/update-reward';
+    $right_button = 'Edit';
 @endphp
 
 <div class="row d-flex justify-content-center">
@@ -27,26 +27,35 @@
                 </div>
             @endif
 
+            <input class="form-control" name="id" type="text" value="{{ $reward->id }}"
+                placeholder="Judul Reward" required hidden />
+
+            <div class="col-3 mb-4 text-center">
+                <img class="img-fluid" src="{{ asset('storage/uploads/reward/' . $reward->gambar) }}" alt="Tutorial"
+                    style="width: 100px; border-radius: 10px;">
+            </div>
+
             <div class="col-10 col-xl-10">
                 <div class="d-flex flex-row align-items-center mb-4">
                     <div class="form-floating flex-fill mb-0">
-                        <input class="form-control" name="judul" type="text" placeholder="Judul Tutorial"
-                            required />
-                        <label>Judul</label>
+                        <input class="form-control" name="nama" type="text" value="{{ $reward->nama }}"
+                            placeholder="Shopeepay" required />
+                        <label>Nama</label>
                     </div>
                 </div>
                 <div class="d-flex flex-row align-items-center mb-4">
                     <div class="form-floating flex-fill mb-0">
-                        <input class="form-control" name="gambar" type="file" required />
+                        <input class="form-control" name="gambar" type="file" />
                         <label>Gambar</label>
                     </div>
                 </div>
                 <div class="d-flex flex-row align-items-center mb-4">
                     <div class="form-floating flex-fill mb-0">
                         <select class="form-select" id="" name="kategori">
+                            <option>{{ $reward->kategori }}</option>
                             <option value="">Pilih Kategori</option>
-                            <option>Organik</option>
-                            <option>Anorganik</option>
+                            <option value="ewallet">Ewallet</option>
+                            <option value="barang">Barang</option>
                             <option>Lainnya</option>
                         </select>
                         <label>Kategori</label>
@@ -54,13 +63,16 @@
                 </div>
                 <div class="d-flex flex-row align-items-center mb-4">
                     <div class="form-floating flex-fill mb-0">
-                        <textarea class="form-control" id="konten-tutorial" name="konten" type="text" placeholder="Konten" required></textarea>
-                        <script>
-                            CKEDITOR.replace('konten-tutorial', {
-                                filebrowserUploadUrl: "{{ route('upload-ckeditor', ['_token' => csrf_token()]) }}",
-                                filebrowserUploadMethod: 'form'
-                            });
-                        </script>
+                        <input class="form-control" name="jumlah" type="number" value="{{ $reward->jumlah }}"
+                            placeholder="1" required />
+                        <label>Stok</label>
+                    </div>
+                </div>
+                <div class="d-flex flex-row align-items-center mb-4">
+                    <div class="form-floating flex-fill mb-0">
+                        <input class="form-control" name="koin" type="number" value="{{ $reward->koin }}"
+                            placeholder="1" required />
+                        <label>Harga TrashCoin</label>
                     </div>
                 </div>
             </div>

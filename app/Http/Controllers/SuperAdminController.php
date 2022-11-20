@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Reward;
 use App\Models\SuperAdmin;
 use App\Models\Tutorial;
 use App\Models\User;
@@ -95,7 +96,7 @@ class SuperAdminController extends Controller
 
         if (isset($validated['gambar'])) {
             $name = $validated['gambar']->getClientOriginalName();
-            $validated['gambar']->storeAs('uploads/tutorial', $name, 'public');
+            $validated['gambar']->storeAs('uploads/tutorial/', $name, 'public');
             $validated['gambar'] = $name;
             $input = $validated;
         }
@@ -106,7 +107,7 @@ class SuperAdminController extends Controller
             'judul'     => $validated['judul'],
             'konten'    => $validated['konten'],
             'kategori'    => $validated['kategori'],
-            'gambar'    => $validated['gambar'],
+            'gambar' => $validated['gambar'],
         ]);
 
         if ($query) {
@@ -226,13 +227,13 @@ class SuperAdminController extends Controller
             'judul' => 'required|min:3|max:100',
             'konten' => 'required',
             'kategori' => 'required',
-            'gambar' => 'sometimes',
+            'gambar' => 'sometimes|max:2048|mimes:png,jpg,jpeg',
         ]);
 
 
         if (isset($validated['gambar'])) {
             $name = $validated['gambar']->getClientOriginalName();
-            $validated['gambar']->storeAs('uploads/tutorial', $name, 'public');
+            $validated['gambar']->storeAs('uploads/tutorial/', $name, 'public');
             $validated['gambar'] = $name;
             $input = $validated;
 
@@ -250,5 +251,109 @@ class SuperAdminController extends Controller
 
         }
         return redirect()->back();
+    }
+    public function data_reward()
+    {
+        if (Auth::check()) {
+
+            $reward = Reward::all();
+
+            if (Auth::user()->role != 'super_admin') {
+                return redirect('/' . Auth::user()->role . '/dashboard');
+            }
+            return view('super-admin.reward.index', compact('reward'));
+        } else {
+            return redirect('/login');
+        }
+    }
+
+
+    public function edit_reward($id)
+    {
+        // dd($id);
+        if (Auth::check()) {
+
+            $reward = reward::where('id', $id)->first();
+
+            // dd($reward[0]->judul);
+
+            if (Auth::user()->role != 'super_admin') {
+                return redirect('/' . Auth::user()->role . '/dashboard');
+            }
+            return view('super-admin.reward.edit', compact('reward'));
+        } else {
+            return redirect('/login');
+        }
+    }
+
+    public function update_reward(Request $request)
+    {
+        $reward = reward::find($request->id);
+
+        $validated = $this->validate($request, [
+            'nama' => 'required|min:3|max:100',
+            'jumlah' => 'required',
+            'koin' => 'required',
+            'kategori' => 'required',
+            'gambar' => 'sometimes|max:2048|mimes:png,jpg,jpeg',
+        ]);
+
+
+        if (isset($validated['gambar'])) {
+            $name = $validated['gambar']->getClientOriginalName();
+            $validated['gambar']->storeAs('uploads/reward', $name, 'public');
+            $validated['gambar'] = $name;
+            $input = $validated;
+
+        }
+
+        // dd($validated);
+        $query = $reward->update($validated);
+
+        // dd($query);
+        if ($query) {
+            $request->session()->flash('success', 'Reward berhasil diedit!');
+        }
+        else{
+            $request->session()->flash('error', 'Terdapat kesalahan pada query!');
+
+        }
+        return redirect()->back();
+    }
+
+    public function store_reward(Request $request)
+    {
+        // dd($request);
+        $validation = Validator::make($request->all(), [
+            'nama' => 'required|min:3|max:100',
+            'jumlah' => 'required',
+            'koin' => 'required',
+            'kategori' => 'required',
+            'gambar' => 'sometimes|max:2048|mimes:png,jpg,jpeg',
+        ]);
+
+        $validated = $validation->validated();
+
+        if (isset($validated['gambar'])) {
+            $name = $validated['gambar']->getClientOriginalName();
+            $validated['gambar']->storeAs('uploads/reward', $name, 'public');
+            $validated['gambar'] = $name;
+            $input = $validated;
+        }
+
+        // dd($validated);
+
+        $query = DB::table('reward')->insert([
+            'nama'     => $validated['nama'],
+            'jumlah'    => $validated['jumlah'],
+            'koin'    => $validated['koin'],
+            'kategori'    => $validated['kategori'],
+            'gambar' => $validated['gambar'],
+        ]);
+
+        if ($query) {
+            $request->session()->flash('success', 'Reward berhasil ditambahkan!');
+            return redirect()->back();
+        }
     }
 }

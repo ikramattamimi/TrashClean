@@ -1,13 +1,13 @@
 @php
-    $title = 'Tambah Tutorial';
-    $form_action = '/super_admin/store-tutorial';
+    $title = 'Tambah Reward';
+    $form_action = '/super_admin/store-reward';
     $right_button = 'Tambah';
 @endphp
 
 <div class="row d-flex justify-content-center">
 
 
-    <form class="mx-1 mx-md-4" action="{{ $form_action }}" method="post" enctype="multipart/form-data">
+    <form action="{{ $form_action }}" method="post" class="mx-1 mx-md-4" enctype="multipart/form-data">
         @csrf
         <p class="text-center h4 fw-bold mb-5 mx-1 mx-md-4 mt-4">{{ $title }}</p>
         <div class="row justify-content-center d-flex align-items-center">
@@ -17,36 +17,35 @@
                     @foreach ($errors->all() as $error)
                         <li>{{ $error }}</li>
                     @endforeach
-                    <button class="btn close" data-dismiss="alert" type="button">×</button>
+                    <button type="button" class="btn close" data-dismiss="alert">×</button>
                 </div>
             @endif
             @if ($message = Session::get('success'))
                 <div class="alert alert-success alert-block d-flex justify-content-between align-items-center col-10">
                     <strong>{{ $message }}</strong>
-                    <button class="btn close" data-dismiss="alert" type="button">×</button>
+                    <button type="button" class="btn close" data-dismiss="alert">×</button>
                 </div>
             @endif
 
             <div class="col-10 col-xl-10">
                 <div class="d-flex flex-row align-items-center mb-4">
                     <div class="form-floating flex-fill mb-0">
-                        <input class="form-control" name="judul" type="text" placeholder="Judul Tutorial"
-                            required />
-                        <label>Judul</label>
+                        <input type="text" class="form-control" name="nama" placeholder="Nama Reward" required />
+                        <label>Nama</label>
                     </div>
                 </div>
                 <div class="d-flex flex-row align-items-center mb-4">
                     <div class="form-floating flex-fill mb-0">
-                        <input class="form-control" name="gambar" type="file" required />
+                        <input type="file" class="form-control" name="gambar" required />
                         <label>Gambar</label>
                     </div>
                 </div>
                 <div class="d-flex flex-row align-items-center mb-4">
                     <div class="form-floating flex-fill mb-0">
-                        <select class="form-select" id="" name="kategori">
+                        <select name="kategori" id="" class="form-select">
                             <option value="">Pilih Kategori</option>
-                            <option>Organik</option>
-                            <option>Anorganik</option>
+                            <option value="ewallet">Ewallet</option>
+                            <option value="barang">Barang</option>
                             <option>Lainnya</option>
                         </select>
                         <label>Kategori</label>
@@ -54,19 +53,20 @@
                 </div>
                 <div class="d-flex flex-row align-items-center mb-4">
                     <div class="form-floating flex-fill mb-0">
-                        <textarea class="form-control" id="konten-tutorial" name="konten" type="text" placeholder="Konten" required></textarea>
-                        <script>
-                            CKEDITOR.replace('konten-tutorial', {
-                                filebrowserUploadUrl: "{{ route('upload-ckeditor', ['_token' => csrf_token()]) }}",
-                                filebrowserUploadMethod: 'form'
-                            });
-                        </script>
+                        <input type="number" class="form-control" name="jumlah" placeholder="1" required />
+                        <label>Stok</label>
+                    </div>
+                </div>
+                <div class="d-flex flex-row align-items-center mb-4">
+                    <div class="form-floating flex-fill mb-0">
+                        <input type="number" class="form-control" name="koin" placeholder="1" required />
+                        <label>Harga TrashCoin</label>
                     </div>
                 </div>
             </div>
 
             <div class="d-flex justify-content-center col-10 my-3">
-                <button class="btn btn-primary btn-lg " type="submit">{{ $right_button }}</button>
+                <button type="submit" class="btn btn-primary btn-lg ">{{ $right_button }}</button>
             </div>
         </div>
     </form>

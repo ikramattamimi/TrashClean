@@ -58,7 +58,10 @@
                     <div class="form-floating flex-fill mb-0">
                         <textarea type="text" id="konten-tutorial" class="form-control" name="konten" placeholder="Konten" required>{{ $tutorial->konten }}</textarea>
                         <script>
-                            CKEDITOR.replace('konten-tutorial');
+                            CKEDITOR.replace('konten-tutorial', {
+                                filebrowserUploadUrl: "{{ route('upload-ckeditor', ['_token' => csrf_token()]) }}",
+                                filebrowserUploadMethod: 'form'
+                            });
                         </script>
                     </div>
                 </div>
