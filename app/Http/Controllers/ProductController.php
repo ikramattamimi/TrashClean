@@ -23,11 +23,10 @@ class ProductController extends Controller
             $user = DB::select('select * from users');
 
             foreach ($user as $key => $value) {
-                $notification[$key] =
-                    DB::select("select * from products where user_id = '$value->id' and (status_barang = 'menunggu diantarkan' or status_barang = 'menunggu dijemput')");
-            }
-
-            foreach ($user as $key => $value) {
+                $notification_jemput[$key] =
+                    DB::select("select * from products where user_id = '$value->id' and status_barang = 'dijemput'");
+                $notification_antar[$key] =
+                    DB::select("select * from products where user_id = '$value->id' and status_barang = 'diantar'");
                 $notification_history[$key] =
                     DB::select("select * from products where user_id = '$value->id' and status_barang = 'valid'");
             }
@@ -35,7 +34,7 @@ class ProductController extends Controller
             if (Auth::user()->role != 'admin') {
                 return redirect('/' . Auth::user()->role . '/dashboard');
             }
-            return view('notifikasi.index', compact('notification', 'notification_history', 'user'));
+            return view('notifikasi.index', compact('notification_jemput', 'notification_antar', 'notification_history', 'user'));
         } else {
             return redirect('/login');
         }
@@ -126,12 +125,28 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit_antar($id)
     {
         if (Auth::check()) {
 
             $user = User::find($id);
-            $products = DB::select("select * from products where user_id = '$user->id' and (status_barang = 'menunggu diantar' or status_barang = 'menunggu dijemput')");
+            $products = DB::select("select * from products where user_id = '$user->id' and status_barang = 'diantar'");
+
+            if (Auth::user()->role != 'admin') {
+                return redirect('/' . Auth::user()->role . '/dashboard');
+            }
+
+            return view('notifikasi.show', compact('products', 'user'));
+        } else {
+            return redirect('/login');
+        }
+    }
+    public function edit_jemput($id)
+    {
+        if (Auth::check()) {
+
+            $user = User::find($id);
+            $products = DB::select("select * from products where user_id = '$user->id' and status_barang = 'dijemput'");
 
             if (Auth::user()->role != 'admin') {
                 return redirect('/' . Auth::user()->role . '/dashboard');
@@ -156,7 +171,7 @@ class ProductController extends Controller
             'user_id' => 'required',
         ]);
 
-        $products = Products::where('user_id', $validated['user_id'])->whereIn('status_barang', ['menunggu diantar','menunggu dijemput'])->get();
+        $products = Products::where('user_id', $validated['user_id'])->whereIn('status_barang', ['diantar', 'dijemput'])->get();
         $user = User::find($validated['user_id']);
 
         $user->update(['point' => $user->point + $validated['trashcoin']]);

@@ -68,7 +68,7 @@
                     </div>
 
                     <div class="modal-footer">
-                        <input type="text" value="menunggu diantarkan" name="status" hidden>
+                        <input name="status" type="text" value="diantar" hidden>
                         <button class="btn btn-secondary" data-bs-dismiss="modal" type="button">Batal</button>
                         <button class="btn btn-primary" type="submit">Konfirmasi</button>
                     </div>
@@ -81,7 +81,7 @@
     <div class="modal fade" id="modal-jemput" aria-labelledby="exampleModalLabel" aria-hidden="true" tabindex="-1">
         <div class="modal-dialog">
 
-            
+
 
             <div class="modal-content">
                 <div class="modal-header">
@@ -95,7 +95,7 @@
                             Mohon ceklis pada tempat sampah yang <strong>sudah penuh:</strong></p>
                         <div class="row d-flex align-items-center">
                             <div class="col-12">
-    
+
                                 <div class="form-check">
                                     <input class="form-check-input" id="organik" name="organik" type="checkbox"
                                         value="1">
@@ -120,9 +120,9 @@
                             </div>
                         </div>
                     </div>
-    
+
                     <div class="modal-footer">
-                        <input type="text" value="menunggu dijemput" name="status" hidden>
+                        <input name="status" type="text" value="menunggu dijemput" hidden>
                         <button class="btn btn-secondary" data-bs-dismiss="modal" type="button">Batal</button>
                         <button class="btn btn-primary" type="submit">Konfirmasi</button>
                     </div>
