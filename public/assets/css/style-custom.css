@@ -103,3 +103,12 @@ input[type=number] {
 .bg-custom {
     background: linear-gradient(42deg, #3799DB 0%, #9883E5 100%);
 }
+
+.text-limit-list-katalog {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2; /* number of lines to show */
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+}

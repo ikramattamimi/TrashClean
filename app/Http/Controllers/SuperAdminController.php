@@ -6,6 +6,7 @@ use App\Models\Reward;
 use App\Models\SuperAdmin;
 use App\Models\Tutorial;
 use App\Models\Berita;
+use App\Models\Katalog;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -250,6 +251,37 @@ class SuperAdminController extends Controller
         return redirect()->back();
     }
 
+    public function store_berita(Request $request)
+    {
+        // dd($request);
+        $validation = Validator::make($request->all(), [
+            'judul' => 'required|min:3|max:100',
+            'konten' => 'required',
+            'gambar' => 'sometimes',
+        ]);
+
+        $validated = $validation->validated();
+
+        if (isset($validated['gambar'])) {
+            $name = $validated['gambar']->getClientOriginalName();
+            $validated['gambar']->storeAs('uploads/berita/', $name, 'public');
+            $validated['gambar'] = $name;
+            $input = $validated;
+        }
+
+        // dd($validated);
+        $query = DB::table('berita')->insert([
+            'judul'     => $validated['judul'],
+            'konten'    => $validated['konten'],
+            'gambar' => $validated['gambar'],
+        ]);
+
+        if ($query) {
+            $request->session()->flash('success', 'Berita berhasil ditambahkan!');
+            return redirect()->back();
+        }
+    }
+
     public function data_tutorial()
     {
         if (Auth::check()) {
@@ -413,6 +445,105 @@ class SuperAdminController extends Controller
 
         if ($query) {
             $request->session()->flash('success', 'Reward berhasil ditambahkan!');
+            return redirect()->back();
+        }
+    }
+
+    public function data_katalog()
+    {
+        if (Auth::check()) {
+
+            $katalog = katalog::all();
+
+            if (Auth::user()->role != 'super_admin') {
+                return redirect('/' . Auth::user()->role . '/dashboard');
+            }
+            return view('super-admin.katalog.index', compact('katalog'));
+        } else {
+            return redirect('/login');
+        }
+    }
+
+
+    public function edit_katalog($id)
+    {
+        // dd($id);
+        if (Auth::check()) {
+
+            $katalog = katalog::where('id', $id)->first();
+
+            // dd($tutorial[0]->judul);
+
+            if (Auth::user()->role != 'super_admin') {
+                return redirect('/' . Auth::user()->role . '/dashboard');
+            }
+            return view('super-admin.katalog.edit', compact('katalog'));
+        } else {
+            return redirect('/login');
+        }
+    }
+
+    public function update_katalog(Request $request)
+    {
+        $katalog = katalog::find($request->id);
+
+        $validated = $this->validate($request, [
+            'nama' => 'required|min:3|max:50',
+            'deskripsi' => 'required',
+            'gambar' => 'sometimes|max:2048|mimes:png,jpg,jpeg',
+            'kuantitas' => 'required',
+            'kategori' => 'required',
+        ]);
+
+
+        if (isset($validated['gambar'])) {
+            $name = $validated['gambar']->getClientOriginalName();
+            $validated['gambar']->storeAs('uploads/katalog/', $name, 'public');
+            $validated['gambar'] = $name;
+            $input = $validated;
+        }
+
+        $query = $katalog->update($validated);
+
+        if ($query) {
+            $request->session()->flash('success', 'Katalog berhasil diedit!');
+        } else {
+            $request->session()->flash('error', 'Terdapat kesalahan pada query!');
+        }
+        return redirect()->back();
+    }
+
+    public function store_katalog(Request $request)
+    {
+        // dd($request);
+        $validation = Validator::make($request->all(), [
+            'nama' => 'required|min:3|max:50',
+            'deskripsi' => 'required',
+            'gambar' => 'sometimes|max:2048|mimes:png,jpg,jpeg',
+            'kuantitas' => 'required',
+            'kategori' => 'required',
+        ]);
+
+        $validated = $validation->validated();
+
+        if (isset($validated['gambar'])) {
+            $name = $validated['gambar']->getClientOriginalName();
+            $validated['gambar']->storeAs('uploads/katalog/', $name, 'public');
+            $validated['gambar'] = $name;
+            $input = $validated;
+        }
+
+        // dd($validated);
+        $query = DB::table('katalog')->insert([
+            'nama'     => $validated['nama'],
+            'deskripsi'    => $validated['deskripsi'],
+            'gambar' => $validated['gambar'],
+            'kuantitas' => $validated['kuantitas'],
+            'kategori' => $validated['kategori'],
+        ]);
+
+        if ($query) {
+            $request->session()->flash('success', 'katalog berhasil ditambahkan!');
             return redirect()->back();
         }
     }

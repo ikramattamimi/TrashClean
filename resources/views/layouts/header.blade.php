@@ -37,7 +37,8 @@
                             <li class="dropdown-menu-custom"><a class="nav-link scrollto"
                                     href="{{ '/' . Auth::user()->role . '/dashboard' }}">Dashboard</a></li>
                             @if (Auth::user()->role == 'super_admin')
-                                <li class="dropdown-menu-custom"><a href="/super_admin/landing-page">Menu Super Admin</a></li>
+                                <li class="dropdown-menu-custom"><a href="/super_admin/landing-page">Menu Super
+                                        Admin</a></li>
                             @endif
                             <li class="dropdown-menu-custom"><a href="/logout">Logout</a></li>
                         </ul>

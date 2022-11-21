@@ -22,6 +22,7 @@ class DatabaseSeeder extends Seeder
             RewardSeeder::class,
             TutorialSeeder::class,
             BeritaSeeder::class,
+            KatalogSeeder::class,
         ]);
         DB::statement("SET foreign_key_checks = 1");
     }

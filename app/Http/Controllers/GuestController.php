@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\SuperAdmin;
 use App\Models\Tutorial;
 use App\Models\Berita;
+use App\Models\Katalog;
 use Illuminate\Http\Request;
 
 class GuestController extends Controller
@@ -18,9 +19,8 @@ class GuestController extends Controller
 
     public function katalog()
     {
-        $post = SuperAdmin::first();
-
-        return view('katalog.index', compact('post'));
+        $katalog = Katalog::all();
+        return view('katalog.index', compact('katalog'));
     }
 
     public function kontak()

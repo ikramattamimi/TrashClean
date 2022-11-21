@@ -1,13 +1,13 @@
 @php
-    $title = 'Edit Berita';
-    $form_action = '/super_admin/update-berita';
-    $right_button = 'Edit';
+    $title = 'Tambah Katalog';
+    $form_action = '/super_admin/store-katalog';
+    $right_button = 'Tambah';
 @endphp
 
 <div class="row d-flex justify-content-center">
 
 
-    <form action="{{ $form_action }}" method="post" class="mx-1 mx-md-4" enctype="multipart/form-data">
+    <form class="mx-1 mx-md-4" action="{{ $form_action }}" method="post" enctype="multipart/form-data">
         @csrf
         <p class="text-center h4 fw-bold mb-5 mx-1 mx-md-4 mt-4">{{ $title }}</p>
         <div class="row justify-content-center d-flex align-items-center">
@@ -17,37 +17,37 @@
                     @foreach ($errors->all() as $error)
                         <li>{{ $error }}</li>
                     @endforeach
-                    <button type="button" class="btn close" data-dismiss="alert">×</button>
+                    <button class="btn close" data-dismiss="alert" type="button">×</button>
                 </div>
             @endif
             @if ($message = Session::get('success'))
                 <div class="alert alert-success alert-block d-flex justify-content-between align-items-center col-10">
                     <strong>{{ $message }}</strong>
-                    <button type="button" class="btn close" data-dismiss="alert">×</button>
+                    <button class="btn close" data-dismiss="alert" type="button">×</button>
                 </div>
             @endif
-
-            <input type="text" class="form-control" name="id" placeholder="Judul Tutorial" required
-                value="{{ $berita->id }}" hidden />
 
             <div class="col-10 col-xl-10">
                 <div class="d-flex flex-row align-items-center mb-4">
                     <div class="form-floating flex-fill mb-0">
-                        <input type="text" class="form-control" name="judul" placeholder="Judul Tutorial" required
-                            value="{{ $berita->judul }}" />
-                        <label>Judul</label>
+                        <input class="form-control" name="nama" type="text" placeholder="Nama Katalog" required />
+                        <label>Nama katalog</label>
                     </div>
+                </div>
+                <div class="form-floating flex-fill mb-4">
+                    <input type="text" class="form-control" name="kuantitas" placeholder="Jumlah Katalog" required
+                        value="{{ $katalog->kuantitas }}" />
+                    <label>Jumlah Katalog (kg)</label>
                 </div>
                 <div class="d-flex flex-row align-items-center mb-4">
                     <div class="form-floating flex-fill mb-0">
-                        <input type="file" class="form-control" name="gambar" />
+                        <input class="form-control" name="gambar" type="file" required />
                         <label>Gambar</label>
                     </div>
                 </div>
                 <div class="d-flex flex-row align-items-center mb-4">
                     <div class="form-floating flex-fill mb-0">
-                        <select name="kategori" id="" class="form-select">
-                            <option>{{ $berita->kategori }}</option>
+                        <select class="form-select" id="" name="kategori">
                             <option value="">Pilih Kategori</option>
                             <option>Organik</option>
                             <option>Anorganik</option>
@@ -58,7 +58,7 @@
                 </div>
                 <div class="d-flex flex-row align-items-center mb-4">
                     <div class="form-floating flex-fill mb-0">
-                        <textarea type="text" id="konten-tutorial" class="form-control" name="konten" placeholder="Konten" required>{{ $berita->konten }}</textarea>
+                        <textarea class="form-control" id="konten-tutorial" name="deskripsi" type="text" placeholder="Deskripsi" required></textarea>
                         <script>
                             CKEDITOR.replace('konten-tutorial', {
                                 filebrowserUploadUrl: "{{ route('upload-ckeditor', ['_token' => csrf_token()]) }}",
@@ -70,7 +70,7 @@
             </div>
 
             <div class="d-flex justify-content-center col-10 my-3">
-                <button type="submit" class="btn btn-primary btn-lg ">{{ $right_button }}</button>
+                <button class="btn btn-primary btn-lg " type="submit">{{ $right_button }}</button>
             </div>
         </div>
     </form>

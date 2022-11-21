@@ -1,6 +1,6 @@
 @php
-    $title = 'Edit Berita';
-    $form_action = '/super_admin/update-berita';
+    $title = 'Edit Katalog';
+    $form_action = '/super_admin/update-katalog';
     $right_button = 'Edit';
 @endphp
 
@@ -27,15 +27,22 @@
                 </div>
             @endif
 
-            <input type="text" class="form-control" name="id" placeholder="Judul Tutorial" required
-                value="{{ $berita->id }}" hidden />
+            <input type="text" class="form-control" name="id" placeholder="Nama Katalog" required
+                value="{{ $katalog->id }}" hidden />
 
             <div class="col-10 col-xl-10">
                 <div class="d-flex flex-row align-items-center mb-4">
                     <div class="form-floating flex-fill mb-0">
-                        <input type="text" class="form-control" name="judul" placeholder="Judul Tutorial" required
-                            value="{{ $berita->judul }}" />
-                        <label>Judul</label>
+                        <input type="text" class="form-control" name="nama" placeholder="Nama Katalog" required
+                            value="{{ $katalog->nama }}" />
+                        <label>Nama Katalog</label>
+                    </div>
+                </div>
+                <div class="d-flex flex-row align-items-center mb-4">
+                    <div class="form-floating flex-fill mb-0">
+                        <input type="text" class="form-control" name="kuantitas" placeholder="Jumlah Katalog" required
+                            value="{{ $katalog->kuantitas }}" />
+                        <label>Jumlah Katalog (kg)</label>
                     </div>
                 </div>
                 <div class="d-flex flex-row align-items-center mb-4">
@@ -47,7 +54,7 @@
                 <div class="d-flex flex-row align-items-center mb-4">
                     <div class="form-floating flex-fill mb-0">
                         <select name="kategori" id="" class="form-select">
-                            <option>{{ $berita->kategori }}</option>
+                            <option>{{ $katalog->kategori }}</option>
                             <option value="">Pilih Kategori</option>
                             <option>Organik</option>
                             <option>Anorganik</option>
@@ -58,7 +65,7 @@
                 </div>
                 <div class="d-flex flex-row align-items-center mb-4">
                     <div class="form-floating flex-fill mb-0">
-                        <textarea type="text" id="konten-tutorial" class="form-control" name="konten" placeholder="Konten" required>{{ $berita->konten }}</textarea>
+                        <textarea type="text" id="konten-tutorial" class="form-control" name="deskripsi" placeholder="deskripsi" required>{{ $katalog->deskripsi }}</textarea>
                         <script>
                             CKEDITOR.replace('konten-tutorial', {
                                 filebrowserUploadUrl: "{{ route('upload-ckeditor', ['_token' => csrf_token()]) }}",

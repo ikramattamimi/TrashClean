@@ -18,6 +18,10 @@
                     href="/super_admin/tutorial">Tutorial</a>
             </li>
             <li class="nav-item">
+                <a class="nav-link {{ request()->is('super_admin/katalog*') ? 'active' : '' }}"
+                    href="/super_admin/katalog">Katalog</a>
+            </li>
+            <li class="nav-item">
                 <a class="nav-link {{ request()->is('super_admin/reward*') ? 'active' : '' }}"
                     href="/super_admin/reward">Product Reward</a>
             </li>

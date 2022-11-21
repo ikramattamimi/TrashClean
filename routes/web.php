@@ -66,6 +66,10 @@ Route::group(['prefix' => 'super_admin', 'middleware' => ['auth']], function () 
     Route::post('/store-reward', [SuperAdminController::class, 'store_reward']);
     Route::post('/update-reward', [SuperAdminController::class, 'update_reward']);
 
+    Route::get('/katalog', [SuperAdminController::class, 'data_katalog']);
+    Route::get('/katalog/{katalog}', [SuperAdminController::class, 'edit_katalog']);
+    Route::post('/store-katalog', [SuperAdminController::class, 'store_katalog']);
+    Route::post('/update-katalog', [SuperAdminController::class, 'update_katalog']);
     // Route::post('/products/update', [ProductController::class, 'update']);
 });
 

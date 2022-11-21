@@ -152,8 +152,8 @@
                             {{ Illuminate\Mail\Markdown::parse($post->konten_tentang) }}
                         </div>
 
-                        <a class="read-more" href="/tentang">Selengkapnya tentang Kami <i
-                                class="bi bi-long-arrow-right"></i></a>
+                        <a class="read-more" href="/tentang">Selengkapnya tentang Kami <i class="bi-arrow-right"
+                                style="margin: -5px"></i></a>
                     </div>
                 </div>
 
@@ -220,7 +220,7 @@
                         </div>
                     </div>
                     <div class="text-center">
-                        <a class="read-more" href="/katalog">Selengkapnya</a>
+                        <a class="read-more" href="/katalog">Selengkapnya <i class="bi-arrow-right" style="margin: 10   px"></i></a>
                     </div>
                 </div>
 

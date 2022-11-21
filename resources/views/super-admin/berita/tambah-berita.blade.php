@@ -1,6 +1,6 @@
 @php
     $title = 'Tambah Berita';
-    $form_action = '/super_admin/store-tutorial';
+    $form_action = '/super_admin/store-berita';
     $right_button = 'Tambah';
 @endphp
 
@@ -39,17 +39,6 @@
                     <div class="form-floating flex-fill mb-0">
                         <input class="form-control" name="gambar" type="file" required />
                         <label>Gambar</label>
-                    </div>
-                </div>
-                <div class="d-flex flex-row align-items-center mb-4">
-                    <div class="form-floating flex-fill mb-0">
-                        <select class="form-select" id="" name="kategori">
-                            <option value="">Pilih Kategori</option>
-                            <option>Organik</option>
-                            <option>Anorganik</option>
-                            <option>Lainnya</option>
-                        </select>
-                        <label>Kategori</label>
                     </div>
                 </div>
                 <div class="d-flex flex-row align-items-center mb-4">

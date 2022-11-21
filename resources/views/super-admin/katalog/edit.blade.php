@@ -20,7 +20,7 @@
 
                 <div class="tab-pane fade show active" id="pills-tambah-tutorial" role="tabpanel"
                     aria-labelledby="pills-tambah-tutorial-tab">
-                    @include('super-admin.berita.edit-berita')
+                    @include('super-admin.katalog.edit-katalog')
                 </div>
 
             </div>
