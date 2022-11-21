@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Products;
+use App\Models\Reward;
+use App\Models\RewardHistory;
 use App\Models\SuperAdmin;
 use App\Models\Tutorial;
 use App\Models\User;
@@ -40,13 +42,15 @@ class HomeController extends Controller
 
     public function admin()
     {
-        $jumlah_notif = Products::where('status_barang', 'pending')->count();
+        $jumlah_notif = Products::whereIn('status_barang', ['diantar', 'dijemput'])->count();
+        $jumlah_notif_reward = RewardHistory::where('status', 'pending')->count();
         $jumlah_organik = 0;
         $jumlah_anorganik = 0;
         $jumlah_b3 = 0;
 
         $organiks = Products::where('nama_barang', 'Sampah Organik')->where('status_barang', 'valid')->get();
 
+        // dd($jumlah_notif_reward);
         foreach ($organiks as $key => $organik) {
             $jumlah_organik += $organik->jumlah_barang;
         }
@@ -69,7 +73,7 @@ class HomeController extends Controller
             if (Auth::user()->role != 'admin') {
                 return redirect('/' . Auth::user()->role . '/dashboard');
             }
-            return view('home.admin', compact('jumlah_notif', 'jumlah_organik', 'jumlah_anorganik', 'jumlah_b3'));
+            return view('home.admin', compact('jumlah_notif', 'jumlah_notif_reward', 'jumlah_organik', 'jumlah_anorganik', 'jumlah_b3'));
         } else {
             return redirect('/login');
         }
@@ -115,9 +119,9 @@ class HomeController extends Controller
         $organik = Products::where('user_id', Auth::user()->id)->where('nama_barang', 'Sampah Organik')->where('status_barang', 'valid')->get();
         $anorganik = Products::where('user_id', Auth::user()->id)->where('nama_barang', 'Sampah Anorganik')->where('status_barang', 'valid')->get();
         $b3 = Products::where('user_id', Auth::user()->id)->where('nama_barang', 'Sampah B3')->where('status_barang', 'valid')->get();
-        $organik_pending = Products::where('user_id', Auth::user()->id)->where('nama_barang', 'Sampah Organik')->whereIn('status_barang', ['menunggu diantar','menunggu dijemput'])->get();
-        $anorganik_pending = Products::where('user_id', Auth::user()->id)->where('nama_barang', 'Sampah Anorganik')->whereIn('status_barang', ['menunggu diantar','menunggu dijemput'])->get();
-        $b3_pending = Products::where('user_id', Auth::user()->id)->where('nama_barang', 'Sampah B3')->whereIn('status_barang', ['menunggu diantar','menunggu dijemput'])->get();
+        $organik_pending = Products::where('user_id', Auth::user()->id)->where('nama_barang', 'Sampah Organik')->whereIn('status_barang', ['diantar', 'dijemput'])->get();
+        $anorganik_pending = Products::where('user_id', Auth::user()->id)->where('nama_barang', 'Sampah Anorganik')->whereIn('status_barang', ['diantar', 'dijemput'])->get();
+        $b3_pending = Products::where('user_id', Auth::user()->id)->where('nama_barang', 'Sampah B3')->whereIn('status_barang', ['diantar', 'dijemput'])->get();
 
         foreach ($organik as $key => $value) {
             $data['organik'] += $value->jumlah_barang;
@@ -131,17 +135,21 @@ class HomeController extends Controller
             $data['b3'] += $value->jumlah_barang;
         }
 
-        foreach ($organik_pending as $key => $value) {
-            $data['organik_pending'] += $value->jumlah_barang;
-        }
 
-        foreach ($anorganik_pending as $key => $value) {
-            $data['anorganik_pending'] += $value->jumlah_barang;
-        }
 
-        foreach ($b3_pending as $key => $value) {
-            $data['b3_pending'] += $value->jumlah_barang;
-        }
+        // foreach ($organik_pending as $key => $value) {
+        $data['organik_pending'] = count($organik_pending);
+        // }
+
+        // foreach ($anorganik_pending as $key => $value) {
+        $data['anorganik_pending'] += count($anorganik_pending);
+        // }
+
+        // foreach ($b3_pending as $key => $value) {
+        $data['b3_pending'] += count($b3_pending);
+        // }
+
+        // dd($data['organik_pending']);
 
         // $data['koin'] = ($data['organik'] + $data['anorganik'] + $data['b3']) * 1000;
 

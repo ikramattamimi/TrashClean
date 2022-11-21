@@ -13,9 +13,14 @@
                 <div class="col-12 col-md-5 m-4">
 
                     <h4 class="text-center mb-4">Notifikasi Baru</h4>
-                    @foreach ($notification as $key => $item)
+                    @foreach ($notification_jemput as $key => $item)
                         @if (count($item) != 0)
-                            @include('notifikasi.list')
+                            @include('notifikasi.list-jemput')
+                        @endif
+                    @endforeach
+                    @foreach ($notification_antar as $key => $item)
+                        @if (count($item) != 0)
+                            @include('notifikasi.list-antar')
                         @endif
                     @endforeach
 
