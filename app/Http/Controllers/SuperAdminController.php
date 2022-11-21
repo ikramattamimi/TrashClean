@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Reward;
 use App\Models\SuperAdmin;
 use App\Models\Tutorial;
+use App\Models\Berita;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -166,14 +167,14 @@ class SuperAdminController extends Controller
     public function update_admin(Request $request)
     {
         $user = User::find($request->id);
-        
+
         // dd($request);
 
         $validated = $this->validate($request, [
             'nama' => 'required|min:3|max:50',
             'no_telepon' => 'required|max:13',
             'alamat' => 'max:100',
-            'username' => ['required','min:4','max:100'],
+            'username' => ['required', 'min:4', 'max:100'],
             'password' => 'min:4|required_with:password_confirmation|same:password_confirmation',
         ]);
 
@@ -182,6 +183,70 @@ class SuperAdminController extends Controller
 
         $request->session()->flash('success', 'Update Admin Berhasil!');
 
+        return redirect()->back();
+    }
+
+    public function data_berita()
+    {
+        if (Auth::check()) {
+
+            $berita = Berita::all();
+
+            if (Auth::user()->role != 'super_admin') {
+                return redirect('/' . Auth::user()->role . '/dashboard');
+            }
+            return view('super-admin.berita.index', compact('berita'));
+        } else {
+            return redirect('/login');
+        }
+    }
+
+
+    public function edit_berita($id)
+    {
+        // dd($id);
+        if (Auth::check()) {
+
+            $berita = Berita::where('id', $id)->first();
+
+            // dd($tutorial[0]->judul);
+
+            if (Auth::user()->role != 'super_admin') {
+                return redirect('/' . Auth::user()->role . '/dashboard');
+            }
+            return view('super-admin.berita.edit', compact('berita'));
+        } else {
+            return redirect('/login');
+        }
+    }
+
+    public function update_berita(Request $request)
+    {
+        $berita = Berita::find($request->id);
+
+        $validated = $this->validate($request, [
+            'judul' => 'required|min:3|max:100',
+            'konten' => 'required',
+            'gambar' => 'sometimes|max:2048|mimes:png,jpg,jpeg',
+        ]);
+
+
+        if (isset($validated['gambar'])) {
+            $name = $validated['gambar']->getClientOriginalName();
+            $validated['gambar']->storeAs('uploads/berita/', $name, 'public');
+            $validated['gambar'] = $name;
+            $input = $validated;
+        }
+
+        // dd($validated);
+        $query = $berita->update($validated);
+
+        // dd($query);
+        if ($query) {
+            $request->session()->flash('success', 'Tutorial berhasil diedit!');
+        } else {
+            $request->session()->flash('error', 'Terdapat kesalahan pada query!');
+        }
         return redirect()->back();
     }
 
@@ -236,7 +301,6 @@ class SuperAdminController extends Controller
             $validated['gambar']->storeAs('uploads/tutorial/', $name, 'public');
             $validated['gambar'] = $name;
             $input = $validated;
-
         }
 
         // dd($validated);
@@ -245,13 +309,12 @@ class SuperAdminController extends Controller
         // dd($query);
         if ($query) {
             $request->session()->flash('success', 'Tutorial berhasil diedit!');
-        }
-        else{
+        } else {
             $request->session()->flash('error', 'Terdapat kesalahan pada query!');
-
         }
         return redirect()->back();
     }
+
     public function data_reward()
     {
         if (Auth::check()) {
@@ -304,7 +367,6 @@ class SuperAdminController extends Controller
             $validated['gambar']->storeAs('uploads/reward', $name, 'public');
             $validated['gambar'] = $name;
             $input = $validated;
-
         }
 
         // dd($validated);
@@ -313,10 +375,8 @@ class SuperAdminController extends Controller
         // dd($query);
         if ($query) {
             $request->session()->flash('success', 'Reward berhasil diedit!');
-        }
-        else{
+        } else {
             $request->session()->flash('error', 'Terdapat kesalahan pada query!');
-
         }
         return redirect()->back();
     }

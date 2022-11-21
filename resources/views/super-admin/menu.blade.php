@@ -10,6 +10,10 @@
                     href="/super_admin/admin">Data Admin</a>
             </li>
             <li class="nav-item">
+                <a class="nav-link {{ request()->is('super_admin/berita*') ? 'active' : '' }}"
+                    href="/super_admin/berita">Berita</a>
+            </li>
+            <li class="nav-item">
                 <a class="nav-link {{ request()->is('super_admin/tutorial*') ? 'active' : '' }}"
                     href="/super_admin/tutorial">Tutorial</a>
             </li>

@@ -50,23 +50,28 @@ Route::group(['prefix' => 'super_admin', 'middleware' => ['auth']], function () 
     Route::get('/admin/{admin}', [SuperAdminController::class, 'edit_admin']);
     Route::post('/store-admin', [SuperAdminController::class, 'store_admin']);
     Route::post('/update-admin', [SuperAdminController::class, 'update_admin']);
-    
+
+    Route::get('/berita', [SuperAdminController::class, 'data_berita']);
+    Route::get('/berita/{berita}', [SuperAdminController::class, 'edit_berita']);
+    Route::post('/store-berita', [SuperAdminController::class, 'store_berita']);
+    Route::post('/update-berita', [SuperAdminController::class, 'update_berita']);
+
     Route::get('/tutorial', [SuperAdminController::class, 'data_tutorial']);
     Route::get('/tutorial/{tutorial}', [SuperAdminController::class, 'edit_tutorial']);
     Route::post('/store-tutorial', [SuperAdminController::class, 'store_tutorial']);
     Route::post('/update-tutorial', [SuperAdminController::class, 'update_tutorial']);
-    
+
     Route::get('/reward', [SuperAdminController::class, 'data_reward']);
     Route::get('/reward/{reward}', [SuperAdminController::class, 'edit_reward']);
     Route::post('/store-reward', [SuperAdminController::class, 'store_reward']);
     Route::post('/update-reward', [SuperAdminController::class, 'update_reward']);
-    
+
     // Route::post('/products/update', [ProductController::class, 'update']);
 });
 
 // ADMIN
 Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
-    
+
     // dashboard
     Route::get('/dashboard', [HomeController::class, 'admin']);
 
@@ -93,9 +98,9 @@ Route::group(['prefix' => 'supplier', 'middleware' => ['auth']], function () {
 
     Route::get('/edit-profil', [UserController::class, 'edit']);
     Route::post('/update-profil', [UserController::class, 'update']);
-    
+
     Route::post('/products/store', [ProductController::class, 'store']);
-    
+
     Route::get('/reward', [SupplierController::class, 'reward']);
     Route::get('/reward/{reward}', [SupplierController::class, 'pilih_reward']);
     Route::get('/reward/history/{history}', [SupplierController::class, 'pilih_reward_history']);
@@ -104,10 +109,10 @@ Route::group(['prefix' => 'supplier', 'middleware' => ['auth']], function () {
 // Route::get('/supplier/dashboard', [HomeController::class, 'supplier'])->middleware('auth');
 Route::get('/buyer/dashboard', [HomeController::class, 'buyer'])->middleware('auth');
 
+Route::get('/berita', [GuestController::class, 'berita']);
 Route::get('/katalog', [GuestController::class, 'katalog']);
 Route::get('/tentang', [GuestController::class, 'tentang']);
 Route::get('/tutorial', [GuestController::class, 'tutorial']);
 Route::get('/tutorial/detail/{tutorial}', [GuestController::class, 'tutorial_detail']);
 Route::get('/kontak', [GuestController::class, 'kontak']);
 // Route::get('/katalog', GuestController::class, 'katalog');
-
