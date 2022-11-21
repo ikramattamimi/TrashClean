@@ -57,7 +57,7 @@
                     <li class="dropdown"><a href="#"><span>Blog Informasi</span>
                             <i class="bi bi-chevron-down"></i></a>
                         <ul>
-                            <li><a href="#">Berita</a></li>
+                            <li><a href="#">Media Informasi</a></li>
                             <li><a href="/tutorial">Tutorial</a></li>
                         </ul>
                     </li>
@@ -220,7 +220,8 @@
                         </div>
                     </div>
                     <div class="text-center">
-                        <a class="read-more" href="/katalog">Selengkapnya <i class="bi-arrow-right" style="margin: 10   px"></i></a>
+                        <a class="read-more" href="/katalog">Selengkapnya <i class="bi-arrow-right"
+                                style="margin: 10   px"></i></a>
                     </div>
                 </div>
 

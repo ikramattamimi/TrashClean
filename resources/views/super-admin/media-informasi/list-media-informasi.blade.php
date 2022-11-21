@@ -7,16 +7,18 @@
                     @csrf --}}
                 <div class="row text-start d-flex align-items-center justify-content-center">
                     <div class="col-2 text-center">
-                        <img class="img-fluid" src="{{ asset('storage/uploads/berita/' . $berita->gambar) }}"
-                            alt="Tutorial" style="width: 100px; border-radius: 10px;">
+                        <img class="img-fluid"
+                            src="{{ asset('storage/uploads/media-informasi/' . $media_informasi->gambar) }}"
+                            alt="Media Informasi" style="width: 100px; border-radius: 10px;">
                     </div>
 
                     <div class="col-6 form-group">
-                        <p class="mb-1">{{ $berita->judul }}</p>
+                        <p class="mb-1">{{ $media_informasi->judul }}</p>
                         {{-- <input type="text" value="{{ $tutorial->id }}" hidden> --}}
                     </div>
                     <div class="col-4 form-group">
-                        <a href="{{ '/super_admin/berita/' . $berita->id }}" class="btn btn-primary w-100">Edit</a>
+                        <a class="btn btn-primary w-100"
+                            href="{{ '/super_admin/media-informasi/' . $media_informasi->id }}">Edit</a>
                     </div>
                 </div>
                 {{-- </form> --}}

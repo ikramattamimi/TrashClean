@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Reward;
 use App\Models\SuperAdmin;
 use App\Models\Tutorial;
-use App\Models\Berita;
+use App\Models\MediaInformasi;
 use App\Models\Katalog;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -187,43 +187,43 @@ class SuperAdminController extends Controller
         return redirect()->back();
     }
 
-    public function data_berita()
+    public function data_media_informasi()
     {
         if (Auth::check()) {
 
-            $berita = Berita::all();
+            $media_informasi = MediaInformasi::all();
 
             if (Auth::user()->role != 'super_admin') {
                 return redirect('/' . Auth::user()->role . '/dashboard');
             }
-            return view('super-admin.berita.index', compact('berita'));
+            return view('super-admin.media-informasi.index', compact('media_informasi'));
         } else {
             return redirect('/login');
         }
     }
 
 
-    public function edit_berita($id)
+    public function edit_media_informasi($id)
     {
         // dd($id);
         if (Auth::check()) {
 
-            $berita = Berita::where('id', $id)->first();
+            $media_informasi = MediaInformasi::where('id', $id)->first();
 
             // dd($tutorial[0]->judul);
 
             if (Auth::user()->role != 'super_admin') {
                 return redirect('/' . Auth::user()->role . '/dashboard');
             }
-            return view('super-admin.berita.edit', compact('berita'));
+            return view('super-admin.media-informasi.edit', compact('media_informasi'));
         } else {
             return redirect('/login');
         }
     }
 
-    public function update_berita(Request $request)
+    public function update_media_informasi(Request $request)
     {
-        $berita = Berita::find($request->id);
+        $media_informasi = MediaInformasi::find($request->id);
 
         $validated = $this->validate($request, [
             'judul' => 'required|min:3|max:100',
@@ -234,13 +234,13 @@ class SuperAdminController extends Controller
 
         if (isset($validated['gambar'])) {
             $name = $validated['gambar']->getClientOriginalName();
-            $validated['gambar']->storeAs('uploads/berita/', $name, 'public');
+            $validated['gambar']->storeAs('uploads/media-informasi/', $name, 'public');
             $validated['gambar'] = $name;
             $input = $validated;
         }
 
         // dd($validated);
-        $query = $berita->update($validated);
+        $query = $media_informasi->update($validated);
 
         // dd($query);
         if ($query) {
@@ -251,7 +251,7 @@ class SuperAdminController extends Controller
         return redirect()->back();
     }
 
-    public function store_berita(Request $request)
+    public function store_media_informasi(Request $request)
     {
         // dd($request);
         $validation = Validator::make($request->all(), [
@@ -264,20 +264,20 @@ class SuperAdminController extends Controller
 
         if (isset($validated['gambar'])) {
             $name = $validated['gambar']->getClientOriginalName();
-            $validated['gambar']->storeAs('uploads/berita/', $name, 'public');
+            $validated['gambar']->storeAs('uploads/media-informasi/', $name, 'public');
             $validated['gambar'] = $name;
             $input = $validated;
         }
 
         // dd($validated);
-        $query = DB::table('berita')->insert([
+        $query = DB::table('media_informasi')->insert([
             'judul'     => $validated['judul'],
             'konten'    => $validated['konten'],
             'gambar' => $validated['gambar'],
         ]);
 
         if ($query) {
-            $request->session()->flash('success', 'Berita berhasil ditambahkan!');
+            $request->session()->flash('success', 'Media Informasi berhasil ditambahkan!');
             return redirect()->back();
         }
     }

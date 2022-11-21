@@ -10,8 +10,8 @@
                     href="/super_admin/admin">Data Admin</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link {{ request()->is('super_admin/berita*') ? 'active' : '' }}"
-                    href="/super_admin/berita">Berita</a>
+                <a class="nav-link {{ request()->is('super_admin/media-informasi*') ? 'active' : '' }}"
+                    href="/super_admin/media-informasi">Media Informasi</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link {{ request()->is('super_admin/tutorial*') ? 'active' : '' }}"

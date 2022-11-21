@@ -51,10 +51,10 @@ Route::group(['prefix' => 'super_admin', 'middleware' => ['auth']], function () 
     Route::post('/store-admin', [SuperAdminController::class, 'store_admin']);
     Route::post('/update-admin', [SuperAdminController::class, 'update_admin']);
 
-    Route::get('/berita', [SuperAdminController::class, 'data_berita']);
-    Route::get('/berita/{berita}', [SuperAdminController::class, 'edit_berita']);
-    Route::post('/store-berita', [SuperAdminController::class, 'store_berita']);
-    Route::post('/update-berita', [SuperAdminController::class, 'update_berita']);
+    Route::get('/media-informasi', [SuperAdminController::class, 'data_media_informasi']);
+    Route::get('/media-informasi/{media}', [SuperAdminController::class, 'edit_media_informasi']);
+    Route::post('/store-media-informasi', [SuperAdminController::class, 'store_media_informasi']);
+    Route::post('/update-media-informasi', [SuperAdminController::class, 'update_media_informasi']);
 
     Route::get('/tutorial', [SuperAdminController::class, 'data_tutorial']);
     Route::get('/tutorial/{tutorial}', [SuperAdminController::class, 'edit_tutorial']);
@@ -114,7 +114,8 @@ Route::group(['prefix' => 'supplier', 'middleware' => ['auth']], function () {
 // Route::get('/supplier/dashboard', [HomeController::class, 'supplier'])->middleware('auth');
 Route::get('/buyer/dashboard', [HomeController::class, 'buyer'])->middleware('auth');
 
-Route::get('/berita', [GuestController::class, 'berita']);
+Route::get('/media-informasi', [GuestController::class, 'media_informasi']);
+Route::get('/media-informasi/{media}', [GuestController::class, 'media_informasi_show']);
 Route::get('/katalog', [GuestController::class, 'katalog']);
 Route::get('/tentang', [GuestController::class, 'tentang']);
 Route::get('/tutorial', [GuestController::class, 'tutorial']);

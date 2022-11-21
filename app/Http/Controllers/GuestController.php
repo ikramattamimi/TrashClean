@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\SuperAdmin;
 use App\Models\Tutorial;
-use App\Models\Berita;
+use App\Models\MediaInformasi;
 use App\Models\Katalog;
 use Illuminate\Http\Request;
 
@@ -30,11 +30,18 @@ class GuestController extends Controller
         return view('kontak.index', compact('post'));
     }
 
-    public function berita()
+    public function media_informasi()
     {
-        $berita = Berita::get();
+        $media_informasi = MediaInformasi::get();
 
-        return view('berita.index', compact('berita'));
+        return view('media-informasi.index', compact('media_informasi'));
+    }
+
+    public function media_informasi_show($id)
+    {
+        $media_informasi = MediaInformasi::find($id);
+
+        return view('media-informasi.show', compact('media_informasi'));
     }
 
     public function tutorial()

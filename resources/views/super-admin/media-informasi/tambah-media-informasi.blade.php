@@ -1,6 +1,6 @@
 @php
-    $title = 'Tambah Berita';
-    $form_action = '/super_admin/store-berita';
+    $title = 'Tambah Media Informasi';
+    $form_action = '/super_admin/store-media-informasi';
     $right_button = 'Tambah';
 @endphp
 
@@ -13,7 +13,8 @@
         <div class="row justify-content-center d-flex align-items-center">
 
             @if ($errors->any())
-                <div class="alert alert-danger alert-block d-flex justify-content-between align-items-center col-10">
+                <div
+                    class="alert alert-danger alert-block alert-dismissible fade show d-flex justify-content-between align-items-center col-10">
                     @foreach ($errors->all() as $error)
                         <li>{{ $error }}</li>
                     @endforeach
@@ -21,7 +22,7 @@
                 </div>
             @endif
             @if ($message = Session::get('success'))
-                <div class="alert alert-success alert-block d-flex justify-content-between align-items-center col-10">
+                <div class="alert alert-success alert-block alert-dismissible fade show d-flex justify-content-between align-items-center col-10">
                     <strong>{{ $message }}</strong>
                     <button class="btn close" data-dismiss="alert" type="button">×</button>
                 </div>
