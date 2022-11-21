@@ -39,9 +39,9 @@
                     </div>
                 </div>
                 <div class="d-flex flex-row align-items-center mb-4">
-                    <div class="form-floating flex-fill mb-0">
+                    <div class="w-100">
                         <input class="form-control" name="gambar" type="file" />
-                        <label>Gambar</label>
+                        {{-- <label>Gambar</label> --}}
                     </div>
                 </div>
                 <div class="d-flex flex-row align-items-center mb-4">

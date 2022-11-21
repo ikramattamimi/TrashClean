@@ -23,6 +23,12 @@ class GuestController extends Controller
         return view('katalog.index', compact('katalog'));
     }
 
+    public function katalog_show($id)
+    {
+        $katalog = Katalog::find($id);
+        return view('katalog.show', compact('katalog'));
+    }
+
     public function kontak()
     {
         $post = SuperAdmin::first();

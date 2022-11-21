@@ -117,6 +117,7 @@ Route::get('/buyer/dashboard', [HomeController::class, 'buyer'])->middleware('au
 Route::get('/media-informasi', [GuestController::class, 'media_informasi']);
 Route::get('/media-informasi/{media}', [GuestController::class, 'media_informasi_show']);
 Route::get('/katalog', [GuestController::class, 'katalog']);
+Route::get('/katalog/{katalog}', [GuestController::class, 'katalog_show']);
 Route::get('/tentang', [GuestController::class, 'tentang']);
 Route::get('/tutorial', [GuestController::class, 'tutorial']);
 Route::get('/tutorial/detail/{tutorial}', [GuestController::class, 'tutorial_detail']);
