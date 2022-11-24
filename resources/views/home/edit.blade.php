@@ -16,10 +16,8 @@
                                 style="width: 150px;">
                             <h5 class="my-3">{{ Auth::user()->nama }}</h5>
                             <div class="px-5 mb-3">
-                                {{-- <label for="formFile" class="form-label">Default file input example</label> --}}
                                 <input class="form-control" id="formFile" name="foto" type="file" label>
                             </div>
-                            {{-- <p class="text-muted mb-1">Member Silver</p> --}}
                             <div class="d-flex justify-content-center mb-2">
                                 <button class="btn btn-primary" type="submit">Simpan</button>
                             </div>

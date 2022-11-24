@@ -17,8 +17,6 @@
             <label class="form-label">Username</label>
         </div>
     </div>
-
-    {{--  --}}
 @endsection
 
 @section('content-right')

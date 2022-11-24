@@ -22,9 +22,11 @@
                         <h5>Daftar akun admin</h5>
                     </div>
                 </div>
+
                 @foreach ($admin as $key => $user)
                     @include('super-admin.admin.list-admin')
                 @endforeach
+
             </div>
         </div>
         <div class="tab-pane fade" id="pills-tambah-admin" role="tabpanel" aria-labelledby="pills-tambah-admin-tab">

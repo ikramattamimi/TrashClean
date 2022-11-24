@@ -26,5 +26,5 @@
             </div>
 
         </div>
-    </section><!-- End Portfolio Details Section -->
+    </section>
 @endsection

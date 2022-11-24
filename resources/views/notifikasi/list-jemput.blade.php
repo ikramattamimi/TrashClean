@@ -16,7 +16,8 @@
 
                         <div class="col-10">
                             <p class="mb-1 h6">{{ $user[$key]->nama }}</p>
-                            <small class="mb-2 pb-1" style="color: #2b2a2a;">{{ count($item) }} Request {{ $item[0]->status_barang }}
+                            <small class="mb-2 pb-1" style="color: #2b2a2a;">{{ count($item) }} Request
+                                {{ $item[0]->status_barang }}
                             </small>
                             <input name="status_barang" type="text" value="valid" hidden>
                             <input name="user_id" type="text" value="{{ $user[$key]->id }}" hidden>

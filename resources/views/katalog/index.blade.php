@@ -22,7 +22,7 @@
             </div>
 
             <div class="portfolio-container">
-                {{-- <div class="row d-flex justify-content-center align-items-center mb-3"> --}}
+
                 @foreach ($katalog as $item)
                     <div class="col-md-12 col-xl-12 portfolio-item filter-{{ $item->kategori }}">
                         <div class="card shadow-0 border rounded-3">
@@ -56,7 +56,8 @@
                                             <h4 class="mb-1 me-1">{{ $item->kuantitas }} kg</h4>
                                         </div>
                                         <div class="d-flex flex-column mt-4">
-                                            <a class="btn btn-success btn-sm" href="/katalog/{{ $item->id }}">Details</a>
+                                            <a class="btn btn-success btn-sm"
+                                                href="/katalog/{{ $item->id }}">Details</a>
                                         </div>
                                     </div>
                                 </div>
@@ -64,7 +65,7 @@
                         </div>
                     </div>
                 @endforeach
-                {{-- </div> --}}
+
             </div>
         </div>
     </section><!-- End Services Section -->

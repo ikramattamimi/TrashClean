@@ -6,7 +6,6 @@
 
 <div class="row d-flex justify-content-center">
 
-
     <form action="{{ $form_action }}" method="post" class="mx-1 mx-md-4" enctype="multipart/form-data">
         @csrf
         <p class="text-center h4 fw-bold mb-5 mx-1 mx-md-4 mt-4">{{ $title }}</p>
@@ -20,6 +19,7 @@
                     <button type="button" class="btn close" data-dismiss="alert">×</button>
                 </div>
             @endif
+
             @if ($message = Session::get('success'))
                 <div class="alert alert-success alert-block d-flex justify-content-between align-items-center col-10">
                     <strong>{{ $message }}</strong>
@@ -37,7 +37,6 @@
                 <div class="d-flex flex-row align-items-center mb-4">
                     <div class="w-100">
                         <input type="file" class="form-control" name="gambar" required />
-                        {{-- <label>Gambar</label> --}}
                     </div>
                 </div>
                 <div class="d-flex flex-row align-items-center mb-4">

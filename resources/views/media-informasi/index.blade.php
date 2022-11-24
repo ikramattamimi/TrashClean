@@ -13,7 +13,8 @@
             <div class="row d-flex justify-content-center">
                 @foreach ($media_informasi as $item)
                     <div class="col-12 col-sm-6 col-lg-4 mb-4 mb-lg-0">
-                        <!-- News block -->
+
+                        <!-- Blok baru -->
                         <div class="card">
                             <div class="card-body">
                                 <a class="text-dark" href="/media-informasi/{{ $item->id }}">
@@ -35,18 +36,14 @@
                                     <div class="text-limit-list-katalog">
                                         {{ Illuminate\Mail\Markdown::parse($item->konten) }}
                                     </div>
-                                    {{-- <hr /> --}}
-
 
                                 </a>
                             </div>
                         </div>
-                        <!-- News block -->
+                        <!-- Blok baru -->
                     </div>
                 @endforeach
 
             </div>
-
         </div>
-        <!--Main layout-->
     @endsection

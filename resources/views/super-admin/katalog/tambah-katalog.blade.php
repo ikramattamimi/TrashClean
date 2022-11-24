@@ -35,13 +35,12 @@
                     </div>
                 </div>
                 <div class="form-floating flex-fill mb-4">
-                    <input type="text" class="form-control" name="kuantitas" placeholder="Jumlah Katalog" required/>
+                    <input type="text" class="form-control" name="kuantitas" placeholder="Jumlah Katalog" required />
                     <label>Jumlah Katalog (kg)</label>
                 </div>
                 <div class="d-flex flex-row align-items-center mb-4">
                     <div class="w-100">
                         <input class="form-control" name="gambar" type="file" required />
-                        {{-- <label>Gambar</label> --}}
                     </div>
                 </div>
                 <div class="d-flex flex-row align-items-center mb-4">

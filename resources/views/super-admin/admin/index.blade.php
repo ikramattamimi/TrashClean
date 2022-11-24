@@ -11,8 +11,8 @@
                 </li>
                 <li class="nav-item" role="presentation">
                     <button class="nav-link" id="pills-tambah-admin-tab" data-bs-toggle="pill"
-                        data-bs-target="#pills-tambah-admin" type="button" role="tab" aria-controls="pills-tambah-admin"
-                        aria-selected="false">Tambah Admin</button>
+                        data-bs-target="#pills-tambah-admin" type="button" role="tab"
+                        aria-controls="pills-tambah-admin" aria-selected="false">Tambah Admin</button>
                 </li>
             </ul>
         </div>
@@ -36,6 +36,6 @@
                 </div>
             </div>
         </div>
-        
+
     </div>
 @endsection

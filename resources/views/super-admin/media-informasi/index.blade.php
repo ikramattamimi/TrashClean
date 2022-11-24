@@ -30,9 +30,11 @@
                             <h5>Daftar Media Informasi</h5>
                         </div>
                     </div>
+
                     @foreach ($media_informasi as $key => $media_informasi)
                         @include('super-admin.media-informasi.list-media-informasi')
                     @endforeach
+
                 </div>
 
                 <div class="tab-pane fade" id="pills-tambah-tutorial" role="tabpanel"

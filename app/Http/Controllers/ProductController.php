@@ -2,20 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Products;
 use App\Models\User;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
 use Ramsey\Uuid\Uuid;
+use App\Models\Products;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class ProductController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         if (Auth::check()) {
@@ -34,80 +29,60 @@ class ProductController extends Controller
             if (Auth::user()->role != 'admin') {
                 return redirect('/' . Auth::user()->role . '/dashboard');
             }
+
             return view('notifikasi.index', compact('notification_jemput', 'notification_antar', 'notification_history', 'user'));
         } else {
             return redirect('/login');
         }
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        // dd($request);
         if ($request->organik != 0) {
             DB::table('products')->insert([
-                'id' => Uuid::uuid4(),
-                'nama_barang' => 'Sampah Organik',
+                'user_id'       => Auth::user()->id,
+                'id'            => Uuid::uuid4(),
+                'nama_barang'   => 'Sampah Organik',
                 'jumlah_barang' => $request->organik,
                 'status_barang' => $request->status,
-                'trashcoin_didapat' => '0',
+                'trashcoin_didapat'  => '0',
                 'trashcoin_sekarang' => Auth::user()->point,
-                'user_id' => Auth::user()->id,
             ]);
         }
+
         if ($request->anorganik != 0) {
             DB::table('products')->insert([
-                'id' => Uuid::uuid4(),
-                'nama_barang' => 'Sampah Anorganik',
+                'user_id'       => Auth::user()->id,
+                'id'            => Uuid::uuid4(),
+                'nama_barang'   => 'Sampah Anorganik',
                 'jumlah_barang' => $request->anorganik,
                 'status_barang' => $request->status,
-                'trashcoin_didapat' => '0',
+                'trashcoin_didapat'  => '0',
                 'trashcoin_sekarang' => Auth::user()->point,
-                'user_id' => Auth::user()->id,
             ]);
         }
+
         if ($request->B3 != 0) {
             DB::table('products')->insert([
-                'id' => Uuid::uuid4(),
-                'nama_barang' => 'Sampah B3',
+                'user_id'       => Auth::user()->id,
+                'id'            => Uuid::uuid4(),
+                'nama_barang'   => 'Sampah B3',
                 'jumlah_barang' => $request->B3,
                 'status_barang' => $request->status,
-                'trashcoin_didapat' => '0',
+                'trashcoin_didapat'  => '0',
                 'trashcoin_sekarang' => Auth::user()->point,
-                'user_id' => Auth::user()->id,
             ]);
         }
 
         return redirect(Auth::user()->role . '/dashboard');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
         if (Auth::check()) {
 
-            $user = User::find($id);
-            $products_history = DB::select("select * from products where user_id = '$user->id' and status_barang = 'valid' order by created_at");
+            $user               = User::find($id);
+            $products_history   = DB::select("select * from products where user_id = '$user->id' and status_barang = 'valid' order by created_at");
 
             if (Auth::user()->role != 'admin') {
                 return redirect('/' . Auth::user()->role . '/dashboard');
@@ -119,18 +94,12 @@ class ProductController extends Controller
         }
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit_antar($id)
     {
         if (Auth::check()) {
 
-            $user = User::find($id);
-            $products = DB::select("select * from products where user_id = '$user->id' and status_barang = 'diantar'");
+            $user       = User::find($id);
+            $products   = DB::select("select * from products where user_id = '$user->id' and status_barang = 'diantar'");
 
             if (Auth::user()->role != 'admin') {
                 return redirect('/' . Auth::user()->role . '/dashboard');
@@ -141,12 +110,13 @@ class ProductController extends Controller
             return redirect('/login');
         }
     }
+
     public function edit_jemput($id)
     {
         if (Auth::check()) {
 
-            $user = User::find($id);
-            $products = DB::select("select * from products where user_id = '$user->id' and status_barang = 'dijemput'");
+            $user       = User::find($id);
+            $products   = DB::select("select * from products where user_id = '$user->id' and status_barang = 'dijemput'");
 
             if (Auth::user()->role != 'admin') {
                 return redirect('/' . Auth::user()->role . '/dashboard');
@@ -161,18 +131,18 @@ class ProductController extends Controller
     public function update(Request $request)
     {
         $validated = $this->validate($request, [
-            'Sampah_Organik' => 'required_with:organik|nullable',
-            'organik' => 'required_with:Sampah_Organik|nullable',
-            'Sampah_Anorganik' => 'required_with:anorganik|nullable',
-            'anorganik' => 'required_with:Sampah_Anorganik|nullable',
-            'Sampah_B3' => 'required_with:B3|nullable',
-            'B3' => 'required_with:Sampah_B3|nullable',
-            'trashcoin' => 'required',
-            'user_id' => 'required',
+            'user_id'           => 'required',
+            'organik'           => 'required_with:Sampah_Organik|nullable',
+            'anorganik'         => 'required_with:Sampah_Anorganik|nullable',
+            'B3'                => 'required_with:Sampah_B3|nullable',
+            'Sampah_Organik'    => 'required_with:organik|nullable',
+            'Sampah_Anorganik'  => 'required_with:anorganik|nullable',
+            'Sampah_B3'         => 'required_with:B3|nullable',
+            'trashcoin'         => 'required',
         ]);
 
-        $products = Products::where('user_id', $validated['user_id'])->whereIn('status_barang', ['diantar', 'dijemput'])->get();
-        $user = User::find($validated['user_id']);
+        $user       = User::find($validated['user_id']);
+        $products   = Products::where('user_id', $validated['user_id'])->whereIn('status_barang', ['diantar', 'dijemput'])->get();
 
         $user->update(['point' => $user->point + $validated['trashcoin']]);
 
@@ -180,64 +150,47 @@ class ProductController extends Controller
             if ($product->nama_barang == 'Sampah Organik') {
                 if (isset($validated['Sampah_Organik'])) {
                     $product->update([
-                        'jumlah_barang' => $validated['organik'],
-                        'status_barang' => $validated['Sampah_Organik'],
-                        'trashcoin_didapat' => $validated['trashcoin'],
+                        'jumlah_barang'      => $validated['organik'],
+                        'status_barang'      => $validated['Sampah_Organik'],
+                        'trashcoin_didapat'  => $validated['trashcoin'],
                         'trashcoin_sekarang' => $user->point,
                     ]);
                 } else {
                     $product->update([
-                        'status_barang' => 'not valid',
+                        'status_barang'      => 'not valid',
                     ]);
                 }
-                // dd($product);
             } else if ($product->nama_barang == 'Sampah Anorganik') {
                 if (isset($validated['Sampah_Anorganik'])) {
                     $product->update([
-                        'jumlah_barang' => $validated['anorganik'],
-                        'status_barang' => $validated['Sampah_Anorganik'],
-                        'trashcoin_didapat' => $validated['trashcoin'],
+                        'jumlah_barang'      => $validated['anorganik'],
+                        'status_barang'      => $validated['Sampah_Anorganik'],
+                        'trashcoin_didapat'  => $validated['trashcoin'],
                         'trashcoin_sekarang' => $user->point,
                     ]);
                 } else {
                     $product->update([
-                        'status_barang' => 'not valid',
+                        'status_barang'      => 'not valid',
                     ]);
                 }
-                // dd($product);
-
             } else if ($product->nama_barang == 'Sampah B3') {
                 if (isset($validated['Sampah_B3'])) {
                     $product->update([
-                        'jumlah_barang' => $validated['B3'],
-                        'status_barang' => $validated['Sampah_B3'],
-                        'trashcoin_didapat' => $validated['trashcoin'],
+                        'jumlah_barang'      => $validated['B3'],
+                        'status_barang'      => $validated['Sampah_B3'],
+                        'trashcoin_didapat'  => $validated['trashcoin'],
                         'trashcoin_sekarang' => $user->point,
                     ]);
                 } else {
                     $product->update([
-                        'status_barang' => $validated['not valid']
+                        'status_barang'      => $validated['not valid']
                     ]);
                 }
-                // dd($product);
-
             }
         }
 
-
         $request->session()->flash('success', 'Request berhasil diupdate!');
-        return redirect('/admin/notification/');
-        // dd($products);
-    }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+        return redirect('/admin/notification/');
     }
 }

@@ -16,9 +16,11 @@
                     <div class="card-body pr-1">
 
                         <div class="row d-flex justify-content-center mt-3 ">
+
                             @foreach ($rewards as $reward)
                                 @include('supplier.list-reward')
                             @endforeach
+
                         </div>
                     </div>
                 </div>

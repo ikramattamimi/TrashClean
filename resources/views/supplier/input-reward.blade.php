@@ -9,17 +9,19 @@
 
     <form class="mx-1 mx-md-4" action="{{ $form_action }}" method="post">
         @csrf
-        {{-- <p class="text-center h4 fw-bold mx-1 mx-md-4 mt-4">{{ $title }}</p> --}}
         <div class="row justify-content-center d-flex align-items-center">
 
             @if ($errors->any())
                 <div class="alert alert-danger alert-block d-flex justify-content-between align-items-center">
+
                     @foreach ($errors->all() as $error)
                         <li>{{ $error }}</li>
                     @endforeach
+
                     <button class="btn close" data-dismiss="alert" type="button">×</button>
                 </div>
             @endif
+
             @if ($message = Session::get('success'))
                 <div class="alert alert-success alert-block d-flex justify-content-between align-items-center">
                     <strong>{{ $message }}</strong>
@@ -48,14 +50,8 @@
             </div>
         </div>
 
-
         <div class="d-flex justify-content-center col-10 my-3">
             <button class="btn btn-primary btn-lg " type="submit">{{ $right_button }}</button>
         </div>
-</div>
-</form>
-
-
-
-
+    </form>
 </div>

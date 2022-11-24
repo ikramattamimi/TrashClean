@@ -9,15 +9,13 @@ class Products extends Model
 {
     use HasFactory;
 
-    protected $guarded = [
-        'id'
-    ];
+    protected $guarded      = ['id'];
 
-    protected $primaryKey = 'id';
+    protected $primaryKey   = 'id';
 
-    public $incrementing = false;
+    public $incrementing    = false;
 
-    protected $keyType = 'string';
+    protected $keyType      = 'string';
 
     public function user()
     {

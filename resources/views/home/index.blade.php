@@ -30,12 +30,6 @@
     <link href="assets/css/style.css" rel="stylesheet">
     <link href="assets/css/style-lp-custom.css" rel="stylesheet">
 
-    <!-- =======================================================
-  * Template Name: Techie - v4.9.1
-  * Template URL: https://bootstrapmade.com/techie-free-skin-bootstrap-3/
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
 </head>
 
 <body>
@@ -43,8 +37,6 @@
     <!-- ======= Header ======= -->
     <header class="fixed-top " id="header">
         <div class="container d-flex align-items-center justify-content-center">
-            <!-- <h1 class="logo"><a href="/">TrashClean</a></h1> -->
-            <!-- Uncomment below if you prefer to use an image logo -->
             <a class="logo rounded" href="/"><img class="img-fluid" src="assets/img/logo.png" alt=""></a>
 
             <nav class="navbar" id="navbar">
@@ -61,6 +53,7 @@
                             <li><a href="/tutorial">Tutorial</a></li>
                         </ul>
                     </li>
+
                     @if (Auth::check())
                         @php
                             $role = Auth::user()->role . '*';
@@ -84,6 +77,7 @@
                             </ul>
                         </li>
                     @endif
+
                 </ul>
                 <i class="bi bi-list mobile-nav-toggle"></i>
             </nav><!-- .navbar -->
@@ -100,14 +94,10 @@
                     <h1 style="text-transform: capitalize;">{{ $post->judul_halaman_awal }}</h1>
                     <h3>{{ $post->konten_halaman_awal }} <a href="#services">Cek di sini</a></a></h3>
                 </div>
-                <!-- <div class="col order-1 order-lg-2 hero-img" data-aos="zoom-in" data-aos-delay="150">
-          <img class="img-fluid animated" src="assets/img/hero-img.png" alt="">
-        </div> -->
             </div>
         </div>
 
     </section><!-- End Hero -->
-
 
     <!-- ======= Counts Section ======= -->
     <section class="counts" id="counts">
@@ -291,13 +281,10 @@
                         &copy; Copyright <strong><span>TrashClean</span></strong>. All Rights Reserved
                     </div>
                     <div class="credits">
-                        <!-- All the links in the footer should remain intact. -->
-                        <!-- You can delete the links only if you purchased the pro version. -->
-                        <!-- Licensing information: https://bootstrapmade.com/license/ -->
-                        <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/techie-free-skin-bootstrap-3/ -->
                         Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
                     </div>
                 </div>
+
                 <div class="social-links text-center text-md-right pt-3 pt-md-0">
                     <a class="twitter" href="#"><i class="bx bxl-twitter"></i></a>
                     <a class="facebook" href="#"><i class="bx bxl-facebook"></i></a>
@@ -305,6 +292,7 @@
                     <a class="google-plus" href="#"><i class="bx bxl-skype"></i></a>
                     <a class="linkedin" href="#"><i class="bx bxl-linkedin"></i></a>
                 </div>
+
             </div>
 
         </div>

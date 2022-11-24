@@ -6,7 +6,6 @@
 
 <div class="row d-flex justify-content-center">
 
-
     <form class="mx-1 mx-md-4" action="{{ $form_action }}" method="post">
         @csrf
         <p class="text-center h4 fw-bold mb-5 mx-1 mx-md-4 mt-4">{{ $title }}</p>
@@ -20,6 +19,7 @@
                     <button class="btn close" data-dismiss="alert" type="button">×</button>
                 </div>
             @endif
+
             @if ($message = Session::get('success'))
                 <div class="alert alert-success alert-block d-flex justify-content-between align-items-center">
                     <strong>{{ $message }}</strong>
@@ -28,8 +28,8 @@
             @endif
 
             <div class="col-10 col-xl-5">
-                <input class="form-control" name="id" type="text" value="{{ $admin->id }}" hidden/>
-                
+                <input class="form-control" name="id" type="text" value="{{ $admin->id }}" hidden />
+
                 <div class="d-flex flex-row align-items-center mb-4">
                     <i class="fas fa-user fa-lg me-3 fa-fw"></i>
                     <div class="form-floating flex-fill mb-0">
@@ -68,27 +68,25 @@
                 <div class="d-flex flex-row align-items-center mb-4">
                     <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
                     <div class="form-floating flex-fill mb-0">
-                        <input class="form-control" id="password" name="password" type="password" placeholder="*****" minlength="4" required />
+                        <input class="form-control" id="password" name="password" type="password" placeholder="*****"
+                            minlength="4" required />
                         <label>Password</label>
                     </div>
                 </div>
                 <div class="d-flex flex-row align-items-center mb-4">
                     <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
                     <div class="form-floating flex-fill mb-0">
-                        <input class="form-control" id="password_confirmation" name="password_confirmation" type="password" placeholder="*****" minlength="4" required />
+                        <input class="form-control" id="password_confirmation" name="password_confirmation"
+                            type="password" placeholder="*****" minlength="4" required />
                         <label>Konfirmasi Password</label>
                     </div>
                 </div>
             </div>
-
 
             <div class="d-flex justify-content-center col-10 my-3">
                 <button class="btn btn-primary btn-lg " type="submit">{{ $right_button }}</button>
             </div>
         </div>
     </form>
-
-
-
 
 </div>

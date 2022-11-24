@@ -7,8 +7,8 @@
 
                 <li class="nav-item" role="presentation">
                     <button class="nav-link active" id="pills-list-reward-tab" data-bs-toggle="pill"
-                        data-bs-target="#pills-list-reward" type="button" role="tab"
-                        aria-controls="pills-list-reward" aria-selected="true">List Product Reward</button>
+                        data-bs-target="#pills-list-reward" type="button" role="tab" aria-controls="pills-list-reward"
+                        aria-selected="true">List Product Reward</button>
                 </li>
 
                 <li class="nav-item" role="presentation">
@@ -30,9 +30,11 @@
                             <h5>Daftar Product Reward</h5>
                         </div>
                     </div>
+
                     @foreach ($reward as $key => $reward)
                         @include('super-admin.reward.list-reward')
                     @endforeach
+
                 </div>
 
                 <div class="tab-pane fade" id="pills-tambah-reward" role="tabpanel"

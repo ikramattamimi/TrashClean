@@ -10,7 +10,7 @@
 
                         <div class="col-12 col-sm-4 col-lg-4 ms-2">
                             <img src="{{ asset('storage/uploads/katalog/' . $katalog->gambar) }}" alt="">
-                            
+
                             <div class="row d-flex justify-content-center mt-4 p-3">
                                 <strong class="text-center">Tertarik dengan produk kami?</strong>
                                 <a class="btn btn-secondary btn-sm mt-2" type="button" href="https://wa.me/+6282329519310">

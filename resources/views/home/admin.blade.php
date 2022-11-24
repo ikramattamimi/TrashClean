@@ -21,7 +21,6 @@
                     </a>
                 </div>
             </div>
-            {{-- <hr> --}}
             <div class="row">
                 <div class="col-10">
                     <a class="mb-0" href="/admin/reward">Request Reward</a>

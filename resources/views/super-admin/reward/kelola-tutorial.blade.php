@@ -1,5 +1,6 @@
 <div class="card-header">
     <ul class="nav nav-pills d-flex justify-content-center" id="pills-tab" role="tablist">
+
         @if (request()->is('super_admin/edit-tutorial*'))
         @else
             <li class="nav-item" role="presentation">
@@ -28,13 +29,15 @@
                     <h5>Daftar Tutorial</h5>
                 </div>
             </div>
+
             @foreach ($tutorial as $key => $tutorial)
                 @include('super-admin.tutorial.list-tutorial')
             @endforeach
+
         </div>
 
-        <div class="tab-pane fade"
-            id="pills-tambah-tutorial" role="tabpanel" aria-labelledby="pills-tambah-tutorial-tab">
+        <div class="tab-pane fade" id="pills-tambah-tutorial" role="tabpanel"
+            aria-labelledby="pills-tambah-tutorial-tab">
             @include('super-admin.tutorial.tambah-tutorial')
         </div>
     </div>

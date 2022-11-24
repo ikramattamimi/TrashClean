@@ -26,11 +26,11 @@
                 @foreach ($tutorial as $item)
                     <div class="col-lg-4 col-md-6 portfolio-item filter-{{ $item->kategori }}">
                         <div class="portfolio-wrap">
-                            <img src="{{ asset('storage/uploads/tutorial/' . $item->gambar) }}" class="img-fluid" alt="">
+                            <img src="{{ asset('storage/uploads/tutorial/' . $item->gambar) }}" class="img-fluid"
+                                alt="">
                             <a href="{{ '/tutorial/detail/' . $item->id }}">
                                 <div class="portfolio-info">
                                     <h4>{{ $item->judul }}</h4>
-                                    {{-- <p>Cara Membuat Pupuk Kompos</p> --}}
                                 </div>
                             </a>
                         </div>
@@ -39,5 +39,5 @@
             </div>
 
         </div>
-    </section><!-- End Portfolio Section -->
+    </section>
 @endsection

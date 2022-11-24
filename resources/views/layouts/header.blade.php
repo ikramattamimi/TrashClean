@@ -1,8 +1,6 @@
 <!-- ======= Header ======= -->
 <header class="fixed-top " id="header_page">
     <div class="container d-flex align-items-center justify-content-center">
-        <!-- <h1 class="logo"><a href="/">TrashClean</a></h1> -->
-        <!-- Uncomment below if you prefer to use an image logo -->
         <a class="logo rounded" href="/"><img class="img-fluid" src={{ url('assets/img/logo.png') }}
                 alt=""></a>
 
@@ -30,6 +28,7 @@
                         $role = Auth::user()->role . '*';
                         $name = explode(' ', trim(Auth::user()->nama));
                     @endphp
+
                     <li class="dropdown"><a class="nav-link scrollto {{ request()->is($role) ? 'active' : '' }}"
                             href="#"><span>{{ $name[0] }}</span>
                             <i class="bi bi-person-circle text-white"></i> <i class="bi bi-chevron-down"></i></a>
@@ -55,9 +54,10 @@
                         </ul>
                     </li>
                 @endif
+
             </ul>
             <i class="bi bi-list mobile-nav-toggle" style="color: grey"></i>
-        </nav><!-- .navbar -->
+        </nav>
 
     </div>
-</header><!-- End Header -->
+</header>

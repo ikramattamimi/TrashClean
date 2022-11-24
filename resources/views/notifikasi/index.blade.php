@@ -18,6 +18,7 @@
                             @include('notifikasi.list-jemput')
                         @endif
                     @endforeach
+
                     @foreach ($notification_antar as $key => $item)
                         @if (count($item) != 0)
                             @include('notifikasi.list-antar')

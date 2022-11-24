@@ -6,7 +6,6 @@
 
 <div class="row d-flex justify-content-center">
 
-
     <form action="{{ $form_action }}" method="post" class="mx-1 mx-md-4">
         @csrf
         <p class="text-center h4 fw-bold mb-5 mx-1 mx-md-4 mt-4">{{ $title }}</p>

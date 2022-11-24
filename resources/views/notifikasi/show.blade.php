@@ -70,9 +70,6 @@
                     </div>
                 </div>
 
-
-
-
                 <form class="col-12 col-md-8 col-lg-8" action="/admin/notification/update" method="post">
                     @csrf
                     <div class="row d-flex justify-content-center">
@@ -84,6 +81,7 @@
                                 </div>
                                 <div class="card-body">
                                     <div class="row flex-column-reverse">
+
                                         @foreach ($products as $product)
                                             <div class="col-sm-9">
                                                 <div class="form-check">
@@ -95,6 +93,7 @@
                                                 </div>
                                             </div>
                                         @endforeach
+
                                     </div>
                                 </div>
                             </div>

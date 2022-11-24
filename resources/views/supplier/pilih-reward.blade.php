@@ -16,15 +16,19 @@
                             <div class="row d-flex justify-content-center mb-3 ">
 
                                 <div class="col-12 col-md-12">
+
                                     @if ($errors->any())
                                         <div
                                             class="alert alert-danger alert-block d-flex justify-content-between align-items-center">
+
                                             @foreach ($errors->all() as $error)
                                                 <li>{{ $error }}</li>
                                             @endforeach
+
                                             <button class="btn close" data-dismiss="alert" type="button">×</button>
                                         </div>
                                     @endif
+
                                     @if ($message = Session::get('success'))
                                         <div
                                             class="alert alert-success alert-block d-flex justify-content-between align-items-center">
@@ -32,6 +36,7 @@
                                             <button class="btn close" data-dismiss="alert" type="button">×</button>
                                         </div>
                                     @endif
+
                                 </div>
 
                                 <div class="col-12 col-md-4 text-center mt-4">
@@ -92,7 +97,8 @@
                                 <input name="reward_id" type="text" value="{{ $reward->id }}" hidden>
                                 <input name="reward_kategori" type="text" value="{{ $reward->kategori }}" hidden>
 
-                                <a href="/supplier/reward" class="btn btn-secondary m-3 col-4 col-md-2" type="button">Kembali</a>
+                                <a href="/supplier/reward" class="btn btn-secondary m-3 col-4 col-md-2"
+                                    type="button">Kembali</a>
                                 <button class="btn btn-primary m-3 col-4 col-md-2" data-bs-toggle="modal"
                                     data-bs-target="#modal-konfirmasi" type="button">Tukar</button>
                                 @include('supplier.modal-konfirmasi')

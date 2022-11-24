@@ -21,8 +21,10 @@
                     <button class="btn close" data-dismiss="alert" type="button">×</button>
                 </div>
             @endif
+
             @if ($message = Session::get('success'))
-                <div class="alert alert-success alert-block alert-dismissible fade show d-flex justify-content-between align-items-center col-10">
+                <div
+                    class="alert alert-success alert-block alert-dismissible fade show d-flex justify-content-between align-items-center col-10">
                     <strong>{{ $message }}</strong>
                     <button class="btn close" data-dismiss="alert" type="button">×</button>
                 </div>
@@ -39,7 +41,6 @@
                 <div class="d-flex flex-row align-items-center mb-4">
                     <div class="w-100">
                         <input class="form-control" name="gambar" type="file" required />
-                        {{-- <label>Gambar</label> --}}
                     </div>
                 </div>
                 <div class="d-flex flex-row align-items-center mb-4">

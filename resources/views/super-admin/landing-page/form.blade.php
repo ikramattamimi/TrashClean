@@ -42,33 +42,23 @@
                         <h6>Katalog bahan organik</h6>
                     </label>
                     <textarea class="form-control" id="editor2" name="katalog_bahan_organik" rows="4">{{ $post->katalog_bahan_organik }}</textarea>
-                    {{-- <script>
-                                CKEDITOR.replace('editor2');
-                            </script> --}}
                 </div>
                 <div class="form-group mb-4">
                     <label for="exampleFormControlTextarea1">
                         <h6>Katalog bahan anorganik</h6>
                     </label>
                     <textarea class="form-control" id="editor3" name="katalog_bahan_anorganik" rows="4">{{ $post->katalog_bahan_anorganik }}</textarea>
-                    {{-- <script>
-                                CKEDITOR.replace('editor3');
-                            </script> --}}
                 </div>
                 <div class="form-group mb-4">
                     <label for="exampleFormControlTextarea1">
                         <h6>Katalog bahan b3</h6>
                     </label>
                     <textarea class="form-control" id="editor4" name="katalog_bahan_b3" rows="4">{{ $post->katalog_bahan_b3 }}</textarea>
-                    {{-- <script>
-                                CKEDITOR.replace('editor4');
-                            </script> --}}
                 </div>
                 <div class="d-flex justify-content-center mt-3">
                     <button class="btn btn-primary" type="submit">Simpan</button>
                 </div>
             </form>
         </div>
-        
     </div>
 </div>

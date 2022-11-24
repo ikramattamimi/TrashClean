@@ -35,17 +35,9 @@
     <link href={{ url('assets/css/style.css') }} rel="stylesheet">
     <link href={{ url('assets/css/style-custom.css') }} rel="stylesheet">
 
-
     {{-- cdn --}}
     <script src="https://cdn.ckeditor.com/4.20.0/standard/ckeditor.js"></script>
 
-
-    <!-- =======================================================
-  * Template Name: Techie - v4.9.1
-  * Template URL: https://bootstrapmade.com/techie-free-skin-bootstrap-3/
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
 </head>
 
 <body>

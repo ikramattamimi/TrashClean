@@ -6,7 +6,6 @@
 
 <div class="row d-flex justify-content-center">
 
-
     <form action="{{ $form_action }}" method="post" class="mx-1 mx-md-4" enctype="multipart/form-data">
         @csrf
         <p class="text-center h4 fw-bold mb-5 mx-1 mx-md-4 mt-4">{{ $title }}</p>
@@ -14,9 +13,11 @@
 
             @if ($errors->any())
                 <div class="alert alert-danger alert-block d-flex justify-content-between align-items-center col-10">
+
                     @foreach ($errors->all() as $error)
                         <li>{{ $error }}</li>
                     @endforeach
+
                     <button type="button" class="btn close" data-dismiss="alert">×</button>
                 </div>
             @endif
@@ -40,8 +41,8 @@
                 </div>
                 <div class="d-flex flex-row align-items-center mb-4">
                     <div class="form-floating flex-fill mb-0">
-                        <input type="text" class="form-control" name="kuantitas" placeholder="Jumlah Katalog" required
-                            value="{{ $katalog->kuantitas }}" />
+                        <input type="text" class="form-control" name="kuantitas" placeholder="Jumlah Katalog"
+                            required value="{{ $katalog->kuantitas }}" />
                         <label>Jumlah Katalog (kg)</label>
                     </div>
                 </div>

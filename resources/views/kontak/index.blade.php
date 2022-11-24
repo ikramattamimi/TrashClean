@@ -49,5 +49,5 @@
             </div>
 
         </div>
-    </section><!-- End Contact Section -->
+    </section>
 @endsection

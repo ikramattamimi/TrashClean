@@ -9,11 +9,11 @@ class Reward extends Model
 {
     use HasFactory;
 
-    protected $guarded = ['id'];
-    protected $table = 'reward';
+    protected $guarded  = ['id'];
+    protected $table    = 'reward';
 
-    public function reward_history(){
+    public function reward_history()
+    {
         return $this->hasMany(RewardHistory::class);
     }
-
 }

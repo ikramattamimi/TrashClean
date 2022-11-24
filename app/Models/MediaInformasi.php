@@ -8,8 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class MediaInformasi extends Model
 {
     use HasFactory;
-    protected $guarded = [
-        'id'
-    ];
+    protected $guarded = ['id'];
+
     protected $table = 'media_informasi';
 }

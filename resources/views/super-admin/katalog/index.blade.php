@@ -30,9 +30,11 @@
                             <h5>Daftar Produk</h5>
                         </div>
                     </div>
+
                     @foreach ($katalog as $key => $katalog)
                         @include('super-admin.katalog.list-katalog')
                     @endforeach
+
                 </div>
 
                 <div class="tab-pane fade" id="pills-tambah-tutorial" role="tabpanel"

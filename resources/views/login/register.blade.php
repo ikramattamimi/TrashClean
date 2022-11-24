@@ -32,6 +32,7 @@
         </div>
     </div>
 @endsection
+
 @section('content-right')
     <div class="d-flex flex-row align-items-center mb-4">
         <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
