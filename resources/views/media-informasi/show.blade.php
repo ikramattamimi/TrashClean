@@ -9,8 +9,7 @@
                     <div class="row gy-4">
 
                         <div class="col-12 col-sm-4 col-lg-4 ms-2">
-                            <img src="{{ asset('storage/uploads/media-informasi/' . $media_informasi->gambar) }}"
-                                alt="">
+                            <img src="{{ asset('uploads/media-informasi/' . $media_informasi->gambar) }}" alt="">
                         </div>
 
                         <div class="col-12 col-sm-7 col-lg-7">

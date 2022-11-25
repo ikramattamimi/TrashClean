@@ -92,7 +92,7 @@
             <div class="col-sm-6">
                 <div class="col pt-3 pt-lg-0 order-2 order-lg-1 d-flex flex-column justify-content-center">
                     <h1 style="text-transform: capitalize;">{{ $post->judul_halaman_awal }}</h1>
-                    <h3>{{ $post->konten_halaman_awal }} <a href="#services">Cek di sini</a></a></h3>
+                    <h3>{{ $post->konten_halaman_awal }} <a href="#services"><b>Cek di sini</b></a></h3>
                 </div>
             </div>
         </div>
@@ -134,7 +134,7 @@
 
                 <div class="row">
                     <div class="col-lg-6 order-1 order-lg-2" data-aos="zoom-in" data-aos-delay="150">
-                        <img class="img-fluid" src="assets/img/about.jpg" alt="">
+                        <img class="img-fluid" src="assets/img/Image_about.jpeg" alt="scs">
                     </div>
                     <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 content" data-aos="fade-right">
                         <h3>{{ $post->judul_tentang }}</h3>

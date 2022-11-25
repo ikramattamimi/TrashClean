@@ -6,9 +6,8 @@
                     @csrf
                     <div class="row text-start d-flex align-items-center">
                         <div class="col-4 text-center">
-                            <img class="img-fluid"
-                                src="{{ asset('storage/uploads/reward/' . $reward->gambar) }}"
-                                alt="User" style="width: 100px; border-radius: 10px;">
+                            <img class="img-fluid" src="{{ asset('uploads/reward/' . $reward->gambar) }}" alt="User"
+                                style="width: 100px; border-radius: 10px;">
                         </div>
 
                         <div class="col-8 form-group">

@@ -20,7 +20,7 @@
                                 <div class="col-3 d-flex justify-content-center align-items-center">
 
                                     <img class="rounded-circle img-fluid"
-                                        src="{{ asset('storage/uploads/profil/' . $user->foto) }}" alt="avatar"
+                                        src="{{ asset('uploads/profil/' . $user->foto) }}" alt="avatar"
                                         style="width: 150px;">
 
                                 </div>

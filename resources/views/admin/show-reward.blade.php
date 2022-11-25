@@ -18,7 +18,7 @@
                         <div class="card-body align-items-center">
                             <div class="row justify-content-center">
                                 <img class="rounded-circle img-fluid"
-                                    src="{{ asset('storage/uploads/profil/' . $rewards->user->foto) }}" alt="avatar"
+                                    src="{{ asset('uploads/profil/' . $rewards->user->foto) }}" alt="avatar"
                                     style="width: 150px;">
                                 <div class="row mt-5">
                                     <div class="col-sm-5">
@@ -61,8 +61,7 @@
                             <div class="row d-flex justify-content-center align-items-center mb-3 ">
 
                                 <div class="col-4 col-md-4 col-xl-3 text-center mb-5">
-                                    <img class="img-fluid"
-                                        src="{{ asset('storage/uploads/reward/' . $rewards->reward->gambar) }}"
+                                    <img class="img-fluid" src="{{ asset('uploads/reward/' . $rewards->reward->gambar) }}"
                                         alt="User" style="width: 100%; border-radius: 10px;">
                                 </div>
 
@@ -110,7 +109,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                
+
                                 </div>
 
                                 <div class="row justify-content-center my-3">

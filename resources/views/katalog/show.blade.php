@@ -9,7 +9,7 @@
                     <div class="row gy-4">
 
                         <div class="col-12 col-sm-4 col-lg-4 ms-2">
-                            <img src="{{ asset('storage/uploads/katalog/' . $katalog->gambar) }}" alt="">
+                            <img src="{{ asset('katalog/' . $katalog->gambar) }}" alt="">
 
                             <div class="row d-flex justify-content-center mt-4 p-3">
                                 <strong class="text-center">Tertarik dengan produk kami?</strong>

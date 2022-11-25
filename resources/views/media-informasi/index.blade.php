@@ -21,8 +21,7 @@
 
                                     <div class="bg-image hover-overlay shadow-1-strong ripple rounded-5 mb-4"
                                         data-mdb-ripple-color="light">
-                                        <img class="img-fluid"
-                                            src="{{ asset('storage/uploads/media-informasi/' . $item->gambar) }}"
+                                        <img class="img-fluid" src="{{ asset('uploads/media-informasi/' . $item->gambar) }}"
                                             style="width: 100%;" />
                                     </div>
 

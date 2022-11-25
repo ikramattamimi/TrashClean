@@ -7,7 +7,7 @@
             <div class="row gy-4">
 
                 <div class="col-lg-4" style="margin-top: 0px">
-                    <img src="{{ asset('storage/uploads/tutorial/' . $tutorial->gambar) }}" alt="">
+                    <img src="{{ asset('uploads/tutorial/' . $tutorial->gambar) }}" alt="">
                 </div>
 
                 <div class="col-lg-8">

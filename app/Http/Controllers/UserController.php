@@ -31,7 +31,7 @@ class UserController extends Controller
             'alamat'        => $validated['alamat'],
             'foto'          => 'man.jpg',
             'username'      => $validated['username'],
-            'point'          => '0',
+            'point'         => '0',
             'password'      =>  Hash::make($validated['password']),
         ]);
 
@@ -59,7 +59,7 @@ class UserController extends Controller
 
         if (isset($validated['foto'])) {
             $name = $validated['foto']->getClientOriginalName();
-            $validated['foto']->storeAs('uploads/profil', $name, 'public');
+            $validated['foto']->storeAs('uploads/profil', $name, ['disk' => 'public']);
             $validated['foto'] = $name;
             $input = $validated;
         } else {

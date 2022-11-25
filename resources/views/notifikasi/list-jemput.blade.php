@@ -10,7 +10,7 @@
                     <div class="row d-flex align-items-center justify-content-start">
 
                         <div class="col-2 text-center">
-                            <img class="img-fluid" src="{{ asset('storage/uploads/profil/' . Auth::user()->foto) }}"
+                            <img class="img-fluid" src="{{ asset('uploads/profil/' . Auth::user()->foto) }}"
                                 alt="Generic placeholder image" style="width: 100px; border-radius: 10px;">
                         </div>
 

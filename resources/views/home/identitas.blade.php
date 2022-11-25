@@ -16,7 +16,7 @@
                         <div class="card mb-4">
                             <div class="card-body text-center">
                                 <img class="rounded-circle img-fluid"
-                                    src="{{ asset('storage/uploads/profil/' . Auth::user()->foto) }}" alt="avatar"
+                                    src="{{ asset('uploads/profil/' . Auth::user()->foto) }}" alt="avatar"
                                     style="width: 150px;">
                                 <h5 class="mt-4 mb-3">{{ Auth::user()->nama }}</h5>
                                 <div class="d-flex justify-content-center mb-2">

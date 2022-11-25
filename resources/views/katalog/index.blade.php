@@ -30,8 +30,7 @@
                                 <div class="row">
                                     <div class="col-md-12 col-lg-3 col-xl-3 mb-4 mb-lg-0">
                                         <div class="bg-image hover-zoom ripple rounded ripple-surface">
-                                            <img class="w-100"
-                                                src="{{ asset('storage/uploads/katalog/' . $item->gambar) }}" />
+                                            <img class="w-100" src="{{ url('uploads/katalog/' . $item->gambar) }}" />
                                             <a href="{{ '/katalog/detail/' . $item->id }}">
                                                 <div class="hover-overlay">
                                                     <div class="mask"

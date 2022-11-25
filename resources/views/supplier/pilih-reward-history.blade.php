@@ -14,7 +14,7 @@
                         <div class="row d-flex justify-content-center align-items-center mb-3 ">
 
                             <div class="col-8 col-md-3 text-center mt-4 mx-4">
-                                <img class="img-fluid" src="{{ asset('storage/uploads/reward/' . $reward->reward->gambar) }}"
+                                <img class="img-fluid" src="{{ asset('uploads/reward/' . $reward->reward->gambar) }}"
                                     alt="User" style="width: 100%; border-radius: 10px;">
                             </div>
 

@@ -31,7 +31,7 @@
                 placeholder="Judul Reward" required hidden />
 
             <div class="col-3 mb-4 text-center">
-                <img class="img-fluid" src="{{ asset('storage/uploads/reward/' . $reward->gambar) }}" alt="Tutorial"
+                <img class="img-fluid" src="{{ asset('uploads/reward/' . $reward->gambar) }}" alt="Tutorial"
                     style="width: 100px; border-radius: 10px;">
             </div>
 

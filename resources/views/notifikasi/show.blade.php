@@ -19,7 +19,7 @@
                             <div class="card-body align-items-center">
                                 <div class="row justify-content-center">
                                     <img class="rounded-circle img-fluid"
-                                        src="{{ asset('storage/uploads/profil/' . $user->foto) }}" alt="avatar"
+                                        src="{{ asset('uploads/profil/' . $user->foto) }}" alt="avatar"
                                         style="width: 150px;">
                                     <div class="row mt-5">
                                         <div class="col-sm-5">

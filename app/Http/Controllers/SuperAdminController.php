@@ -94,7 +94,7 @@ class SuperAdminController extends Controller
 
         if (isset($validated['gambar'])) {
             $name   = $validated['gambar']->getClientOriginalName();
-            $validated['gambar']->storeAs('uploads/tutorial/', $name, 'public');
+            $validated['gambar']->storeAs('uploads/tutorial', $name, ['disk' => 'public']);
             $validated['gambar'] = $name;
             $input  = $validated;
         }
@@ -219,7 +219,7 @@ class SuperAdminController extends Controller
 
         if (isset($validated['gambar'])) {
             $name = $validated['gambar']->getClientOriginalName();
-            $validated['gambar']->storeAs('uploads/media-informasi/', $name, 'public');
+            $validated['gambar']->storeAs('uploads/media-informasi', $name, ['disk' => 'public']);
             $validated['gambar'] = $name;
             $input = $validated;
         }
@@ -245,7 +245,7 @@ class SuperAdminController extends Controller
         $validated = $validation->validated();
         if (isset($validated['gambar'])) {
             $name = $validated['gambar']->getClientOriginalName();
-            $validated['gambar']->storeAs('uploads/media-informasi/', $name, 'public');
+            $validated['gambar']->storeAs('uploads/media-informasi', $name, ['disk' => 'public']);
             $validated['gambar'] = $name;
             $input = $validated;
         }
@@ -305,7 +305,7 @@ class SuperAdminController extends Controller
 
         if (isset($validated['gambar'])) {
             $name = $validated['gambar']->getClientOriginalName();
-            $validated['gambar']->storeAs('uploads/tutorial/', $name, 'public');
+            $validated['gambar']->storeAs('uploads/tutorial', $name, ['disk' => 'public']);
             $validated['gambar'] = $name;
             $input = $validated;
         }
@@ -364,7 +364,7 @@ class SuperAdminController extends Controller
 
         if (isset($validated['gambar'])) {
             $name = $validated['gambar']->getClientOriginalName();
-            $validated['gambar']->storeAs('uploads/reward', $name, 'public');
+            $validated['gambar']->storeAs('uploads/reward', $name, ['disk' => 'public']);
             $validated['gambar'] = $name;
             $input = $validated;
         }
@@ -392,7 +392,7 @@ class SuperAdminController extends Controller
         $validated = $validation->validated();
         if (isset($validated['gambar'])) {
             $name = $validated['gambar']->getClientOriginalName();
-            $validated['gambar']->storeAs('uploads/reward', $name, 'public');
+            $validated['gambar']->storeAs('uploads/reward', $name, ['disk' => 'public']);
             $validated['gambar'] = $name;
             $input = $validated;
         }
@@ -454,7 +454,7 @@ class SuperAdminController extends Controller
 
         if (isset($validated['gambar'])) {
             $name = $validated['gambar']->getClientOriginalName();
-            $validated['gambar']->storeAs('uploads/katalog/', $name, 'public');
+            $validated['gambar']->storeAs('uploads/katalog', $name, ['disk' => 'public']);
             $validated['gambar'] = $name;
             $input = $validated;
         }
@@ -484,7 +484,7 @@ class SuperAdminController extends Controller
 
         if (isset($validated['gambar'])) {
             $name = $validated['gambar']->getClientOriginalName();
-            $validated['gambar']->storeAs('uploads/katalog/', $name, 'public');
+            $validated['gambar']->storeAs('uploads/katalog', $name, ['disk' => 'public']);
             $validated['gambar'] = $name;
             $input = $validated;
         }

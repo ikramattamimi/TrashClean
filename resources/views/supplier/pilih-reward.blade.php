@@ -40,7 +40,7 @@
                                 </div>
 
                                 <div class="col-12 col-md-4 text-center mt-4">
-                                    <img class="img-fluid" src="{{ asset('storage/uploads/reward/' . $reward->gambar) }}"
+                                    <img class="img-fluid" src="{{ asset('uploads/reward/' . $reward->gambar) }}"
                                         alt="User" style="width: 100%; border-radius: 10px;">
                                 </div>
 

@@ -5,8 +5,7 @@
             <div class="card-body">
                 <div class="row text-start d-flex align-items-center justify-content-center">
                     <div class="col-2 text-center">
-                        <img class="img-fluid"
-                            src="{{ asset('storage/uploads/media-informasi/' . $media_informasi->gambar) }}"
+                        <img class="img-fluid" src="{{ asset('uploads/media-informasi/' . $media_informasi->gambar) }}"
                             alt="Media Informasi" style="width: 100px; border-radius: 10px;">
                     </div>
 
